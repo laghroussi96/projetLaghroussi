@@ -1,0 +1,275 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta charset="utf-8"/>
+        <title>Freelancer|Mission</title>
+
+        <meta content="width=device-width, initial-scale=1.0" name="viewport"></meta>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"></meta>
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css"/>
+        <link href="../../ressources/css/font-awesome.min.css" rel="stylesheet"/>
+        <link href="../../ressources/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="../../ressources/css/components.css" rel="stylesheet"/>
+        <link href="../../ressources/css/style.css" rel="stylesheet"/>
+        <link href="../../ressources/css/red.css" rel="stylesheet" id="style-color"/>
+        <link href="../../ressources/css/custom.css" rel="stylesheet"/>
+        <link href="../../ressources/css/settings.css" rel="stylesheet"/>
+    </h:head>
+    <h:body class="corporate">
+        <ui:include src="../header/Header2.xhtml"></ui:include>
+
+        <div class="header-top2">
+            <div class="container">
+                <div class="header-text">
+                    <h3> Besoin d'un freelance en design?</h3>
+                    <h4 style="color: #555555">C'est facilePubliez vos projets et recevez des offres des freelances en quelques minutes.</h4><br/>
+                    <a class="btn btn-primary pub" href="#main"><i class="fa fa-hand-o-down"></i> Publier une mission</a>
+                </div>
+            </div>
+        </div><br/>
+        <div class="main" id="main">
+            <div class="container">
+                <div class="row quote-v1 margin-bottom-30">
+                    <div class="col-md-9">
+                        <span><i class="fa fa-pencil"></i> Publier une Mission</span>
+                    </div>
+                </div>
+                <!-- END BLOCKQUOTE BLOCK -->
+                <div class="panel-group col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div id="tf-pb" class="container">
+
+                                <div><h3>Dites nous ce que vous devez faire réaliser</h3></div><br/>
+                                <div class="form-group">
+                                    <label>Choisir un nom pour votre projet</label>
+                                    <p:inputText type="text" class="form-control" placeholder="ex: Développer mon site internet" value="#{missionController.selected.titre}" id="titre"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Dites-nous en plus concernant votre projet</label>
+                                    <p:inputTextarea class="form-control" rows="4" placeholder="D'écrivez votre projet" value="#{missionController.selected.commentaire}"/>
+                                </div>
+                                <div class="form-group">
+                                    <table border="2">
+                                        <tr>
+                                            <td><input type="file"/></td>
+                                            <td><p style="text-align: justify">Glissez et dèposer ici des images et des documents qui peuvent être utile pour expliquer le résumé de votre projets.</p></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-6">
+                                        <p:outputLabel for="categories" value="Catégories " style="font-size: 15px"/>
+                                        <h:selectOneMenu id="categories" class="form-control" >
+                                            <f:selectItem itemLabel="-Select-" itemValue=""/>
+                                            <f:selectItems/>
+                                        </h:selectOneMenu></div>
+                                    <div class="col-lg-6">
+                                        <p:outputLabel for="technologies" value="Téchnologies " style="font-size: 15px"/>
+                                        <h:selectOneMenu id="technologies" class="form-control" >
+                                            <f:selectItem itemLabel="-Select-" itemValue=""/>
+                                            <f:selectItems/>
+                                        </h:selectOneMenu></div>
+                                </div>
+                                <div class="form-group">
+                                    <p:outputLabel for="diplome" value="Diplome " style="font-size: 15px"/>
+
+                                    <h:selectOneMenu id="diplome" class="form-control" value="#{missionController.selected.diplome}" >
+                                        <f:selectItem itemLabel="-Select-" itemValue=""/>
+                                        <f:selectItems/>
+                                    </h:selectOneMenu>
+                                </div>
+                                <div class="form-group">
+                                    <label>Quel est budget estimé?</label><br/>
+                                    <div class="col-lg-4">
+                                        <h:selectOneMenu id="diplome" class="form-control" value="#{missionController.selected.devise}" >
+                                            <f:selectItem itemLabel="-Select Devise-" itemValue=""/>
+                                            <f:selectItems/>
+                                        </h:selectOneMenu>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <p:inputText class="form-control" value="#{missionController.selected.minBudget}" placeholder="Budget Min"/>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <p:inputText class="form-control" value="#{missionController.selected.maxBudget}" placeholder="Budget Max"/>
+                                    </div>
+                                </div>
+                                <br/><br/>
+                                <div class="form-group">
+                                    <a href="#info1" class="pull-right btn btn-primary dark" style="background-color: #E84D1C" data-toggle="modal" data-target="#info1">Publier mon projet </a>
+                                </div>
+                            </div>
+                            <div id="info1" class="modal fade" role="dialog"  tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"></button>
+                                            <h4 class="modal-title" style="text-align: center">Connexion</h4>
+                                        </div>
+                                        <div class="modal-body form">
+                                            <form action="javascript:;" class="form-horizontal form-row-seperated">
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Adresse e-mail</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="fa fa-envelope"></i>
+                                                            </span>
+                                                            <p:inputText type="text" id="typeahead_example_modal_2" class="form-control"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group last">
+                                                    <label class="col-sm-4 control-label">Mot de passe</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="fa fa-lock"></i>
+                                                            </span>
+                                                            <p:inputText type="password" id="typeahead_example_modal_4"  class="form-control"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default retour" data-dismiss="modal">Retour</button>
+                                            <h:commandButton  class="btn monbtn" value="Envoyer" ></h:commandButton>
+                                            <a class="pull-left" id="bt"> vous-avez déja un compte? connectez-vous</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="info2" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"></button>
+                                <h4 class="modal-title" style="text-align: center">Créer un nouveau Compte</h4>
+                            </div>
+                            <div class="modal-body form">
+                                <form action="javascript:;" class="form-horizontal form-row-seperated">
+
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">Adresse e-mail</label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-envelope"></i>
+                                                </span>
+                                                <p:inputText type="text" id="typeahead_example_modal_2" class="form-control"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">Nom</label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-user"></i>
+                                                </span>
+                                                <p:inputText type="text" id="typeahead_example_modal_2" class="form-control"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">Prénom</label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-user"></i>
+                                                </span>
+                                                <p:inputText type="text" id="typeahead_example_modal_2" class="form-control"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group last">
+                                        <label class="col-sm-4 control-label">Mot de passe</label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-lock"></i>
+                                                </span>
+                                                <p:inputText type="password" id="typeahead_example_modal_4" class="form-control"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Retour</button>
+                                <h:commandButton type="button" class="btn  monbtn" value="Envoyer"></h:commandButton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <!-- BEGIN COPYRIGHT -->
+                    <div class="col-md-6 col-sm-6 padding-top-10">
+                        Freelancer.ma © Tous droits réservés - Copyright 2016 2018 <a href="javascript:;">Privacy Policy</a> | <a href="javascript:;">Terms of Service</a>
+                    </div>
+                    <!-- END COPYRIGHT -->
+                    <!-- BEGIN PAYMENTS -->
+                    <div class="col-md-6 col-sm-6">
+                        <ul class="social-footer list-unstyled list-inline pull-right">
+                            <li><a href="javascript:;"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="javascript:;"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="javascript:;"><i class="fa fa-dribbble"></i></a></li>
+                            <li><a href="javascript:;"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="javascript:;"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="javascript:;"><i class="fa fa-skype"></i></a></li>
+                            <li><a href="javascript:;"><i class="fa fa-github"></i></a></li>
+                            <li><a href="javascript:;"><i class="fa fa-youtube"></i></a></li>
+                            <li><a href="javascript:;"><i class="fa fa-dropbox"></i></a></li>
+                        </ul>  
+                    </div>
+                    <!-- END PAYMENTS -->
+                </div>
+            </div>
+        </div>
+        <script src="../../ressources/js/jquery.min.js" type="text/javascript"></script>
+        <script src="../../ressources/js/bootstrap.min.js" type="text/javascript"></script>      
+        <script src="../../ressources/js/back-to-top.js" type="text/javascript"></script>
+        <script src="../../ressources/js/layout.js" type="text/javascript"></script>
+        <script src="../../ressources/js/owl.carousel.min.js" type="text/javascript"></script>
+        <script src="../../ressources/js/jquery.themepunch.revolution.min.js" type="text/javascript"></script>
+        <script src="../../ressources/js/jquery.themepunch.tools.min.js" type="text/javascript"></script>
+        <script src="../../ressources/js/revo-slider-init.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function () {
+                Layout.init();
+                Layout.initOWL();
+                RevosliderInit.initRevoSlider();
+                Layout.initTwitter();
+
+                //Layout.initNavScrolling();
+            });
+        </script>
+        <script>
+            $(function () {
+                $("#bt").on("click", function () {
+                    $('#info1').modal('hide');
+                });
+                //trigger next modal
+                $("#bt").on("click", function () {
+                    $('#info2').modal('show');
+                });
+            });
+        </script>
+    </h:body>
+</html>
+

@@ -1,0 +1,232 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <meta charset="utf-8"/>
+        <title>Freelancer|chercher</title>
+
+        <meta content="width=device-width, initial-scale=1.0" name="viewport"></meta>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"></meta>
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css"/>
+        <link href="../../ressources/css/font-awesome.min.css" rel="stylesheet"/>
+        <link href="../../ressources/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="../../ressources/css/components.css" rel="stylesheet"/>
+        <link href="../../ressources/css/style.css" rel="stylesheet"/>
+        <link href="../../ressources/css/red.css" rel="stylesheet" id="style-color"/>
+        <link href="../../ressources/css/custom.css" rel="stylesheet"/>
+
+    </h:head>
+    <body class="corporate">
+        <ui:include src="../header/Header2.xhtml"></ui:include>
+        <div class="header-top">
+            <div class="container">
+                <div class="header-text">
+                    <h3>Chercher des Freelancers?</h3>
+                    <h4 style="color: #555555">Trouvez des talents en développement Web/Mobile, Infographie, Finance..</h4><br/>
+                    <a class="btn btn-primary pub" href="PublierMission.xhtml"><i class="fa fa-pencil"></i> Publier une mission</a>
+                </div>
+            </div>
+        </div><br/>
+        <div class="main">
+            <div class="container">
+                <ul class="breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active">Chercher Freelancer</li>
+                </ul>
+                <!-- BEGIN SIDEBAR & CONTENT -->
+                <div class="row margin-bottom-40">
+                    <!-- BEGIN CONTENT -->
+                    <div class="col-md-12 col-sm-12">
+                        <h1>Freelancers disponibles</h1>
+                        <div class="content-page">
+                            <div class="row">
+                                <!-- BEGIN LEFT SIDEBAR -->            
+                                <div class="col-md-9 col-sm-9 blog-posts">
+                                    <p:dataScroller value="" var="" chunkSize="10">
+                                        <div class="row">
+                                            <div class="col-md-3 col-sm-3">
+                                                <p:graphicImage></p:graphicImage>
+                                            </div>
+                                            <div class="col-md-9 col-sm-9">
+                                                <a class="btn btn-primary pull-right"><i class="fa fa-eye"></i> Voir profil</a>
+                                                <h3><a href="blog-item.html"></a></h3>
+
+                                                <h2 style="color:#33b1e6"></h2>
+                                                <ul class="blog-info">
+                                                    <li><i class="fa fa-map-marker"></i></li>
+                                                    <li><i class="fa fa-comments"></i></li>
+
+                                                </ul>
+                                                <div class="blog-tags margin-bottom-20">
+                                                    <!--c:forEach items="" var=""--><!-- decommenter et mettre la list dans items-->
+                                                    <ul>
+                                                        <li><a href="javascript:;"><i class="fa fa-tags"></i></a></li>
+                                                    </ul>
+                                                    <!--/c:forEach-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="blog-post-sep"/>
+                                    </p:dataScroller>
+                                </div>
+                                <!-- END LEFT SIDEBAR -->
+
+                                <!-- BEGIN RIGHT SIDEBAR -->  
+                                <h:form>
+
+                                    <div class="col-md-3 col-sm-3 ">
+                                        <!-- CATEGORIES START -->
+
+                                        <div class="form-group">
+                                            <div class="accordion-container">
+                                                <div class="accordion-head">Recherche Avancée <span class="plus">+</span></div>
+                                                <div class="accordion-body" style="display: none;">
+                                                    <div class="form-group col-lg-12">
+                                                        <p:outputLabel for="categories" value="Catégories " style="font-size: 19px"/>
+                                                        <h:selectOneMenu id="categories" class="form-control">
+                                                            <f:selectItem itemLabel="-SELECT-" itemValue="" />
+                                                            <f:selectItems />
+                                                        </h:selectOneMenu>
+                                                    </div>
+                                                    <div class="form-group col-lg-12">
+                                                        <p:outputLabel for="technologies" value="Téchnologies " style="font-size: 19px"/>
+                                                        <h:selectOneMenu class="form-control" id="technologies">
+                                                            <f:selectItem itemLabel="-SELECT-" itemValue="" />
+                                                            <f:selectItems></f:selectItems>
+                                                        </h:selectOneMenu>
+                                                    </div>
+                                                    <div class="form-group col-lg-12">
+                                                        <p:outputLabel for="pays" value="Pays " style="font-size: 19px"/>
+                                                        <h:selectOneMenu class="form-control" id="pays" >
+                                                            <f:selectItem itemLabel="-SELECT-" itemValue="" />
+                                                            <f:selectItems/>
+                                                        </h:selectOneMenu>
+                                                    </div>
+                                                    
+                                                    <div class="form-group col-lg-12">
+                                                        <p:outputLabel for="tarifMin" value="Tarif Min " style="font-size: 19px"/>
+                                                        <p:inputText class="form-control" id="tarifMin"/>
+                                                    </div>
+                                                    <div class="form-group col-lg-12">
+                                                        <p:outputLabel for="tarifMax" value="Tarif Max " style="font-size: 19px"/>
+                                                        <p:inputText class="form-control" id="tarifMax"/>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <p:commandButton class="btn cher col-lg-10" value="#{bundle.Search}"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>                  
+                                        <!-- CATEGORIES END -->
+                                    </div>
+                                </h:form>
+                                <!-- END RIGHT SIDEBAR -->            
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END CONTENT -->
+                </div>
+                <!-- END SIDEBAR & CONTENT -->
+            </div>
+        </div>
+
+
+        <!-- BEGIN PRE-FOOTER -->
+        <div class="pre-footer">
+            <div class="container">
+                <div class="row">
+                    <!-- BEGIN BOTTOM ABOUT BLOCK -->
+                    <div class="col-md-4 col-sm-6 pre-footer-col">
+                        <h2 style="color:#59D3DA" >A propos De Nous</h2>
+                        <p>Freelancer.ma est un site internet produit et géré par la société Freelancers SARL: Freelancers SARL est une société de droit marocain créée en Mars 2014 qui s'est spécialisée dans le travail en freelance de jeunes experts voulant maximiser leurs revenus. Le site Freelancer.ma est une plateforme de mise en relation entre recruteurs et freelances dans le cadre de missions remunérées. La plateforme facilite aux managers, entrepreneurs et porteurs de projets de recruter des compétences confirmées pour réaliser des Missions Sur Place et À distance. </p>
+                    </div>
+                    <!-- END BOTTOM ABOUT BLOCK -->
+
+                    <!-- BEGIN BOTTOM CONTACTS -->
+                    <div class="col-md-4 col-sm-6 pre-footer-col">
+                        <h2 style="color:#59D3DA" >Nos Contacts</h2>
+                        <address class="margin-bottom-40">
+
+                            Phone: +2126 27 22 47 77<br/>
+                            Fax: 05 24 30 98 67 <br/>
+                            Email: <a href="mailto:info@metronic.com">freelancer@gmail.com</a><br/>
+                        </address>
+                    </div>
+                    <!-- END BOTTOM CONTACTS -->
+                    <div>
+                        <h4 style="color:#59D3DA" >COMMERCIAL</h4>
+                        <br/>
+                        <span style="color:#CC3304">RECRUTEUR </span> Publier une Mission, Arbitrage, Badges<br/>
+                        Youssef AM. : 0661 65 75 74<br/>
+                        Youssef AL. : 0661 78 72 50
+                        <br/> <br/>
+
+                        <span style="color:#CC3304"> FREELANCER </span> Activer Compte PRO, Arbitrage<br/>
+                        Ahmed El. : 0661 65 75 74<br/>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END PRE-FOOTER -->
+
+        <!-- BEGIN FOOTER -->
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <!-- BEGIN COPYRIGHT -->
+                    <div class="col-md-6 col-sm-6 padding-top-10">
+                        Freelancer.ma © Tous droits réservés - Copyright 2016 2018 <a href="javascript:;">Privacy Policy</a> | <a href="javascript:;">Terms of Service</a>
+                    </div>
+                    <!-- END COPYRIGHT -->
+                    <!-- BEGIN PAYMENTS -->
+                    <div class="col-md-6 col-sm-6">
+                        <ul class="social-footer list-unstyled list-inline pull-right">
+                            <li><a href="javascript:;"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="javascript:;"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="javascript:;"><i class="fa fa-dribbble"></i></a></li>
+                            <li><a href="javascript:;"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="javascript:;"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="javascript:;"><i class="fa fa-skype"></i></a></li>
+                            <li><a href="javascript:;"><i class="fa fa-github"></i></a></li>
+                            <li><a href="javascript:;"><i class="fa fa-youtube"></i></a></li>
+                            <li><a href="javascript:;"><i class="fa fa-dropbox"></i></a></li>
+                        </ul>  
+                    </div>
+                    <!-- END PAYMENTS -->
+                </div>
+            </div>
+        </div>
+        <!-- END FOOTER -->
+        <a href="#promo" class="go2top scroll"><i class="fa fa-arrow-up"></i></a>
+        <script src="../../ressources/js/jquery.min.js" type="text/javascript"></script>
+        <script src="../../ressources/js/bootstrap.min.js" type="text/javascript"></script>      
+        <script src="../../ressources/js/back-to-top.js" type="text/javascript"></script>
+        <script src="../../ressources/js/layout.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function () {
+                Layout.init();
+                Layout.initTwitter();
+            });
+        </script>
+        <script type="text/javascript">
+            $(".accordion-head").click(function () {
+                if ($('.accordion-body').is(':visible')) {
+                    $(".accordion-body").slideUp(300);
+                    $(".plus").text('+');
+                } else {
+                    $(".accordion-body").slideDown(300);
+                    $(".plus").text('-');
+                }
+
+            });
+
+        </script>
+    </body>
+</html>
+

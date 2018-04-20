@@ -10,6 +10,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -25,10 +26,21 @@ public class User implements Serializable {
      private int blocked;
     private int nbrCnx;
     private int type;
+    @OneToOne
+    private Image image;
     private boolean mdpChanged;
     @OneToMany(mappedBy = "user")
     protected List<Device> devices;
 
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
+    
     public int getBlocked() {
         return blocked;
     }

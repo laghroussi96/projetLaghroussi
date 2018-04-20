@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -53,7 +54,18 @@ public class Mission implements Serializable {
     private Admin admin;
     @ManyToOne
     private Freelance freelance ;
+    @OneToOne
+    private Image image;
 
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
+    
     public Freelance getFreelance() {
         return freelance;
     }

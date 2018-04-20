@@ -1,0 +1,46 @@
+/* here you can put your own css to customize and override the theme */
+a.btn.btn-info.my-btn{
+ padding: 7px 14px;  
+  font-size: 20px;
+  text-transform: uppercase;
+  border-radius: 0;
+  background: #94db40;
+  color: #ffffff;
+  letter-spacing: 1px;
+	font-weight: 600;
+	border-color: transparent;
+}
+a.btn.btn-info.my-btn:hover{
+	background: transparent;
+	color: #ffffff;
+	border: 1.5px solid #94db40;
+}
+.publier >a, .publier >a:hover{
+color: white;
+}
+
+.slider-item-2 .large_bold_white {
+  font: 600 37px/83px "PT Sans Narrow", Arial, sans-serif;
+  text-transform: uppercase;
+}
+
+
+
+a.btn.btn-danger.my-btn1{
+ padding: 7px 14px;  
+  font-size: 12px;
+  text-transform: uppercase;
+  border-radius: 0;
+  background: #33b1e6;
+  color: #ffffff;
+  letter-spacing: 1px;
+	font-weight: 600;
+	border-color: transparent;
+}
+a.btn.btn-danger.my-btn1:hover{
+	background: #33b1e6;
+	color: #ffffff;
+	border: none;
+
+}
+
