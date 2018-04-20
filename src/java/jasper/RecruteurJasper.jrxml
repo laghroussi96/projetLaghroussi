@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="99a0149f-a1de-4a54-bb85-76ca31570d72">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="nom" class="java.lang.String"/>
+	<field name="prenom" class="java.lang.String"/>
+	<field name="tel" class="java.lang.Double"/>
+	<field name="user" class="java.lang.Object"/>
+	<field name="pays" class="java.lang.Object"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="147" y="15" width="251" height="36" forecolor="#006666" uuid="225191da-a2e7-4638-8250-4d0a40bad79f"/>
+				<textElement>
+					<font size="24" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Liste Des Recruteurs]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="52" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="111" y="0" width="100" height="20" uuid="7de98053-e6ea-4321-bc5e-afbcab570f0a"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="111" height="20" forecolor="#006666" uuid="c81c9aa7-2a37-457e-b639-3af94780794f"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date :]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="111" height="20" forecolor="#006666" uuid="4cbf80ca-94de-463c-b029-0d450ad4febe"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[nom]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="111" y="0" width="111" height="20" forecolor="#006666" uuid="6e73c184-a2da-45c6-9630-a215c7ce846d"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[prenom]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="222" y="0" width="111" height="20" forecolor="#006666" uuid="97dbc340-1d1b-4057-a6d1-e103654d3c55"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[tel]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="333" y="0" width="111" height="20" forecolor="#006666" uuid="0c3a377a-1211-4c12-a399-d7b494c9c4ab"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[user]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="444" y="0" width="111" height="20" forecolor="#006666" uuid="4295d385-6d26-41cf-8959-25c3ccc42172"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[pays]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="111" height="20" uuid="37a71877-c61c-4cd8-b5d4-8fac78640f4c"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="0" width="111" height="20" uuid="810264ab-5441-41b5-813c-dcdbc821c7d6"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="222" y="0" width="111" height="20" uuid="78940b16-5b96-46df-afc7-6bfac1d11364"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{tel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="333" y="0" width="111" height="20" uuid="5c4b8185-76fc-4b9c-8fe7-85234ab4fb26"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{user}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="444" y="0" width="111" height="20" uuid="e2fe4685-6aee-4c66-94c6-3db80f918141"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{pays}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

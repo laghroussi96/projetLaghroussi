@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="40d4fed0-f1b7-4b69-812b-56b95262598d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="montant" class="java.lang.Double"/>
+	<field name="compte" class="java.lang.Object"/>
+	<field name="admin" class="java.lang.Object"/>
+	<field name="freelance" class="java.lang.Object"/>
+	<field name="recruteur" class="java.lang.Object"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="136" y="10" width="267" height="38" forecolor="#006666" uuid="7aee5b20-9b15-4e12-90de-a829ca194acf"/>
+				<textElement>
+					<font size="24" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Liste Des Paiements]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="86" y="0" width="100" height="20" uuid="503fd947-c48d-4b30-9df3-0cc0c6f76dae"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="111" height="20" forecolor="#006666" uuid="5a82e6e2-3b8b-47b8-bf65-ca210c360e5b"/>
+				<text><![CDATA[Date :]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="111" height="20" forecolor="#006666" uuid="703a0c70-8930-414b-aed6-3f035886abe6"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[freelance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="111" y="0" width="111" height="20" forecolor="#006666" uuid="bfaeb683-012f-4566-b4dc-116e9bdce0c2"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[recruteur]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="222" y="0" width="111" height="20" forecolor="#006666" uuid="27ea8efe-1fcf-43bf-bb83-43c9392cb5aa"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[compte]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="333" y="0" width="111" height="20" forecolor="#006666" uuid="4f3851df-a40a-46fb-be7b-b16189be2163"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[montant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="444" y="0" width="111" height="20" forecolor="#006666" uuid="b3c17583-93ac-4e3b-bd29-ccb41b1b896c"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[admin]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="111" height="20" uuid="3cf30b6c-7298-4808-9694-3cac8c8e39b3"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[""+$F{freelance}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="0" width="111" height="20" uuid="d6bfbec1-cfdc-4cfb-b21a-0745c98f6665"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[""+$F{recruteur}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="222" y="0" width="111" height="20" uuid="71389f45-4f6d-4a92-b0c7-c5780da1385c"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[""+$F{compte}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="333" y="0" width="111" height="20" uuid="44846bb6-6774-45a5-9aaa-239e72e6d447"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{montant}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="444" y="0" width="111" height="20" uuid="3b8e4cfc-bd77-48d6-95cc-e5fe319d2b7c"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[""+$F{admin}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

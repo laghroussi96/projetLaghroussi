@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="11a531e9-2753-4fff-97ee-aeaff04a3a1d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="nom" class="java.lang.String"/>
+	<field name="prenom" class="java.lang.String"/>
+	<field name="tel" class="java.lang.Double"/>
+	<field name="tarif" class="java.lang.Double"/>
+	<field name="devise" class="java.lang.Object"/>
+	<field name="diplome" class="java.lang.Object"/>
+	<field name="pays" class="java.lang.Object"/>
+	<field name="user" class="java.lang.Object"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="138" y="11" width="280" height="41" forecolor="#006666" uuid="adc50c2d-c188-4a08-8701-2ac7839bf157"/>
+				<textElement textAlignment="Center">
+					<font size="24" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Liste Des Freelancer]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="54" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="69" y="0" width="100" height="20" uuid="6562ef3b-0e3c-4692-aafa-a20c1bc2fd85"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="69" height="20" forecolor="#006666" uuid="53b065f4-15e5-4aa6-a1b1-d7133ef7b805"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Date :]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="69" height="20" forecolor="#006666" uuid="4421bbf0-5b09-418a-844b-09efda5d891a"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[nom]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="69" y="0" width="69" height="20" forecolor="#006666" uuid="b275c1d2-858e-4fcd-815b-02cd77478f9b"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[prenom]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="0" width="69" height="20" forecolor="#006666" uuid="51827c46-b164-454e-a559-7cce5942d1e6"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[tel]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="207" y="0" width="69" height="20" forecolor="#006666" uuid="190ce29b-ac9d-4a34-a365-d653dd8201fd"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[tarif]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="0" width="69" height="20" forecolor="#006666" uuid="5564be8b-7ca3-4119-bc7f-ee9868ba698b"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[devise]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="345" y="0" width="69" height="20" forecolor="#006666" uuid="fb970fa8-e2b6-4ed8-98cb-e1490bb94ae4"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[diplome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="414" y="0" width="69" height="20" forecolor="#006666" uuid="a7007517-7558-4449-bb23-b3ea73fb6a7b"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[pays]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="483" y="0" width="69" height="20" forecolor="#006666" uuid="8850c09d-52ec-4edd-8e98-68c744b808a1"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[user]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="69" height="20" uuid="cbcb88c2-f598-4b30-8818-a044fa59b9a1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="69" y="0" width="69" height="20" uuid="e23f3001-5b0a-4fab-b2c0-e8754481c1ee"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="0" width="69" height="20" uuid="faadd3e9-a5f2-41ac-af70-9891de192554"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{tel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="207" y="0" width="69" height="20" uuid="4f0b0643-07a2-44d1-98e9-3c4aca4f59ca"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{tarif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="0" width="69" height="20" uuid="c65198fc-1448-4697-a875-6d28cf3603b7"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[""+$F{devise}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="345" y="0" width="69" height="20" uuid="89ba9886-d388-4a9c-bbe3-5ac27ac8c4e0"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[""+$F{diplome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="483" y="0" width="69" height="20" uuid="aa985876-c195-467e-a0a0-8c77a070f09b"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[""+$F{user}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="310" y="73" width="173" height="20" uuid="f29dcadb-2e26-4263-b779-bcdfe434ca09"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[""+$F{pays} +""]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
