@@ -87,25 +87,25 @@
                                                 <div class="accordion-head">Recherche Avancée <span class="plus">+</span></div>
                                                 <div class="accordion-body" style="display: none;">
                                                     <div class="form-group col-lg-12">
-                                                        <p:outputLabel for="categories" value="Catégories " style="font-size: 19px"/>
-                                                        <h:selectOneMenu id="categories" class="form-control">
-                                                            <f:selectItem itemLabel="-SELECT-" itemValue="" />
-                                                            <f:selectItems />
-                                                        </h:selectOneMenu>
+                                                        <p:outputLabel for="diplome" value="diplome " style="font-size: 19px"/>
+                                                        <h:selectOneMenu class="form-control" id="diplome" required="true" value="#{freelanceController.selected.diplome}">
+                                                            <f:selectItems value="#{diplomeController.itemsAvailableSelectOne}" var="diplomeItem" itemLabel="#{diplomeItem.nom}" itemValue="#{diplomeItem.nom}" />
+                                                        
+                                                    </h:selectOneMenu>
                                                     </div>
                                                     <div class="form-group col-lg-12">
-                                                        <p:outputLabel for="technologies" value="Téchnologies " style="font-size: 19px"/>
-                                                        <h:selectOneMenu class="form-control" id="technologies">
-                                                            <f:selectItem itemLabel="-SELECT-" itemValue="" />
-                                                            <f:selectItems></f:selectItems>
-                                                        </h:selectOneMenu>
+                                                        <p:outputLabel for="devise" value="devise " style="font-size: 19px"/>
+                                                        <h:selectOneMenu class="form-control" id="devise" required="true" value="#{freelanceController.selected.devise}">
+                                                            <f:selectItems value="#{deviseController.itemsAvailableSelectOne}" var="deviseItem" itemLabel="#{deviseItem.nom}" itemValue="#{deviseItem.nom}" />
+                                                        
+                                                    </h:selectOneMenu>
                                                     </div>
                                                     <div class="form-group col-lg-12">
                                                         <p:outputLabel for="pays" value="Pays " style="font-size: 19px"/>
-                                                        <h:selectOneMenu class="form-control" id="pays" >
-                                                            <f:selectItem itemLabel="-SELECT-" itemValue="" />
-                                                            <f:selectItems/>
-                                                        </h:selectOneMenu>
+                                                       <h:selectOneMenu class="form-control" id="pays" required="true" value="#{freelanceController.selected.pays}">
+                                                            <f:selectItems value="#{paysController.itemsAvailableSelectOne}" var="paysItem" itemLabel="#{paysItem.nom}" itemValue="#{paysItem.nom}" />
+                                                        
+                                                    </h:selectOneMenu>
                                                     </div>
                                                     
                                                     <div class="form-group col-lg-12">

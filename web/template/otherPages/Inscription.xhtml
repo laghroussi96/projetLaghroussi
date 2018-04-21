@@ -59,7 +59,7 @@
                     <div class="panel-body">
 
                         <div class="form-group">
-                            <p:inputText maxlength="100" type="text" required="required" class="form-control text" placeholder="Login" />
+                            <p:inputText maxlength="100" type="text" required="required" class="form-control text" placeholder="Login"/>
                         </div>
 
                         <div class="form-group">
@@ -107,11 +107,11 @@
                         </div>
 
                         <div class="form-group">
-                                                    <h:selectOneMenu class="form-control" id="pays" >
-                                                        <f:selectItem itemLabel="-Sélectionner votre pays-" itemValue="" />
-                                                        <f:selectItems/>
+                                <h:selectOneMenu class="form-control" id="pays" required="required" value="#{freelanceController.selected.pays}">
+                                    <f:selectItems value="#{paysController.itemsAvailableSelectOne}" var="paysItem" itemLabel="#{paysItem.nom}" itemValue="#{paysItem}" />
+                                                        
                                                     </h:selectOneMenu>
-                        </div>
+                            </div>
 
                         <div class="form-group">
                             <p:inputText maxlength="200" type="text" required="required" class="form-control" placeholder="Telephone" />
@@ -120,12 +120,10 @@
                         <div class="row">
 
                             <div class="form-group col-lg-6">
-                                <!--label class="control-label">Devise</label-->
-                                    <h:selectOneMenu class="form-control" id="pays" >
-                                                        <f:selectItem itemLabel="-Devise-" itemValue="" />
-                                                        <f:selectItems/>
+                                <h:selectOneMenu class="form-control" id="devise" required="true" value="#{freelanceController.selected.devise}">
+                                    <f:selectItems value="#{deviseController.itemsAvailableSelectOne}" var="deviseItem" itemLabel="#{deviseItem.nom}" itemValue="#{deviseItem.nom}" />
+                                                        
                                                     </h:selectOneMenu>
-                                
                             </div>
 
                             <div class=" form-group col-lg-6">
@@ -136,26 +134,26 @@
                                 </div>
                             </div></div>
 
-                        <div class="form-group">
-                           <h:selectOneMenu class="form-control" id="pays" >
-                                                        <f:selectItem itemLabel="-Deplome-" itemValue="" />
-                                                        <f:selectItems/>
+                        <div class="form-group ">
+                                <h:selectOneMenu class="form-control" id="diplome" required="true" value="#{freelanceController.selected.diplome}">
+                                    <f:selectItems value="#{diplomeController.itemsAvailableSelectOne}" var="diplomeItem" itemLabel="#{diplomeItem.nom}" itemValue="#{diplomeItem.nom}" />
+                                                        
                                                     </h:selectOneMenu>
-                        </div>
+                            </div>
 
                         <div class="row">
 
                             <div class="form-group col-lg-6">
-                                <h:selectOneMenu class="form-control" id="pays" required="required">
-                                                        <f:selectItem itemLabel="-Votre Langue-" itemValue="" />
-                                                        <f:selectItems/>
+                                <h:selectOneMenu class="form-control" id="langue" required="true" value="#{freelanceController.selected.langueSkills}">
+                                    <f:selectItems value="#{langueController.itemsAvailableSelectOne}" var="langueItem" itemLabel="#{langueItem.nom}" itemValue="#{langueItem.nom}" />
+                                                        
                                                     </h:selectOneMenu>
                             </div>
 
                             <div class="form-group col-lg-6">
-                                 <h:selectOneMenu class="form-control" id="pays" required="required">
-                                                        <f:selectItem itemLabel="-Niveau-" itemValue="" />
-                                                        <f:selectItems/>
+                                <h:selectOneMenu class="form-control" id="langue" required="true" value="#{freelanceController.selected.langueSkills}">
+                                    <f:selectItems value="#{langueSkillController.itemsAvailableSelectOne}" var="langueSkillItem" itemLabel="#{langueSkillItem.niveau}" itemValue="#{langueSkillItem.niveau}" />
+                                                        
                                                     </h:selectOneMenu>
                             </div>
                         </div>
@@ -238,7 +236,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="btn btn-success nextBtn pull-right" type="button">Terminer!</button>
+                        <p:commandButton class="btn btn-success nextBtn pull-right" actionListener="#{freelanceController.create}" value="#{bundle.Save}">Terminer!</p:commandButton>
                     </div>
                 </div>
             </form>
