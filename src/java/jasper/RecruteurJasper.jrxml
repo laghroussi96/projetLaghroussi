@@ -6,8 +6,8 @@
 	<field name="nom" class="java.lang.String"/>
 	<field name="prenom" class="java.lang.String"/>
 	<field name="tel" class="java.lang.Double"/>
-	<field name="user" class="java.lang.Object"/>
-	<field name="pays" class="java.lang.Object"/>
+	<field name="user.login" class="java.lang.Object"/>
+	<field name="pays.nom" class="java.lang.Object"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -86,12 +86,12 @@
 			<textField>
 				<reportElement x="333" y="0" width="111" height="20" uuid="5c4b8185-76fc-4b9c-8fe7-85234ab4fb26"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{user}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{user.login}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="444" y="0" width="111" height="20" uuid="e2fe4685-6aee-4c66-94c6-3db80f918141"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{pays}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{pays.nom}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

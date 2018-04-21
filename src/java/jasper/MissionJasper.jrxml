@@ -1,163 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b650c25f-92a7-4e4e-8b1b-bfea8e5bd2ae">
-	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
-	<parameter name="date" class="java.lang.String"/>
-	<field name="titre" class="java.lang.String"/>
-	<field name="maxBudget" class="java.lang.Double"/>
-	<field name="avancement" class="java.lang.String"/>
-	<field name="dateAcceptation" class="java.util.Date"/>
-	<field name="datePublication" class="java.util.Date"/>
-	<field name="dateLimite" class="java.util.Date"/>
-	<field name="recruteur" class="java.util.List"/>
-	<field name="devise" class="java.util.List"/>
-	<field name="categorie" class="java.util.List"/>
-	<field name="diplome" class="java.util.List"/>
-	<background>
-		<band splitType="Stretch"/>
-	</background>
-	<title>
-		<band height="79" splitType="Stretch">
-			<staticText>
-				<reportElement x="99" y="23" width="341" height="56" forecolor="#006666" uuid="342f1d90-11cb-402c-87c8-8707b3085e83"/>
-				<textElement textAlignment="Center">
-					<font size="24" isBold="true" isItalic="true"/>
-				</textElement>
-				<text><![CDATA[Liste des missions]]></text>
-			</staticText>
-		</band>
-	</title>
-	<pageHeader>
-		<band height="35" splitType="Stretch">
-			<staticText>
-				<reportElement x="0" y="0" width="55" height="20" forecolor="#006666" uuid="83769435-8310-472c-bd57-64efcca66677"/>
-				<textElement>
-					<font size="12" isBold="true" isItalic="true"/>
-				</textElement>
-				<text><![CDATA[date:]]></text>
-			</staticText>
-			<textField pattern="dd/MM/yyyy">
-				<reportElement x="55" y="0" width="100" height="20" uuid="c6724694-3ffc-4f0b-a227-4dae79e076f2"/>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-			</textField>
-		</band>
-	</pageHeader>
-	<columnHeader>
-		<band height="61" splitType="Stretch">
-			<staticText>
-				<reportElement x="0" y="0" width="60" height="35" forecolor="#006666" uuid="ab66b123-2ea2-425e-84cc-50cb4abdbfd1"/>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[titre]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="55" y="0" width="60" height="35" forecolor="#006666" uuid="7a84311b-3802-47fb-a556-5456b34d3431"/>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[maxBudget]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="110" y="0" width="60" height="35" forecolor="#006666" uuid="83d773d8-f96b-4d3c-8eb1-cdc68d790a09"/>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[dateAcceptation]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="165" y="0" width="60" height="35" forecolor="#006666" uuid="ec8ddf79-3b7b-48a0-9a85-82362d643cd8"/>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[datePublication]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="220" y="0" width="60" height="35" forecolor="#006666" uuid="8d9649b8-d369-446f-8938-ebb3c3e12f0b"/>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[dateLimite]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="275" y="0" width="60" height="35" forecolor="#006666" uuid="21963e89-4e4d-497d-8737-fc17d9e1ef06"/>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[categorie]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="330" y="0" width="60" height="35" forecolor="#006666" uuid="edbcf378-3d7a-449a-91ca-184ec242e83b"/>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[diplome]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="385" y="0" width="60" height="35" forecolor="#006666" uuid="0f1410d8-ff42-44f0-8149-d8feba6aea99"/>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[devise]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="440" y="0" width="60" height="35" forecolor="#006666" uuid="3793217e-5e2d-4352-b5fe-30e90b58ab68"/>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[recruteur]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="495" y="0" width="60" height="35" forecolor="#006666" uuid="f9a5403a-c9ec-4070-a190-c97602c89545"/>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[avancement]]></text>
-			</staticText>
-		</band>
-	</columnHeader>
-	<detail>
-		<band height="125" splitType="Stretch">
-			<textField>
-				<reportElement x="0" y="0" width="60" height="31" uuid="f243a8f0-74df-4e76-8c31-2b12879b45d5"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{titre}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="55" y="0" width="60" height="31" uuid="f46a5496-56e2-4b43-ba23-6121211bdd6e"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{maxBudget}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="110" y="0" width="60" height="31" uuid="c717ba9b-b4d4-43ac-ba5b-fc5c0085bad6"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{dateAcceptation}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="165" y="0" width="60" height="31" uuid="e07f2f99-88ac-4353-aa53-f3ba1d67299c"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{datePublication}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="220" y="0" width="60" height="31" uuid="21c37ec5-5300-4069-ae88-de907ecd52d7"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{dateLimite}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="275" y="0" width="60" height="31" uuid="047ac297-decd-4b8a-af76-7d921324d69c"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[""+$F{categorie}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="330" y="0" width="60" height="31" uuid="4e017078-a4b9-49f1-93c6-8e958a5c8455"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[""+$F{diplome}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="385" y="0" width="60" height="31" uuid="f113d3db-f1f8-40c9-9351-992147ecb044"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[""+$F{devise}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="440" y="0" width="60" height="31" uuid="4f20109d-e8ef-4b14-a320-f7ea1c9c5b00"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[""+$F{recruteur}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="495" y="0" width="60" height="31" uuid="ddba9940-6df5-4b85-aed4-86516779f770"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{avancement}]]></textFieldExpression>
-			</textField>
-		</band>
-	</detail>
-	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
-	<pageFooter>
-		<band height="54" splitType="Stretch"/>
-	</pageFooter>
-	<summary>
-		<band height="42" splitType="Stretch"/>
-	</summary>
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+    <background>
+        <band/>
+    </background>
+    <title>
+        <band height="79"/>
+    </title>
+    <pageHeader>
+        <band height="35"/>
+    </pageHeader>
+    <columnHeader>
+        <band height="61"/>
+    </columnHeader>
+    <detail>
+        <band height="125"/>
+    </detail>
+    <columnFooter>
+        <band height="45"/>
+    </columnFooter>
+    <pageFooter>
+        <band height="54"/>
+    </pageFooter>
+    <summary>
+        <band height="42"/>
+    </summary>
 </jasperReport>

@@ -7,10 +7,10 @@
 	<field name="prenom" class="java.lang.String"/>
 	<field name="tel" class="java.lang.Double"/>
 	<field name="tarif" class="java.lang.Double"/>
-	<field name="devise" class="java.lang.Object"/>
-	<field name="diplome" class="java.lang.Object"/>
-	<field name="pays" class="java.lang.Object"/>
-	<field name="user" class="java.lang.Object"/>
+	<field name="devise.nom" class="java.lang.Object"/>
+	<field name="diplome.nom" class="java.lang.Object"/>
+	<field name="pays.nom" class="java.lang.Object"/>
+	<field name="user.login" class="java.lang.Object"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -109,22 +109,22 @@
 			<textField>
 				<reportElement x="276" y="0" width="69" height="20" uuid="c65198fc-1448-4697-a875-6d28cf3603b7"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[""+$F{devise}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""+$F{devise.nom}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="345" y="0" width="69" height="20" uuid="89ba9886-d388-4a9c-bbe3-5ac27ac8c4e0"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[""+$F{diplome}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""+$F{diplome.nom}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="483" y="0" width="69" height="20" uuid="aa985876-c195-467e-a0a0-8c77a070f09b"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[""+$F{user}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""+$F{user.login}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="310" y="73" width="173" height="20" uuid="f29dcadb-2e26-4263-b779-bcdfe434ca09"/>
+				<reportElement x="414" y="0" width="69" height="20" uuid="f29dcadb-2e26-4263-b779-bcdfe434ca09"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[""+$F{pays} +""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""+$F{pays.nom} ]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
