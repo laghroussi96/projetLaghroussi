@@ -65,43 +65,42 @@
                                 <div class="form-group">
                                     <div class="col-lg-6">
                                         <p:outputLabel for="categories" value="Catégories " style="font-size: 15px"/>
-                                        <h:selectOneMenu id="categories" class="form-control" >
-                                            <f:selectItem itemLabel="-Select-" itemValue=""/>
-                                            <f:selectItems/>
-                                        </h:selectOneMenu></div>
+                                        <h:selectOneMenu class="form-control" id="categories" required="true" value="#{missionController.selected.categorie}">
+                                    <f:selectItems value="#{categorieController.itemsAvailableSelectOne}" var="categorieItem" itemLabel="#{categorieItem.nom}" itemValue="#{categorieItem}" />
+                                                        
+                                                    </h:selectOneMenu></div>
                                     <div class="col-lg-6">
                                         <p:outputLabel for="technologies" value="Téchnologies " style="font-size: 15px"/>
-                                        <h:selectOneMenu id="technologies" class="form-control" >
-                                            <f:selectItem itemLabel="-Select-" itemValue=""/>
-                                            <f:selectItems/>
-                                        </h:selectOneMenu></div>
+                                        <h:selectOneMenu class="form-control" id="technologies" required="true" value="#{missionController.selected.technologieMissions}">
+                                    <f:selectItems value="#{technologieController.itemsAvailableSelectOne}" var="technologieItem" itemLabel="#{technologieItem.nom}" itemValue="#{technologieItem}" />
+                                                        
+                                                    </h:selectOneMenu></div>
                                 </div>
                                 <div class="form-group">
                                     <p:outputLabel for="diplome" value="Diplome " style="font-size: 15px"/>
 
-                                    <h:selectOneMenu id="diplome" class="form-control" value="#{missionController.selected.diplome}" >
-                                        <f:selectItem itemLabel="-Select-" itemValue=""/>
-                                        <f:selectItems/>
-                                    </h:selectOneMenu>
+                                     <h:selectOneMenu class="form-control" id="diplome" required="true" value="#{missionController.selected.diplome}">
+                                    <f:selectItems value="#{diplomeController.itemsAvailableSelectOne}" var="diplomeItem" itemLabel="#{diplomeItem.nom}" itemValue="#{diplomeItem.nom}" />
+                                                        
+                                                    </h:selectOneMenu>
                                 </div>
                                 <div class="form-group">
                                     <label>Quel est budget estimé?</label><br/>
                                     <div class="col-lg-4">
-                                        <h:selectOneMenu id="diplome" class="form-control" value="#{missionController.selected.devise}" >
-                                            <f:selectItem itemLabel="-Select Devise-" itemValue=""/>
-                                            <f:selectItems/>
-                                        </h:selectOneMenu>
+                                       <h:selectOneMenu class="form-control" id="devise" required="true" value="#{missionController.selected.devise}">
+                                    <f:selectItems value="#{deviseController.itemsAvailableSelectOne}" var="deviseItem" itemLabel="#{deviseItem.nom}" itemValue="#{deviseItem.nom}" />
+                                                        
+                                                    </h:selectOneMenu>
                                     </div>
+                                    
                                     <div class="col-lg-4">
-                                        <p:inputText class="form-control" value="#{missionController.selected.minBudget}" placeholder="Budget Min"/>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <p:inputText class="form-control" value="#{missionController.selected.maxBudget}" placeholder="Budget Max"/>
+                                        <p:inputText class="form-control" value="#{missionController.selected.maxBudget}" placeholder="Budget"/>
                                     </div>
                                 </div>
                                 <br/><br/>
-                                <div class="form-group">
-                                    <a href="#info1" class="pull-right btn btn-primary dark" style="background-color: #E84D1C" data-toggle="modal" data-target="#info1">Publier mon projet </a>
+                                <div class="form-group" href="#info1" data-toggle="modal" data-target="#info1">
+                                    <p:commandButton  class="pull-right btn btn-primary dark" style="background-color: #E84D1C"  actionListener="#{missionController.create}" value="Publier Mission"  oncomplete="handleSubmit(args,'MissionCreateDialog');"/>
+                                    
                                 </div>
                             </div>
                             <div id="info1" class="modal fade" role="dialog"  tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
