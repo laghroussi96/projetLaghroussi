@@ -94,12 +94,12 @@
                                     </div>
                                     
                                     <div class="col-lg-4">
-                                        <p:inputText class="form-control" value="#{missionController.selected.maxBudget}" placeholder="Budget"/>
+                                        <p:inputText class="form-control" value="#{missionController.selected.maxBudget}" id="maxBudget" placeholder="Budget"/>
                                     </div>
                                 </div>
                                 <br/><br/>
                                 <div class="form-group" href="#info1" data-toggle="modal" data-target="#info1">
-                                    <p:commandButton  class="pull-right btn btn-primary dark" style="background-color: #E84D1C"  actionListener="#{missionController.create}" value="Publier Mission"  oncomplete="handleSubmit(args,'MissionCreateDialog');"/>
+                                    <p:commandButton  class="pull-right btn btn-primary dark" style="background-color: #E84D1C"  action="#{missionController.create}"  value="Publier Mission"  />
                                     
                                 </div>
                             </div>
@@ -114,7 +114,7 @@
                                             <form action="javascript:;" class="form-horizontal form-row-seperated">
 
                                                 <div class="form-group">
-                                                    <label class="col-sm-4 control-label">Adresse e-mail</label>
+                                                    <label class="col-sm-4 control-label">Login</label>
                                                     <div class="col-sm-8">
                                                         <div class="input-group">
                                                             <span class="input-group-addon">
@@ -159,13 +159,13 @@
                                 <form action="javascript:;" class="form-horizontal form-row-seperated">
 
                                     <div class="form-group">
-                                        <label class="col-sm-4 control-label">Adresse e-mail</label>
+                                        <label class="col-sm-4 control-label">Login</label>
                                         <div class="col-sm-8">
                                             <div class="input-group">
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-envelope"></i>
                                                 </span>
-                                                <p:inputText type="text" id="typeahead_example_modal_2" class="form-control"/>
+                                                <p:inputText type="text" id="typeahead_example_modal_1" class="form-control"/>
                                             </div>
                                         </div>
                                     </div>
@@ -176,7 +176,7 @@
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-user"></i>
                                                 </span>
-                                                <p:inputText type="text" id="typeahead_example_modal_2" class="form-control"/>
+                                                <p:inputText type="text" id="typeahead_example_modal_3" class="form-control"/>
                                             </div>
                                         </div>
                                     </div>
@@ -187,7 +187,7 @@
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-user"></i>
                                                 </span>
-                                                <p:inputText type="text" id="typeahead_example_modal_2" class="form-control"/>
+                                                <p:inputText type="text" id="typeahead_example_modal_5" class="form-control"/>
                                             </div>
                                         </div>
                                     </div>
@@ -198,7 +198,7 @@
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-lock"></i>
                                                 </span>
-                                                <p:inputText type="password" id="typeahead_example_modal_4" class="form-control"/>
+                                                <p:inputText type="password" id="typeahead_example_modal_6" class="form-control"/>
                                             </div>
                                         </div>
                                     </div>

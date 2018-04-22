@@ -121,29 +121,33 @@
             <h3 class="box-title" align="center"><b>Mon Historique</b></h3>
         </div><br/>
         <div class="container">
-            <h:form>
-                <p:dataTable var="car" value="#{dtPaginatorView.cars}" rows="10"
+            <h:form id="MissionListForm">
+                <p:dataTable var="item" value="#{missionController.items}" rows="10"
                              paginator="true"
                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                              rowsPerPageTemplate="5,10,15">
                     <p:column headerText="Mission">
-                        <h:outputText value="#{car.id}" />
+                        <h:outputText value="#{item.titre}"/>
                     </p:column>
 
                     <p:column headerText="Date de publication">
-                        <h:outputText value="#{car.year}" />
+                        <h:outputText value="#{item.datePublication}" >
+                         <f:convertDateTime pattern="MM/dd/yyyy" />
+                         </h:outputText>
                     </p:column>
 
                     <p:column headerText="Date limite">
-                        <h:outputText value="#{car.brand}" />
+                        <h:outputText value="#{item.dateLimite}" >
+                         <f:convertDateTime pattern="MM/dd/yyyy" />
+                         </h:outputText>
                     </p:column>
 
                     <p:column headerText="Budget">
-                        <h:outputText value="#{car.color}" />
+                        <h:outputText value="#{item.maxBudget}" />
                     </p:column>
 
                     <p:column headerText="Détails">
-                        <h:outputText value="#{car.color}" />
+                        <h:outputText value="#{item.avancement}" />
                     </p:column>
                     <p:column style="width:32px;text-align: center">
                         <p:commandButton  value="Consulter" class="btn btn-primary" icon="ui-icon-eye">
