@@ -201,25 +201,77 @@
                 </div>
             </div>
 
-            <!-- < HEADER MENU -->
+            <!-- < HEADER MENU --><br/><br/>
+  <h:form>
+                
+            <h:panelGroup>
+            
+                        <p:panelGrid columns="6" >
+                        
+                        <p:outputLabel value="Tarif Min" for="min" />
+                        <p:inputText id="min" value="#{freelanceController.min}" title="#{bundle.CreateFreelanceTitle_minTarif}" />
+                        
+                        <p:outputLabel value="Tarif Max" for="max" />
+                        <p:inputText id="max" value="#{freelanceController.max}" title="#{bundle.CreateFreelanceTitle_maxTarif}" />
+                       
+                       
+                        <p:outputLabel value="#{bundle.CreateFreelanceLabel_Pays}" for="pays"  style="font-size: 14px"/>
+                       
+                        <h:selectOneMenu class="form-control" id="pays" value="#{freelanceController.pays}" >
+                                      <f:selectItems value="#{paysController.itemsAvailableSelectOne}"
+                                           var="paysItem"
+                                           itemValue="#{paysItem}" itemLabel="#{paysItem.nom}"/>
+                                        <f:selectItem itemValue="#{null}" itemLabel="Pays"/>
+                                             </h:selectOneMenu>
+                        
+                         <p:outputLabel value="#{bundle.CreateFreelanceLabel_nom}" for="name" />
+                         <p:inputText id="name" value="#{freelanceController.name}" title="#{bundle.CreateFreelanceTitle_nom}" />
+                       
+                         <p:commandButton  class="btn btn-primary monbtn" style="background-color:#009999" actionListener="#{freelanceController.search()}"  value="Search"  update=":FreelanceListForm:datalist"/>
 
-        </div><br/><br/>
+                   </p:panelGrid>
+            </h:panelGroup>
+                </h:form>
+        </div><br/><br/><br/><br/><br/><br/><br/><br/>
         <div class="container">
-            <h:form>
-                <p:dataTable var="car" value="#{dtPaginatorView.cars}" rows="10"
+            <h:form id="FreelanceListForm">
+                <p:dataTable  id="datalist" var="item" value="#{freelanceController.items}" rows="10"
                              paginator="true"
                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                              rowsPerPageTemplate="5,10,15">
+                    
                     <p:column headerText="Freelancer">
-                        <h:outputText value="#{car.id}" />
+                        <h:outputText value="#{item.user.login}" />
+                    </p:column>
+                    <p:column headerText="Nom">
+                        <h:outputText value="#{item.nom}" />
+                    </p:column>
+                    <p:column headerText="Prenom">
+                        <h:outputText value="#{item.prenom}" />
+                    </p:column>
+                    <p:column headerText="Tarif">
+                        <h:outputText value="#{item.tarif}" />
+                    </p:column>
+                    
+                    <p:column headerText="Tel">
+                        <h:outputText value="#{item.tel}" />
+                    </p:column>
+                    <p:column headerText="Devise">
+                        <h:outputText value="#{item.devise.nom}" />
+                    </p:column>
+                    <p:column headerText="Diplome">
+                        <h:outputText value="#{item.diplome.nom}" />
+                    </p:column>
+                    <p:column headerText="Pays">
+                        <h:outputText value="#{item.pays.nom}" />
                     </p:column>
 
-
-                    <p:column style="width:32px;text-align: center">
-                        <p:commandButton  value="Consulter" class="btn btn-primary" icon="ui-icon-eye" oncomplete="PF('FreelancerDialog').show()">
-                          <!--f:setPropertyActionListener value="#{car}" target="#{dtSelectionView.selectedCar}" /-->
+ <p:column headerText="Details" >
+                        <p:commandButton  value="Liste Missions" class="btn btn-primary" icon="ui-icon-eye" oncomplete="PF('RecruteurDialog').show()">
+                          <!--f:setPropertyActionListener value="#{item}" target="#{dtSelectionView.selectedCar}" /-->
                         </p:commandButton>
                     </p:column>
+                   
 
 
                 </p:dataTable>
@@ -231,9 +283,7 @@
                          paginator="true"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          rowsPerPageTemplate="5,10,15">
-                <p:column headerText="Freelancer">
-                    <h:outputText value="#{car.id}" />
-                </p:column>
+                
             </p:dataTable>
             <p:commandButton value="Fermer" onclick="FreelancerDialog.hide()"/>
             </h:form>

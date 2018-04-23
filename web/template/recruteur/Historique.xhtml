@@ -144,13 +144,15 @@
                                       <f:selectItems value="#{categorieController.itemsAvailableSelectOne}"
                                            var="categorieItem"
                                            itemValue="#{categorieItem}" itemLabel="#{categorieItem.nom}"/>
+                                     <f:selectItem itemValue="#{null}" itemLabel="Categories"/>
                                              </h:selectOneMenu>
                                                    
                         
                          <p:outputLabel value="#{bundle.CreateMissionLabel_langue}" for="langue" style="font-size: 14px" />
                          <h:selectOneMenu class="form-control" id="langue" value="#{missionController.langue}">
                                       <f:selectItems value="#{langueController.itemsAvailableSelectOne}" var="langueItem" itemLabel="#{langueItem.nom}" itemValue="#{langueItem}" />
-                                             </h:selectOneMenu>
+                                              <f:selectItem itemValue="#{null}" itemLabel="Langues"/>
+                         </h:selectOneMenu>
                        
                         
                          <p:commandButton  class="btn btn-primary monbtn" style="background-color:#009999" value="Search"  actionListener="#{missionController.search()}"  update=":MissionListForm:datalist"/>

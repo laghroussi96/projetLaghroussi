@@ -202,22 +202,65 @@
             </div>
 
             <!-- < HEADER MENU -->
-
-        </div><br/><br/>
+            <br></br>
+   <h:form>
+                
+            <h:panelGroup>
+            
+                        <p:panelGrid columns="6" style="width:50%; text-align: center;">
+                            
+                            <p:outputLabel value="#{bundle.CreateRecruteurLabel_user}" for="user" style="font-size: 14px"/>
+                                <h:selectOneMenu class="form-control" id="user" value="#{recruteurController.user}" >
+                                      <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="userItem"
+                                           itemValue="#{userItem}" itemLabel="#{userItem.login}"/>
+                                        <f:selectItem itemValue="#{null}" itemLabel="Logins"/>
+                                             </h:selectOneMenu>
+    
+                        <p:outputLabel value="#{bundle.CreateRecruteurLabel_Pays}" for="pays" style="font-size: 14px"/>
+                                <h:selectOneMenu class="form-control" id="pays" value="#{recruteurController.pays}" >
+                                      <f:selectItems value="#{paysController.itemsAvailableSelectOne}"
+                                           var="paysItem"
+                                           itemValue="#{paysItem}" itemLabel="#{paysItem.nom}"/>
+                                        <f:selectItem itemValue="#{null}" itemLabel="pays"/>
+                                             </h:selectOneMenu>
+                        
+                        
+                        
+                        
+                       <p:commandButton  class="btn btn-primary monbtn" style="background-color:#009999" actionListener="#{recruteurController.search()}"  value="Search" update=":RecruteurListForm:datalist"/>
+                    
+                   </p:panelGrid>
+            </h:panelGroup>
+                </h:form>
+           
+        </div><br/><br/> <br></br><br></br><br></br>
         <div class="container">
-            <h:form>
-                <p:dataTable var="car" value="#{dtPaginatorView.cars}" rows="10"
+            <h:form id="RecruteurListForm">
+                <p:dataTable id="datalist"   var="item" value="#{recruteurController.items}" rows="10"
                              paginator="true"
                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                              rowsPerPageTemplate="5,10,15">
                     <p:column headerText="Recruteur">
-                        <h:outputText value="#{car.id}" />
+                        <h:outputText value="#{item.user.login}" />
                     </p:column>
+                     <p:column headerText="Nom">
+                         <h:outputText value="#{item.nom}"/>
+                        </p:column>
+                     <p:column headerText="Prenom">
+                         <h:outputText value="#{item.prenom}"/>
+                        </p:column>
+                     <p:column headerText="Tel">
+                         <h:outputText value="#{item.tel}"/>
+                        </p:column>
+                     <p:column headerText="Pays">
+                         <h:outputText value="#{item.pays.nom}"/>
+                        </p:column>
 
 
-                    <p:column style="width:32px;text-align: center">
-                        <p:commandButton  value="Consulter" class="btn btn-primary" icon="ui-icon-eye" oncomplete="PF('RecruteurDialog').show()">
-                          <!--f:setPropertyActionListener value="#{car}" target="#{dtSelectionView.selectedCar}" /-->
+                    <p:column headerText="Details" >
+                        <p:commandButton  value="Liste Missions" class="btn btn-primary" icon="ui-icon-eye" oncomplete="PF('RecruteurDialog').show()">
+                          <!--f:setPropertyActionListener value="#{item}" target="#{dtSelectionView.selectedCar}" /-->
                         </p:commandButton>
                     </p:column>
 
