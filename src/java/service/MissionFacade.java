@@ -60,7 +60,10 @@ public class MissionFacade extends AbstractFacade<Mission> {
         params.put("date","04/04/2018");
          PdfUtil.generatePdf(findAll(), params,"missions","/jasper/MissionJasper.jasper");
      }
-     
+     public List<Mission> findByMissionEnCour(){
+        String  req=("select m from Mission m where m.avancement='en cour'");
+         return em.createQuery(req).getResultList();
+     }
 //      public int findByAvancement(Mission mission) {
 //        String requete = "SELECT m FROM Mission m WHERE m.mission.id='" + mission.getAvancement() + "'";
 //        return em.createQuery(requete).getResultList().size();
