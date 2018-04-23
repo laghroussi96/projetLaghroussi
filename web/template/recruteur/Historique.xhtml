@@ -6,6 +6,11 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+        
+    
+   
+
+    
     <h:head>
        <meta charset="utf-8"/>
         <title>Freelancer|Missions</title>
@@ -120,9 +125,45 @@
         <div class="box-header">
             <h3 class="box-title" align="center"><b>Mon Historique</b></h3>
         </div><br/>
+        <h:form >
+         <h:panelGroup  >
+              
+                        <p:panelGrid columns="6" >
+                        
+                        <p:outputLabel value="#{bundle.CreateMissionLabel_minBudget}" for="min" />
+                        <p:inputText id="min" value="#{missionController.min}" title="#{bundle.CreateMissionTitle_minBudget}" />
+                        <p:outputLabel value="#{bundle.CreateMissionLabel_maxBudget}" for="max" />
+                        <p:inputText id="max" value="#{missionController.max}" title="#{bundle.CreateMissionTitle_maxBudget}" />
+                       
+                        <p:outputLabel value="#{bundle.CreateMissionLabel_etat}" for="etat" />
+                        <p:inputText id="etat" value="#{missionController.etat}" title="#{bundle.CreateMissionTitle_etat}" />
+                       
+                       
+                         <p:outputLabel value="#{bundle.CreateMissionLabel_categorie}" for="categorie" style="font-size: 14px"/>
+                                <h:selectOneMenu class="form-control" id="categorie" value="#{missionController.categorie}" >
+                                      <f:selectItems value="#{categorieController.itemsAvailableSelectOne}"
+                                           var="categorieItem"
+                                           itemValue="#{categorieItem}" itemLabel="#{categorieItem.nom}"/>
+                                             </h:selectOneMenu>
+                                                   
+                        
+                         <p:outputLabel value="#{bundle.CreateMissionLabel_langue}" for="langue" style="font-size: 14px" />
+                         <h:selectOneMenu class="form-control" id="langue" value="#{missionController.langue}">
+                                      <f:selectItems value="#{langueController.itemsAvailableSelectOne}" var="langueItem" itemLabel="#{langueItem.nom}" itemValue="#{langueItem}" />
+                                             </h:selectOneMenu>
+                       
+                        
+                         <p:commandButton  class="btn btn-primary monbtn" style="background-color:#009999" value="Search"  actionListener="#{missionController.search()}"  update=":MissionListForm:datalist"/>
+                                
+                        </p:panelGrid>
+             
+             
+            </h:panelGroup>
+                </h:form>
+        <br></br>
         <div class="container">
             <h:form id="MissionListForm">
-                <p:dataTable var="item" value="#{missionController.items}" rows="10"
+                <p:dataTable id="datalist" var="item" value="#{missionController.items}" rows="10"
                              paginator="true"
                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                              rowsPerPageTemplate="5,10,15">
@@ -141,20 +182,25 @@
                          <f:convertDateTime pattern="MM/dd/yyyy" />
                          </h:outputText>
                     </p:column>
+                    
+                     <p:column headerText="Langue">
+                            <h:outputText value="#{item.langue.nom}"/>
+                        </p:column>
+                    
+                     <p:column headerText="catégorie">
+                         <h:outputText value="#{item.categorie.nom}"/>
+                        </p:column>
 
                     <p:column headerText="Budget">
                         <h:outputText value="#{item.maxBudget}" />
                     </p:column>
 
-                    <p:column headerText="Détails">
-                        <h:outputText value="#{item.avancement}" />
+                  
+                   
+<p:column headerText="Détails">
+                      <span class="label label-sm label-success label-mini">
+                          <h:outputText value="#{item.avancement}"/> </span> 
                     </p:column>
-                    <p:column style="width:32px;text-align: center">
-                        <p:commandButton  value="Consulter" class="btn btn-primary" icon="ui-icon-eye">
-                          <!--f:setPropertyActionListener value="#{car}" target="#{dtSelectionView.selectedCar}" /-->
-                        </p:commandButton>
-                    </p:column>
-
 
                 </p:dataTable>
             </h:form>
