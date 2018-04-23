@@ -64,6 +64,14 @@ public class MissionFacade extends AbstractFacade<Mission> {
         String  req=("select m from Mission m where m.avancement='en cour'");
          return em.createQuery(req).getResultList();
      }
+     public List<Mission> findByMissionAbouti(){
+        String  reqe=("select m from Mission m where m.avancement='aboutis'");
+         return em.createQuery(reqe).getResultList();
+     }
+     public List<Mission> findByMissionNonAbouti(){
+        String  reqe=("select m from Mission m where m.avancement='non aboutis'");
+         return em.createQuery(reqe).getResultList();
+     }
 //      public int findByAvancement(Mission mission) {
 //        String requete = "SELECT m FROM Mission m WHERE m.mission.id='" + mission.getAvancement() + "'";
 //        return em.createQuery(requete).getResultList().size();

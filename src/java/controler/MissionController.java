@@ -36,6 +36,8 @@ public class MissionController implements Serializable {
     private CommentaireFacade commentaireFacade;
     private List<Mission> items = null;
     private List<Mission> itemsEnCour = null;
+    private List<Mission> itemsAboutis = null;
+    private List<Mission> itemsNonAboutis = null;
     private Mission selected;
     private Commentaire selectedCommentaire;
     private List<Commentaire> coms;
@@ -49,6 +51,9 @@ public class MissionController implements Serializable {
     private Langue langue;
     private Categorie categorie;
     private String etat;
+    
+    
+    
 //    @EJB
 //    MissionFacade missionFacade; 
 
@@ -276,10 +281,22 @@ public class MissionController implements Serializable {
     }
     
      public List<Mission> getItemsEnCour() {
-        if (items == null) {
-            items = getFacade().findByMissionEnCour();
+        if (itemsEnCour == null) {
+            itemsEnCour = getFacade().findByMissionEnCour();
         }
         return itemsEnCour;
+    }
+     public List<Mission> getItemsAboutis() {
+        if (itemsAboutis == null) {
+            itemsAboutis = getFacade().findByMissionAbouti();
+        }
+        return itemsAboutis;
+    }
+     public List<Mission> getItemsNonAboutis() {
+        if (itemsNonAboutis == null) {
+            itemsNonAboutis = getFacade().findByMissionNonAbouti();
+        }
+        return itemsNonAboutis;
     }
 
     private void persist(PersistAction persistAction, String successMessage) {
