@@ -76,4 +76,7 @@ public class MissionFacade extends AbstractFacade<Mission> {
 //        String requete = "SELECT m FROM Mission m WHERE m.mission.id='" + mission.getAvancement() + "'";
 //        return em.createQuery(requete).getResultList().size();
 //      }
+     public void samira(){
+         
+     }
 }
