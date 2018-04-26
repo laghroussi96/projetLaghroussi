@@ -5,6 +5,7 @@ import bean.Commentaire;
 import bean.Langue;
 import bean.Mission;
 import bean.Recruteur;
+import bean.TechnologieMission;
 import controler.util.JsfUtil;
 import controler.util.JsfUtil.PersistAction;
 import java.io.IOException;
@@ -25,6 +26,7 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import net.sf.jasperreports.engine.JRException;
 import service.CommentaireFacade;
+import service.TechnologieMissionFacade;
 
 @Named("missionController")
 @SessionScoped
@@ -35,6 +37,7 @@ public class MissionController implements Serializable {
     private MissionFacade mf;
     @EJB
     private CommentaireFacade commentaireFacade;
+    private TechnologieMissionFacade technologieMissionFacade;
     private List<Mission> items = null;
     private List<Mission> itemsEnCour = null;
     private List<Mission> itemsAboutis = null;
@@ -43,6 +46,7 @@ public class MissionController implements Serializable {
     private Mission selected;
     private Commentaire selectedCommentaire;
     private List<Commentaire> coms;
+   private List<TechnologieMission> listTechnologie;
    // private Mission selected2;
     // private Mission mission = new Mission();
     //private  List<Mission> missionItems = new ArrayList<>();
@@ -116,6 +120,24 @@ public class MissionController implements Serializable {
         getSelected().setCommentaires(commentaireFacade.findByMission(mission.getId()));
     }
 
+//    public List<TechnologieMission> getListTechnologie() {
+//        listTechnologie=technologieMissionFacade.findBytechnologie(selected);
+//        return listTechnologie;
+//    }
+
+//    public void setListTechnologie(List<TechnologieMission> listTechnologie) {
+//        this.listTechnologie = listTechnologie;
+//    }
+//
+//    public TechnologieMissionFacade getTechnologieMissionFacade() {
+//        return technologieMissionFacade;
+//    }
+//
+//    public void setTechnologieMissionFacade(TechnologieMissionFacade technologieMissionFacade) {
+//        this.technologieMissionFacade = technologieMissionFacade;
+//    }
+
+     
      public List<Commentaire> listCommetaire(Mission mission){
          coms=commentaireFacade.findByMission(mission.getId());
          return coms;
@@ -246,6 +268,9 @@ public class MissionController implements Serializable {
     }
  public void search() {
       items = ejbFacade.search(recruteur, max, min, langue, categorie, etat);
+    }
+ public void searchMiss() {
+      items = ejbFacade.searchMiss(categorie, max, min);
     }
   public void generatePdf() throws JRException, IOException{
       ejbFacade.generatePdf();

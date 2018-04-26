@@ -121,63 +121,61 @@
         </div>
         <br/>
         <h:form>
-        <div class="container">
-            <div class="row">
-                <div class="form-group col-lg-4">
+            <h:panelGroup>
+              <p:panelGrid columns="6" >
+        
                     <p:outputLabel for="categories" value="Catégories " style="font-size: 19px"/>
-                    <h:selectOneMenu id="categories" class="form-control">
-                        <f:selectItem itemLabel="-SELECT-" itemValue="" />
-                        <f:selectItems />
+                    <h:selectOneMenu id="categories" value="#{missionController.categorie}" class="form-control">
+                        <f:selectItems value="#{categorieController.itemsAvailableSelectOne}" var="categorieItem" itemValue="#{categorieItem}" itemLabel="#{categorieItem.nom}"  />
                     </h:selectOneMenu>
-                </div>
-                <div class="form-group col-lg-4">
-                    <p:outputLabel for="technologies" value="Téchnologies " style="font-size: 19px"/>
-                    <h:selectOneMenu class="form-control" id="technologies">
-                        <f:selectItem itemLabel="-SELECT-" itemValue="" />
-                        <f:selectItems></f:selectItems>
-                    </h:selectOneMenu>
-                </div>
+
+
+                    <p:outputLabel value="Budget Min" for="min" />
+                        <p:inputText id="min" value="#{missionController.min}"  />
+
+                        
+                        <p:outputLabel value="Budget Max" for="max" />
+                        <p:inputText id="max" value="#{missionController.max}"  />
                 <br/>
-                <div class=" col-lg-4">
-                    <p:commandButton class="btn btnch" value="Chercher"></p:commandButton>
-                </div>
-            </div>
-             <h:form>
-    <p:dataTable var="car" value="#{dtPaginatorView.cars}" rows="10"
+                    <p:commandButton  class="btn btn-primary monbtn" style="background-color:#009999" actionListener="#{missionController.searchMiss()}"  value="Recherche"  update=":missionForm:dataMiss"/>
+
+           
+            </p:panelGrid>
+            </h:panelGroup>
+            
+        </h:form>
+        <div class="container">
+             <h:form id="missionForm">
+                 <p:dataTable id="dataMiss" var="item" value="#{missionController.items}" rows="10"
                          paginator="true"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          rowsPerPageTemplate="5,10,15">
         <p:column headerText="Mission">
-            <h:outputText value="#{car.id}" />
+            <h:outputText value="#{item.titre}" />
         </p:column>
  
         <p:column headerText="Date de publication">
-            <h:outputText value="#{car.year}" />
+            <h:outputText value="#{item.datePublication}" >
+             <f:convertDateTime pattern="MM/dd/yyyy" />
+              </h:outputText>
         </p:column>
  
         <p:column headerText="Date limite">
-            <h:outputText value="#{car.brand}" />
+            <h:outputText value="#{item.dateLimite}" >
+             <f:convertDateTime pattern="MM/dd/yyyy" />
+            </h:outputText>
         </p:column>
  
         <p:column headerText="Budget">
-            <h:outputText value="#{car.color}" />
+            <h:outputText value="#{item.maxBudget}" />
         </p:column>
          
         <p:column headerText="Détails">
-            <h:outputText value="#{car.color}" />
+            <p:commandButton  value="Consulter" class="btn btn-primary" icon="ui-icon-eye" ></p:commandButton>
         </p:column>
-          <p:column style="width:32px;text-align: center">
-              <p:commandButton  value="Consulter" class="btn btn-primary" icon="ui-icon-eye">
-                <!--f:setPropertyActionListener value="#{car}" target="#{dtSelectionView.selectedCar}" /-->
-            </p:commandButton>
-        </p:column>
- 
-     
     </p:dataTable>
 </h:form>
-        </div>
-           
-        </h:form>
+         </div>
         <br/>
           <!-- BEGIN PRE-FOOTER -->
         <div class="pre-footer">

@@ -5,7 +5,9 @@
  */
 package service;
 
+import bean.Mission;
 import bean.TechnologieMission;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,6 +27,10 @@ public class TechnologieMissionFacade extends AbstractFacade<TechnologieMission>
         return em;
     }
 
+//    public List<TechnologieMission> findBytechnologie(Mission mission){
+//        return em.createQuery("SELECT tec FROM TechnologieMission tec WHERE tec.mission.id'"+mission.getId()+"'").getResultList();
+//    }
+    
     public TechnologieMissionFacade() {
         super(TechnologieMission.class);
     }
