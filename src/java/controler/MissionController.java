@@ -32,12 +32,14 @@ public class MissionController implements Serializable {
 
     @EJB
     private service.MissionFacade ejbFacade;
+    private MissionFacade mf;
     @EJB
     private CommentaireFacade commentaireFacade;
     private List<Mission> items = null;
     private List<Mission> itemsEnCour = null;
     private List<Mission> itemsAboutis = null;
     private List<Mission> itemsNonAboutis = null;
+    private List<Mission> itemsMission = null;
     private Mission selected;
     private Commentaire selectedCommentaire;
     private List<Commentaire> coms;
@@ -51,6 +53,19 @@ public class MissionController implements Serializable {
     private Langue langue;
     private Categorie categorie;
     private String etat;
+
+    public MissionController(MissionFacade ejbFacade, Mission selected) {
+        this.ejbFacade = ejbFacade;
+        this.selected = selected;
+    }
+
+    public MissionFacade getMf() {
+        return mf;
+    }
+
+    public void setMf(MissionFacade mf) {
+        this.mf = mf;
+    }
     
     
     
@@ -236,6 +251,9 @@ public class MissionController implements Serializable {
       ejbFacade.generatePdf();
       FacesContext.getCurrentInstance().responseComplete();
   }
+   public void accepter(Mission mission) {
+     getSelected().setIsAccepted(true);
+    }
   
 //   @PostConstruct
 //    public void init() {
@@ -298,7 +316,24 @@ public class MissionController implements Serializable {
         }
         return itemsNonAboutis;
     }
+     public List<Mission> getItemsMission() {
+        if (itemsMission == null) {
+            itemsMission = getFacade().findMission();
+        }
+        return itemsMission;
+    }
 
+     public void remove(Mission item) {
+          ejbFacade.remov(item.getId());
+    itemsAboutis.remove(itemsAboutis.indexOf(item));
+      
+    }
+     public void removee(Mission item) {
+          ejbFacade.remov(item.getId());
+    itemsEnCour.remove(itemsEnCour.indexOf(item));
+      
+    }
+     
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
             setEmbeddableKeys();

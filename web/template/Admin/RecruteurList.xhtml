@@ -157,12 +157,12 @@
                                 </a>
                                 <ul class="dropdown-menu pull-left">
                                     <li>
-                                        <a href="Mission.html">
+                                        <a href="MissionEnCour.xhtml">
                                             <i class="fa fa-spinner"></i>
                                             En cour de réalisation </a>
                                     </li>
                                     <li>
-                                        <a href="Mission.html">
+                                        <a href="MissionRealise.xhtml">
                                             <i class="fa fa-check-square-o"></i>
                                             Réalisée </a>
                                     </li>
@@ -203,6 +203,9 @@
 
             <!-- < HEADER MENU -->
             <br></br>
+               <div class="box-header">
+            <h3 class="box-title" align="center"><b>Liste Des Recruteurs</b></h3>
+        </div><br/>
    <h:form>
                 
             <h:panelGroup>
@@ -234,7 +237,7 @@
             </h:panelGroup>
                 </h:form>
            
-        </div><br/><br/> <br></br><br></br><br></br>
+        </div><br/><br/> <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
         <div class="container">
             <h:form id="RecruteurListForm">
                 <p:dataTable id="datalist"   var="item" value="#{recruteurController.items}" rows="10"
@@ -262,6 +265,9 @@
                         <p:commandButton  value="Liste Missions" class="btn btn-primary" icon="ui-icon-eye" oncomplete="PF('RecruteurDialog').show()">
                           <!--f:setPropertyActionListener value="#{item}" target="#{dtSelectionView.selectedCar}" /-->
                         </p:commandButton>
+                    </p:column>
+                    <p:column headerText="modifier">
+                     <p:commandButton style="color:red" actionListener="#{recruteurController.remove(item)}" value="Supprimer"  update=":RecruteurListForm:datalist"/>
                     </p:column>
 
 

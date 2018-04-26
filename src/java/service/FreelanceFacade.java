@@ -28,6 +28,26 @@ public class FreelanceFacade extends AbstractFacade<Freelance> {
     @PersistenceContext(unitName = "freelancerPU")
     private EntityManager em;
     private Pays pays ;
+    private FreelanceFacade freelanceFacade;
+    private MissionFacade missionFacade;
+
+    public MissionFacade getMissionFacade() {
+        return missionFacade;
+    }
+
+    public void setMissionFacade(MissionFacade missionFacade) {
+        this.missionFacade = missionFacade;
+    }
+    
+
+    public FreelanceFacade getFreelanceFacade() {
+        return freelanceFacade;
+    }
+
+    public void setFreelanceFacade(FreelanceFacade freelanceFacade) {
+        this.freelanceFacade = freelanceFacade;
+    }
+    
 
     public EntityManager getEm() {
         return em;
@@ -71,4 +91,8 @@ public class FreelanceFacade extends AbstractFacade<Freelance> {
          Map <String,Object> params = new HashMap();
          PdfUtil.generatePdf(findAll(), params,"recruteurs","/jasper/FreelancerJasper.jasper");
      }
+       
+        public void remov(Long f) {
+        super.remove(new Freelance(f));
+    }
 }

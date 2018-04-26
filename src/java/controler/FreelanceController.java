@@ -22,7 +22,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import net.sf.jasperreports.engine.JRException;
-import service.RecruteurFacade;
 import service.ReviewFacade;
 
 @Named("freelanceController")
@@ -34,15 +33,34 @@ public class FreelanceController implements Serializable {
     @EJB
     private ReviewFacade reviewFacade;
     private List<Freelance> items = null;
+       private List<Freelance> itemss = null;
     private Freelance selected;
     private Review selectedReview;
     private Long somScroe;
     private Double vote;
+     @EJB
+    private FreelanceFacade ejbFacadee;
    
  private Pays pays;
     private Double max; 
     private Double min;
     private String name;
+
+    public List<Freelance> getItemss() {
+        return itemss;
+    }
+
+    public void setItemss(List<Freelance> itemss) {
+        this.itemss = itemss;
+    }
+
+    public FreelanceFacade getEjbFacadee() {
+        return ejbFacadee;
+    }
+
+    public void setEjbFacadee(FreelanceFacade ejbFacadee) {
+        this.ejbFacadee = ejbFacadee;
+    }
 
      public Long calculeScore(Freelance freelance){
         somScroe=reviewFacade.calculeScore(freelance.getId());
@@ -182,6 +200,12 @@ public class FreelanceController implements Serializable {
       ejbFacade.generatePdf();
       FacesContext.getCurrentInstance().responseComplete();
   }
+ 
+  public void remove(Freelance item) {
+          ejbFacade.remov(item.getId());
+    items.remove(items.indexOf(item));
+      
+    }
  
     public void destroy() {
         persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("FreelanceDeleted"));

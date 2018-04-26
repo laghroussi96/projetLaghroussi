@@ -165,7 +165,7 @@
         <br></br>
         <div class="container">
             <h:form id="MissionListForm">
-                <p:dataTable id="datalist" var="item" value="#{missionController.items}" rows="10"
+                <p:dataTable id="datalist" var="item" value="#{missionController.itemsMission}" rows="10"
                              paginator="true"
                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                              rowsPerPageTemplate="5,10,15">
@@ -195,6 +195,9 @@
 
                     <p:column headerText="Budget">
                         <h:outputText value="#{item.maxBudget}" />
+                    </p:column>
+                     <p:column headerText="modifier">
+                        <p:commandButton actionListener="#{missionController.accepter()}" value="Modifier" update=":MissionListForm:datalist" oncomplete="handleSubmit(args, 'MissionEditDialog');"/>
                     </p:column>
 
                   

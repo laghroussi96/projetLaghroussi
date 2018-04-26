@@ -54,5 +54,8 @@ public class RecruteurFacade extends AbstractFacade<Recruteur> {
         params.put("date","07/04/2018");
          PdfUtil.generatePdf(findAll(), params,"recruteurs","/jasper/RecruteurJasper.jasper");
      }
-     
+ 
+ public void remov(Long r) {
+        super.remove(new Recruteur(r));
+    }    
 }

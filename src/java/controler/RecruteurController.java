@@ -106,6 +106,12 @@ public void generatePdf() throws JRException, IOException{
       FacesContext.getCurrentInstance().responseComplete();
   }
 
+public void remove(Recruteur item) {
+          ejbFacade.remov(item.getId());
+    items.remove(items.indexOf(item));
+      
+    }
+
     public void destroy() {
         persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("RecruteurDeleted"));
         if (!JsfUtil.isValidationFailed()) {

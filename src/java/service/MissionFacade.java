@@ -6,6 +6,7 @@
 package service;
 
 import bean.Categorie;
+import bean.Freelance;
 import bean.Langue;
 import bean.Mission;
 import bean.Recruteur;
@@ -61,17 +62,29 @@ public class MissionFacade extends AbstractFacade<Mission> {
          PdfUtil.generatePdf(findAll(), params,"missions","/jasper/MissionJasper.jasper");
      }
      public List<Mission> findByMissionEnCour(){
-        String  req=("select m from Mission m where m.avancement='en cour'");
+        String  req=("select m from Mission m where m.avancement='en cour' and m.isAccepted=true");
          return em.createQuery(req).getResultList();
      }
      public List<Mission> findByMissionAbouti(){
-        String  reqe=("select m from Mission m where m.avancement='aboutis'");
+        String  reqe=("select m from Mission m where m.avancement='aboutis' and m.isAccepted=true");
          return em.createQuery(reqe).getResultList();
      }
      public List<Mission> findByMissionNonAbouti(){
-        String  reqe=("select m from Mission m where m.avancement='non aboutis'");
+        String  reqe=("select m from Mission m where m.avancement='non aboutis' and m.isAccepted=true");
          return em.createQuery(reqe).getResultList();
      }
+     public List<Mission> findMission(){
+        String  reqe=("select m from Mission m where m.isAccepted=true");
+         return em.createQuery(reqe).getResultList();
+     }
+     
+      public int removeByFreelance(Long r) {
+        return em.createQuery("DELETE FROM Mission m WHERE m.freelance.id='" + r + "'").executeUpdate();
+    }
+      public void remov(Long r) {
+        super.remove(new Mission(r));
+    }
+                  
 //      public int findByAvancement(Mission mission) {
 //        String requete = "SELECT m FROM Mission m WHERE m.mission.id='" + mission.getAvancement() + "'";
 //        return em.createQuery(requete).getResultList().size();
