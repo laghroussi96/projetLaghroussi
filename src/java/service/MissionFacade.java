@@ -7,11 +7,16 @@ package service;
 
 import bean.Categorie;
 import bean.Langue;
+import static bean.LangueSkill_.langue;
 import bean.Mission;
+import static bean.NotificationCategorie_.recruteur;
 import bean.Recruteur;
+import bean.TechnologieMission;
 import controler.util.PdfUtil;
 import controler.util.SearchUtil;
 import java.io.IOException;
+import static java.lang.Long.max;
+import static java.lang.Long.min;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -55,6 +60,16 @@ public class MissionFacade extends AbstractFacade<Mission> {
 
         return em.createQuery(requette).getResultList();
     }
+     public List<Mission> searchMiss(Categorie categorie,Double max, Double min) {
+         
+        String requette = "SELECT m FROM Mission m where 1=1";
+        requette += SearchUtil.addConstraintMinMax("m", "maxBudget", max, min);
+        if (categorie != null) {
+            requette += SearchUtil.addConstraint("m", "categorie.nom", "=", categorie.getNom());
+        }
+        return em.createQuery(requette).getResultList();
+    }
+     
      public void generatePdf() throws JRException, IOException{
          Map <String,Object> params = new HashMap();
         params.put("date","04/04/2018");
@@ -76,7 +91,5 @@ public class MissionFacade extends AbstractFacade<Mission> {
 //        String requete = "SELECT m FROM Mission m WHERE m.mission.id='" + mission.getAvancement() + "'";
 //        return em.createQuery(requete).getResultList().size();
 //      }
-     public void samira(){
-         
-     }
+     
 }
