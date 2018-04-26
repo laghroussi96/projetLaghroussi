@@ -36,7 +36,6 @@ public class MissionController implements Serializable {
     private service.MissionFacade ejbFacade;
     @EJB
     private CommentaireFacade commentaireFacade;
-    private TechnologieMissionFacade technologieMissionFacade;
     private List<Mission> items = null;
     private List<Mission> itemsEnCour = null;
     private List<Mission> itemsAboutis = null;
