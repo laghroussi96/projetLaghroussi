@@ -278,9 +278,9 @@
                         <p:commandButton style="color:red" actionListener="#{freelanceController.remove(item)}" value="Supprimer"  update=":FreelanceListForm:datalist"/>
                     </p:column>
 
-
-
                 </p:dataTable>
+                <br></br><br></br>
+                 <p:commandButton id="exportButton" style="color:blue"   value="Imprimer" action="#{freelanceController.generatePdf()}" ajax="false"/>
             </h:form>
         </div>
         <p:dialog id="FreelancerDlg" widgetVar="FreelancerDialog" modal="true" resizable="false" appendTo="@(body)" header="Missions réalisées">
@@ -301,10 +301,10 @@
         <script src="../../ressources/admin/js/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
         <script src="../../ressources/admin/js/layout.js" type="text/javascript"></script>
         <script>
-                jQuery(document).ready(function () {
+                    jQuery(document).ready(function () {
 
-                    Layout.init();
-                });
+                        Layout.init();
+                    });
         </script>
     </body>
 </html>

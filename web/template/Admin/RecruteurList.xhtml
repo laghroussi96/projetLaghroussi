@@ -272,6 +272,8 @@
 
 
                 </p:dataTable>
+                  <br></br><br></br>
+                 <p:commandButton id="exportButton" style="color:blue"   value="Imprimer" action="#{recruteurController.generatePdf()}" ajax="false"/>
             </h:form>
         </div>
         <p:dialog id="RecruteurDlg" widgetVar="RecruteurDialog" modal="true" resizable="false" appendTo="@(body)" header="Missions réalisées">

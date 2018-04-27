@@ -26,7 +26,6 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import net.sf.jasperreports.engine.JRException;
 import service.CommentaireFacade;
-import service.TechnologieMissionFacade;
 
 @Named("missionController")
 @SessionScoped
@@ -43,6 +42,7 @@ public class MissionController implements Serializable {
     private List<Mission> itemsAboutis = null;
     private List<Mission> itemsNonAboutis = null;
     private List<Mission> itemsMission = null;
+    private List<Mission> itemsMission1 = null;
     private Mission selected;
     private Commentaire selectedCommentaire;
     private List<Commentaire> coms;
@@ -271,9 +271,14 @@ public class MissionController implements Serializable {
         ejbFacade.generatePdf();
         FacesContext.getCurrentInstance().responseComplete();
     }
+    public void generatePdf1() throws JRException, IOException {
+        ejbFacade.generatePdf11();
+        FacesContext.getCurrentInstance().responseComplete();
+    }
 
     public void accepter(Mission item) {
         ejbFacade.accepte(item);
+     
        
     }
 
@@ -351,6 +356,12 @@ public class MissionController implements Serializable {
             itemsMission = getFacade().findMission();
         }
         return itemsMission;
+    }
+    public List<Mission> getItemsMissions() {
+        if (itemsMission1 == null) {
+            itemsMission1 = getFacade().findByMission1();
+        }
+        return itemsMission1;
     }
 
     public void remove(Mission item) {

@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<!-- 
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.2
+Version: 3.2.0
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+<meta charset="utf-8"/>
+<title>Metronic | New User Profile</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta content="" name="description"/>
+<meta content="" name="author"/>
+<!-- BEGIN GLOBAL MANDATORY STYLES -->
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css">
+<link href="../../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
+<!-- END GLOBAL MANDATORY STYLES -->
+<!-- BEGIN PAGE LEVEL STYLES -->
+<link href="../../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css"/>
+<link href="../../assets/admin/pages/css/profile.css" rel="stylesheet" type="text/css"/>
+<link href="../../assets/admin/pages/css/tasks.css" rel="stylesheet" type="text/css"/>
+<!-- END PAGE LEVEL STYLES -->
+<!-- BEGIN THEME STYLES -->
+<link href="../../assets/global/css/components-rounded.css" id="style_components" rel="stylesheet" type="text/css">
+<link href="../../assets/global/css/plugins.css" rel="stylesheet" type="text/css">
+<link href="../../assets/admin/layout3/css/layout1.css" rel="stylesheet" type="text/css">
+<link href="../../assets/admin/layout3/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color">
+<link href="../../assets/admin/layout3/css/custom.css" rel="stylesheet" type="text/css">
+<!-- END THEME STYLES -->
+<link rel="shortcut icon" href="favicon.ico"/>
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<!-- DOC: Apply "page-header-menu-fixed" class to set the mega menu fixed  -->
+<!-- DOC: Apply "page-header-top-fixed" class to set the top menu fixed  -->
+<body>
+<!-- BEGIN HEADER -->
+<div class="page-header">
+	<!-- BEGIN HEADER TOP -->
+	<div class="page-header-top">
+		<div class="container">
+			<!-- BEGIN LOGO -->
+			<div class="page-logo">
+				<a href="index.html"><img src="../../assets/admin/layout3/img/freelancer.png" alt="logo" class="logo-default"></a>
+			</div>
+			<!-- END LOGO -->
+			<!-- BEGIN RESPONSIVE MENU TOGGLER -->
+			<a href="javascript:;" class="menu-toggler"></a>
+			<!-- END RESPONSIVE MENU TOGGLER -->
+					<!-- BEGIN TOP NAVIGATION MENU -->
+			<div class="top-menu">
+				<ul class="nav navbar-nav pull-right">
+					<!-- BEGIN NOTIFICATION DROPDOWN -->
+					<li class="dropdown dropdown-extended dropdown-dark dropdown-notification" id="header_notification_bar">
+						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+						<i class="icon-bell"></i>
+						<span class="badge badge-default">7</span>
+						</a>
+						<ul class="dropdown-menu">
+							<li class="external">
+								<h3>Vous avez <strong> 4 Notifications</strong> </h3>
+								<a href="Notification.html">Voir tout</a>
+							</li>
+							<li>
+								<ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
+									<li>
+										<a href="javascript:;">
+										<span class="time">just now</span>
+										<span class="details">
+										<span class="label label-sm label-icon label-success">
+										<i class="fa fa-plus"></i>
+										</span>
+										New user registered. </span>
+										</a>
+									</li>
+									<li>
+										<a href="javascript:;">
+										<span class="time">3 mins</span>
+										<span class="details">
+										<span class="label label-sm label-icon label-danger">
+										<i class="fa fa-bolt"></i>
+										</span>
+										Server #12 overloaded. </span>
+										</a>
+									</li>
+									<li>
+										<a href="javascript:;">
+										<span class="time">10 mins</span>
+										<span class="details">
+										<span class="label label-sm label-icon label-warning">
+										<i class="fa fa-bell-o"></i>
+										</span>
+										Server #2 not responding. </span>
+										</a>
+									</li>
+									<li>
+										<a href="javascript:;">
+										<span class="time">14 hrs</span>
+										<span class="details">
+										<span class="label label-sm label-icon label-info">
+										<i class="fa fa-bullhorn"></i>
+										</span>
+										Application error. </span>
+										</a>
+									</li>
+								
+									
+								</ul>
+							</li>
+						</ul>
+					</li>
+
+
+					<!-- END TODO DROPDOWN -->
+					<li class="droddown dropdown-separator">
+						<span class="separator"></span>
+					</li>
+					<!-- BEGIN INBOX DROPDOWN -->
+					<li class="dropdown dropdown-extended dropdown-dark dropdown-inbox" id="header_inbox_bar">
+						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+						<span class="circle">4</span>
+						<span class="corner"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li class="external">
+								<h3>Vous avez <strong> Les profils</strong> des admins</h3>
+								<a href="view_admins.html">Voir tout</a>
+							</li>
+							<li>
+								<ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
+									<li>
+										<a href="inbox.html?a=view">
+										<span class="photo">
+										<img src="../../assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
+										</span>
+										<span class="subject">
+										<span class="from">
+										Lisa Wong </span>
+										<span class="time">Just Now </span>
+										</span>
+										<span class="message">
+										Vivamus sed auctor nibh congue nibh. auctor nibh auctor nibh... </span>
+										</a>
+									</li>
+									<li>
+										<a href="inbox.html?a=view">
+										<span class="photo">
+										<img src="../../assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
+										</span>
+										<span class="subject">
+										<span class="from">
+										Richard Doe </span>
+										<span class="time">16 mins </span>
+										</span>
+										<span class="message">
+										Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
+										</a>
+									</li>
+									<li>
+										<a href="inbox.html?a=view">
+										<span class="photo">
+										<img src="../../assets/admin/layout3/img/avatar1.jpg" class="img-circle" alt="">
+										</span>
+										<span class="subject">
+										<span class="from">
+										Bob Nilson </span>
+										<span class="time">2 hrs </span>
+										</span>
+										<span class="message">
+										Vivamus sed nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
+										</a>
+									</li>
+									<li>
+										<a href="inbox.html?a=view">
+										<span class="photo">
+										<img src="../../assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
+										</span>
+										<span class="subject">
+										<span class="from">
+										Lisa Wong </span>
+										<span class="time">40 mins </span>
+										</span>
+										<span class="message">
+										Vivamus sed auctor 40% nibh congue nibh... </span>
+										</a>
+									</li>
+								
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<!-- END INBOX DROPDOWN -->
+					<!-- BEGIN USER LOGIN DROPDOWN -->
+					<li class="dropdown dropdown-user dropdown-dark">
+						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+						<img alt="" class="img-circle" src="../../assets/admin/layout3/img/avatar9.jpg">
+						<span class="username username-hide-mobile">Salma</span>
+						</a>
+						<ul class="dropdown-menu dropdown-menu-default">
+							<li>
+								<a href="extra_profile.html">
+								<i class="icon-user"></i> My Profile </a>
+							</li>
+							
+														<li class="divider">
+							</li>
+							<li>
+								<a href="extra_lock2.html">
+								<i class="icon-lock"></i> Lock Screen </a>
+							</li>
+							
+													</ul>
+					</li>
+					<!-- END USER LOGIN DROPDOWN -->
+				</ul>
+			</div>
+			<!-- END TOP NAVIGATION MENU -->
+		</div>
+	</div>
+	<!-- END HEADER TOP -->
+	<!-- BEGIN HEADER MENU -->
+	<div class="page-header-menu">
+		<div class="container">
+			<!-- BEGIN HEADER SEARCH BOX -->
+			<form class="search-form" action="extra_search.html" method="GET">
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="Search" name="query">
+					<span class="input-group-btn">
+					<a href="javascript:;" class="btn submit"><i class="icon-magnifier"></i></a>
+					</span>
+				</div>
+			</form>
+			<!-- END HEADER SEARCH BOX -->
+			<!-- BEGIN MEGA MENU -->
+			<!-- DOC: Apply "hor-menu-light" class after the "hor-menu" class below to have a horizontal menu with white background -->
+			<!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
+			<div class="hor-menu ">
+				<ul class="nav navbar-nav">
+					<li class="active">
+						<a href="index.html"><i class="icon-home"></i>Acceuil</a>
+					</li>
+
+
+					<li >
+						<a href="Freelancer.html"><i class="app-menu__icon fa fa-foursquare"></i>
+						Freelancer 
+						</a>
+	
+					</li>
+
+
+					<li >
+						<a href="Recruteur.html">
+						       <i class="icon-user"></i>Recruteur 
+						</a>
+					</li>
+
+
+					<li class="menu-dropdown classic-menu-dropdown ">
+						<a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;">
+						     <i class="app-menu__icon fa fa-th-list"></i>Mission <i class="fa fa-angle-down"></i>
+						</a>
+						<ul class="dropdown-menu pull-left">
+							<li>
+								<a href="Mission.html">
+								<i class="fa fa-spinner"></i>
+								En cour de réalisation </a>
+							</li>
+							<li>
+								<a href="Mission.html">
+								<i class="fa fa-check-square-o"></i>
+								Réalisée </a>
+							</li>
+						
+				
+						</ul>
+					</li>
+					<li >
+						<a href="Paiement.html">
+						           <i class="app-menu__icon fa fa-euro"></i>Paiement
+						</a>
+						
+
+					</li>
+					<li class="menu-dropdown classic-menu-dropdown ">
+						<a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;">
+						     <i class="app-menu__icon fa  fa-cog"></i>Paramètres <i class="fa fa-angle-down"></i>
+						</a>
+						<ul class="dropdown-menu pull-left">
+							<li>
+								<a href="extra_profile.html">
+								<i class="icon-user"></i>
+								Mon Profil </a>
+							</li>
+							<li>
+								<a href="extra_lock2.html">
+								<i class="icon-key"></i>
+								Log Out </a>
+							</li>
+						
+				
+						</ul>
+					</li>
+			</div>
+			<!-- END MEGA MENU -->
+		</div>
+	</div>
+	<!-- END HEADER MENU -->
+</div>
+
+<!-- END HEADER -->
+<!-- BEGIN PAGE CONTAINER -->
+<div class="page-container">
+	<!-- BEGIN PAGE HEAD -->
+	<div class="page-head">
+		<div class="container">
+			<!-- BEGIN PAGE TITLE -->
+			<div class="page-title">
+				<h1>Mon Profil </h1>
+			</div>
+			<!-- END PAGE TITLE -->
+			<!-- BEGIN PAGE TOOLBAR -->
+			<div class="page-toolbar">
+				<!-- BEGIN THEME PANEL -->
+				<div class="btn-group btn-theme-panel">
+					<a href="javascript:;" class="btn dropdown-toggle" data-toggle="dropdown">
+					<i class="icon-settings"></i>
+					</a>
+					<div class="dropdown-menu theme-panel pull-right dropdown-custom hold-on-click">
+						<div class="row">
+							
+							<div class="col-md-6 col-sm-6 col-xs-12 seperator">
+								<h3>LAYOUT</h3>
+								<ul class="theme-settings">
+									
+									<li>
+										 Layout
+										<select class="theme-setting theme-setting-layout form-control input-sm input-small input-inline tooltips" data-original-title="Change layout type" data-container="body" data-placement="left">
+											<option value="boxed" selected="selected">Boxed</option>
+											<option value="fluid">Fluid</option>
+										</select>
+									</li>
+									
+									
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- END THEME PANEL -->
+			</div>
+			<!-- END PAGE TOOLBAR -->
+		</div>
+	</div>
+	<!-- END PAGE HEAD -->
+	<!-- BEGIN PAGE CONTENT -->
+	<div class="page-content">
+		<div class="container">
+			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+							<h4 class="modal-title">Modal title</h4>
+						</div>
+						<div class="modal-body">
+							 Widget settings form goes here
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn blue">Save changes</button>
+							<button type="button" class="btn default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- /.modal -->
+			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			<!-- BEGIN PAGE BREADCRUMB -->
+			<ul class="page-breadcrumb breadcrumb">
+				<li>
+					<a href="#">Acceuil</a><i class="fa fa-circle"></i>
+				</li>
+				<li>
+					<a href="extra_profile.html">Paramètres</a>
+					<i class="fa fa-circle"></i>
+				</li>
+				<li class="active">
+					 Mon Profil
+				</li>
+			</ul>
+			<!-- END PAGE BREADCRUMB -->
+			<!-- BEGIN PAGE CONTENT INNER -->
+			<div class="row margin-top-10">
+				<div class="col-md-12">
+					<!-- BEGIN PROFILE SIDEBAR -->
+					<div class="profile-sidebar" style="width: 250px;">
+						<!-- PORTLET MAIN -->
+						<div class="portlet light profile-sidebar-portlet">
+							<!-- SIDEBAR USERPIC -->
+							<div class="profile-userpic">
+								<img src="../../assets/admin/pages/media/profile/profile_user.jpg" class="img-responsive" alt="">
+							</div>
+							<!-- END SIDEBAR USERPIC -->
+							<!-- SIDEBAR USER TITLE -->
+							<div class="profile-usertitle">
+								<div class="profile-usertitle-name">
+									 Salma Bennajim
+								</div>
+								<div class="profile-usertitle-job">
+									 Admin Page
+								</div>
+							</div>
+							<!-- END SIDEBAR USER TITLE -->
+							<!-- SIDEBAR BUTTONS -->
+							<div class="profile-userbuttons">
+								<button type="button" class="btn btn-circle green-haze btn-sm">Recruteur</button>
+								<button type="button" class="btn btn-circle btn-danger btn-sm">Freelancer</button>
+							</div>
+							<!-- END SIDEBAR BUTTONS -->
+							<!-- SIDEBAR MENU -->
+							<div class="profile-usermenu">
+								<ul class="nav">
+									<li >
+										<a href="#">
+										<i class=" fa fa-envelope"></i>
+										bensalma@gmail.com </a>
+									</li>
+									<li>
+										<a href="#">
+										<i class="fa  fa-phone-square"></i>
+										0696230311  </a>
+									</li>
+									<li>
+										<a href="#" >
+										<i class="fa fa-map-marker"></i>
+										Maroc </a>
+									</li>
+									
+								</ul>
+							</div>
+							<!-- END MENU -->
+						</div>
+						<!-- END PORTLET MAIN -->
+					
+					</div>
+					<!-- END BEGIN PROFILE SIDEBAR -->
+
+
+					<!-- BEGIN PROFILE CONTENT -->
+					<div class="profile-content">
+
+
+
+<nav>
+
+  
+ 
+
+    <div id="chart_div" style="width: 1400px; height: 500px; align:left;"></div>
+
+			</nav>
+			
+	
+	
+	<br>
+	<br>
+	</nav>
+
+
+					</div>
+					<!-- END PROFILE CONTENT -->
+				</div>
+			</div>
+			<!-- END PAGE CONTENT INNER -->
+		</div>
+	</div>
+	<!-- END PAGE CONTENT -->
+</div>
+<!-- END PAGE CONTAINER -->
+<!-- BEGIN PRE-FOOTER -->
+<div class="page-prefooter">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3 col-sm-6 col-xs-12 footer-block">
+				<h2>About</h2>
+				<p>
+					 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam dolore.
+				</p>
+			</div>
+			<div class="col-md-3 col-sm-6 col-xs12 footer-block">
+				<h2>Subscribe Email</h2>
+				<div class="subscribe-form">
+					<form action="javascript:;">
+						<div class="input-group">
+							<input type="text" placeholder="mail@email.com" class="form-control">
+							<span class="input-group-btn">
+							<button class="btn" type="submit">Submit</button>
+							</span>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6 col-xs-12 footer-block">
+				<h2>Follow Us On</h2>
+				<ul class="social-icons">
+					<li>
+						<a href="javascript:;" data-original-title="rss" class="rss"></a>
+					</li>
+					<li>
+						<a href="javascript:;" data-original-title="facebook" class="facebook"></a>
+					</li>
+					<li>
+						<a href="javascript:;" data-original-title="twitter" class="twitter"></a>
+					</li>
+					<li>
+						<a href="javascript:;" data-original-title="googleplus" class="googleplus"></a>
+					</li>
+					<li>
+						<a href="javascript:;" data-original-title="linkedin" class="linkedin"></a>
+					</li>
+					<li>
+						<a href="javascript:;" data-original-title="youtube" class="youtube"></a>
+					</li>
+					<li>
+						<a href="javascript:;" data-original-title="vimeo" class="vimeo"></a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-md-3 col-sm-6 col-xs-12 footer-block">
+				<h2>Contacts</h2>
+				<address class="margin-bottom-40">
+				Phone: 800 123 3456<br>
+				 Email: <a href="mailto:info@metronic.com">info@metronic.com</a>
+				</address>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- END PRE-FOOTER -->
+<!-- BEGIN FOOTER -->
+<div class="page-footer">
+	<div class="container">
+		 2014 &copy; Metronic. All Rights Reserved.
+	</div>
+</div>
+
+<!-- END FOOTER -->
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN CORE PLUGINS -->
+<!--[if lt IE 9]>
+<script src="../../assets/global/plugins/respond.min.js"></script>
+<script src="../../assets/global/plugins/excanvas.min.js"></script> 
+<![endif]-->
+<script src="../../assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="../../assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+<!-- IMPORTANT! Load jquery-ui.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+<script src="../../assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+<script src="../../assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="../../assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+<script src="../../assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="../../assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="../../assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+<script src="../../assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+    <script src="../../assets/frontend/layout/scripts/back-to-top.js" type="text/javascript"></script>
+
+<!-- END CORE PLUGINS -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script src="../../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
+<script src="../../assets/global/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script src="../../assets/global/scripts/metronic.js" type="text/javascript"></script>
+<script src="../../assets/admin/layout3/scripts/layout.js" type="text/javascript"></script>
+<script src="../../assets/admin/layout3/scripts/demo.js" type="text/javascript"></script>
+<script src="../../assets/admin/pages/scripts/profile.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL SCRIPTS -->
+
+
+
+<script type="text/javascript">
+        jQuery(document).ready(function() {
+        	// initiate layout and plugins
+   	Metronic.init(); // init metronic core components
+            Layout.init();
+            Demo.init(); // init demo features\
+	Profile.init(); // init page demo
+            Layout.initTwitter();
+        });
+    </script>
+	<script>
+	$(document).ready(function() {
+    $('#example').DataTable();
+} );
+
+</script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawVisualization);
+
+      function drawVisualization() {
+        // Some raw data (not necessarily accurate)
+        var data = google.visualization.arrayToDataTable([
+         ['Mois', 'Non Aboutis', 'En Cours', 'Aboutis'],
+         ['Janvier',      938,         522,             998],
+         ['Fevrier',       1120,        599,             1268],
+         ['Mars',    1167,        587,             807],
+         ['Avril',       1110,        615,             968],
+         ['Mai',      691,         629,             1026],
+		 ['Juin',        691,         629,             1026],
+		 ['Juillet',        301,         529,             102],
+		 ['Aout',       564,         1000,             10],
+		 ['Septembre',       348,         656,             1026],
+		 ['Octobre',       121,         629,             243],
+		 ['Novembre',        691,         629,             1026],
+		 ['Decembre',      98,         123,             453]
+      ]);
+
+    var options = {
+      title : 'Statistiques Des Projets',
+      vAxis: {title: 'Nombre'},
+      hAxis: {title: 'Mois'},
+      seriesType: 'bars',
+      series: {5: {type: 'line'}}
+    };
+
+    var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+  }
+    </script>
+<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

@@ -76,7 +76,13 @@ public class MissionFacade extends AbstractFacade<Mission> {
     public void generatePdf() throws JRException, IOException {
         Map<String, Object> params = new HashMap();
         params.put("date", "04/04/2018");
-        PdfUtil.generatePdf(findAll(), params, "missions", "/jasper/MissionJasper.jasper");
+        PdfUtil.generatePdf(findByMissionAbouti(), params,"missions", "/jasper/MissionJasper.jasper");
+    }
+    
+    public void generatePdf11() throws JRException, IOException {
+        Map<String, Object> params = new HashMap();
+        params.put("date", "04/04/2018");
+        PdfUtil.generatePdf(findByMission1(), params,"missions", "/jasper/MissionJasper.jasper");
     }
 
     public List<Mission> findByMissionEnCour() {
@@ -107,13 +113,19 @@ public class MissionFacade extends AbstractFacade<Mission> {
         String req = ("select m from Mission m where m.avancement='en cour'");
         return em.createQuery(req).getResultList();
     }
+    public List<Mission> findByMission1() {
+        String req = ("select m from Mission m where m.isAccepted=true ");
+        return em.createQuery(req).getResultList();
+    }
 
     public void remov(Long r) {
         super.remove(new Mission(r));
     }
 
     public void accepte(Mission item) {
+        Mission mission = find(item.getId());
         item.setIsAccepted(true);
+        edit(mission);
 
     }
 //      public int findByAvancement(Mission mission) {
