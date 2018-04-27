@@ -59,15 +59,15 @@
                     <div class="panel-body">
 
                         <div class="form-group">
-                            <p:inputText maxlength="100" type="text" required="required" class="form-control text" placeholder="Login"/>
+                            <p:inputText maxlength="100" type="text" id="login" value="#{freelanceController.selected.user.login}" required="true" class="form-control text" placeholder="Login"/>
                         </div>
 
                         <div class="form-group">
-                            <p:inputText maxlength="100" type="password" required="required" class="form-control" placeholder="Mot de passe" />
+                            <p:inputText maxlength="100" type="password" required="true" class="form-control" placeholder="Mot de passe" />
                         </div>
 
                         <div class="form-group">
-                            <p:inputText maxlength="100" type="password" required="required" class="form-control" placeholder="Confirmer mot de passe" />
+                            <p:inputText maxlength="100" type="password" required="true" class="form-control" placeholder="Confirmer mot de passe" />
                         </div>
                        
                         <div data-toggle="popover" class="champ">

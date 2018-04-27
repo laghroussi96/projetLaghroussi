@@ -208,7 +208,7 @@
         <!-- < HEADER MENU --><br/><br/>
         <div class="container">
             <h:form id="MissionListForm">
-                <p:dataTable id="datalist" var="item" value="#{missionController.itemsAboutis}" rows="10"
+                <p:dataTable id="datalist"  var="item" value="#{missionController.itemsAboutis}" rows="10"
                              paginator="true"
                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                              rowsPerPageTemplate="5,10,15">
@@ -249,7 +249,7 @@
                         <h:outputText value="#{item.isAccepted}" />
                     </p:column>
                     <p:column headerText="modifier">
-                        <p:commandButton style="color:green" actionListener="#{missionController.accepter(mission)}" value="accepter" update=":MissionListForm:datalist" />
+                       
                         <p:commandButton style="color:red" actionListener="#{missionController.remove(item)}" value="Supprimer" update=":MissionListForm:datalist"/>
                     </p:column>
 

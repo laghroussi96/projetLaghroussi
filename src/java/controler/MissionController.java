@@ -39,19 +39,20 @@ public class MissionController implements Serializable {
     private CommentaireFacade commentaireFacade;
     private List<Mission> items = null;
     private List<Mission> itemsEnCour = null;
+    private List<Mission> itemsEnCour2 = null;
     private List<Mission> itemsAboutis = null;
     private List<Mission> itemsNonAboutis = null;
     private List<Mission> itemsMission = null;
     private Mission selected;
     private Commentaire selectedCommentaire;
     private List<Commentaire> coms;
-   private List<TechnologieMission> listTechnologie;
-   // private Mission selected2;
+    private List<TechnologieMission> listTechnologie;
+    // private Mission selected2;
     // private Mission mission = new Mission();
     //private  List<Mission> missionItems = new ArrayList<>();
     //private BarChartModel model;  
- private Recruteur recruteur;
-    private Double max; 
+    private Recruteur recruteur;
+    private Double max;
     private Double min;
     private Langue langue;
     private Categorie categorie;
@@ -69,12 +70,9 @@ public class MissionController implements Serializable {
     public void setMf(MissionFacade mf) {
         this.mf = mf;
     }
-    
-    
-    
+
 //    @EJB
 //    MissionFacade missionFacade; 
-
 //    public Mission getSelected2() {
 //        return selected2;
 //    }
@@ -106,7 +104,6 @@ public class MissionController implements Serializable {
 //    public void setModel(BarChartModel model) {
 //        this.model = model;
 //    }
-
 //    public MissionFacade getMissionFacade() {
 //        return missionFacade;
 //    }
@@ -114,8 +111,7 @@ public class MissionController implements Serializable {
 //    public void setMissionFacade(MissionFacade missionFacade) {
 //        this.missionFacade = missionFacade;
 //    }
-
-     public void findByMission(Mission mission){
+    public void findByMission(Mission mission) {
         getSelected().setCommentaires(commentaireFacade.findByMission(mission.getId()));
     }
 
@@ -123,7 +119,6 @@ public class MissionController implements Serializable {
 //        listTechnologie=technologieMissionFacade.findBytechnologie(selected);
 //        return listTechnologie;
 //    }
-
 //    public void setListTechnologie(List<TechnologieMission> listTechnologie) {
 //        this.listTechnologie = listTechnologie;
 //    }
@@ -135,12 +130,11 @@ public class MissionController implements Serializable {
 //    public void setTechnologieMissionFacade(TechnologieMissionFacade technologieMissionFacade) {
 //        this.technologieMissionFacade = technologieMissionFacade;
 //    }
+    public List<Commentaire> listCommetaire(Mission mission) {
+        coms = commentaireFacade.findByMission(mission.getId());
+        return coms;
+    }
 
-     
-     public List<Commentaire> listCommetaire(Mission mission){
-         coms=commentaireFacade.findByMission(mission.getId());
-         return coms;
-     }
     public CommentaireFacade getCommentaireFacade() {
         return commentaireFacade;
     }
@@ -150,8 +144,8 @@ public class MissionController implements Serializable {
     }
 
     public Commentaire getSelectedCommentaire() {
-        if(selectedCommentaire==null){
-            selectedCommentaire=new Commentaire();
+        if (selectedCommentaire == null) {
+            selectedCommentaire = new Commentaire();
         }
         return selectedCommentaire;
     }
@@ -168,7 +162,6 @@ public class MissionController implements Serializable {
         this.coms = coms;
     }
 
-    
     public String getEtat() {
         return etat;
     }
@@ -224,13 +217,13 @@ public class MissionController implements Serializable {
     public void setCategorie(Categorie categorie) {
         this.categorie = categorie;
     }
-    
+
     public MissionController() {
     }
 
     public Mission getSelected() {
-        if(selected==null){
-            selected=new Mission();
+        if (selected == null) {
+            selected = new Mission();
         }
         return selected;
     }
@@ -265,20 +258,25 @@ public class MissionController implements Serializable {
     public void update() {
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("MissionUpdated"));
     }
- public void search() {
-      items = ejbFacade.search(recruteur, max, min, langue, categorie, etat);
+
+    public void search() {
+        items = ejbFacade.search(recruteur, max, min, langue, categorie, etat);
     }
- public void searchMiss() {
-      items = ejbFacade.searchMiss(categorie, max, min);
+
+    public void searchMiss() {
+        items = ejbFacade.searchMiss(categorie, max, min);
     }
-  public void generatePdf() throws JRException, IOException{
-      ejbFacade.generatePdf();
-      FacesContext.getCurrentInstance().responseComplete();
-  }
-   public void accepter(Mission mission) {
-     getSelected().setIsAccepted(true);
+
+    public void generatePdf() throws JRException, IOException {
+        ejbFacade.generatePdf();
+        FacesContext.getCurrentInstance().responseComplete();
     }
-  
+
+    public void accepter(Mission item) {
+        ejbFacade.accepte(item);
+       
+    }
+
 //   @PostConstruct
 //    public void init() {
 //        createAnimatedModels();
@@ -305,8 +303,6 @@ public class MissionController implements Serializable {
 //        barChartModel.addSeries(clients);
 //        return barChartModel;
 //    }
-
-  
     public void destroy() {
         persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("MissionDeleted"));
         if (!JsfUtil.isValidationFailed()) {
@@ -321,43 +317,54 @@ public class MissionController implements Serializable {
         }
         return items;
     }
-    
-     public List<Mission> getItemsEnCour() {
+
+    public List<Mission> getItemsEnCour() {
         if (itemsEnCour == null) {
             itemsEnCour = getFacade().findByMissionEnCour();
         }
         return itemsEnCour;
     }
-     public List<Mission> getItemsAboutis() {
+
+    public List<Mission> getItemsEnCour2() {
+        if (itemsEnCour2 == null) {
+            itemsEnCour2 = getFacade().findByMissionEnCour2();
+        }
+        return itemsEnCour2;
+    }
+
+    public List<Mission> getItemsAboutis() {
         if (itemsAboutis == null) {
             itemsAboutis = getFacade().findByMissionAbouti();
         }
         return itemsAboutis;
     }
-     public List<Mission> getItemsNonAboutis() {
+
+    public List<Mission> getItemsNonAboutis() {
         if (itemsNonAboutis == null) {
             itemsNonAboutis = getFacade().findByMissionNonAbouti();
         }
         return itemsNonAboutis;
     }
-     public List<Mission> getItemsMission() {
+
+    public List<Mission> getItemsMission() {
         if (itemsMission == null) {
             itemsMission = getFacade().findMission();
         }
         return itemsMission;
     }
 
-     public void remove(Mission item) {
-          ejbFacade.remov(item.getId());
-    itemsAboutis.remove(itemsAboutis.indexOf(item));
-      
+    public void remove(Mission item) {
+        ejbFacade.remov(item.getId());
+        itemsAboutis.remove(itemsAboutis.indexOf(item));
+
     }
-     public void removee(Mission item) {
-          ejbFacade.remov(item.getId());
-    itemsEnCour.remove(itemsEnCour.indexOf(item));
-      
+
+    public void removee(Mission item) {
+        ejbFacade.remov(item.getId());
+        itemsEnCour2.remove(itemsEnCour2.indexOf(item));
+
     }
-     
+
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
             setEmbeddableKeys();
@@ -438,7 +445,8 @@ public class MissionController implements Serializable {
         }
 
     }
- public void jhgj(){
-     
- }
+
+    public void jhgj() {
+
+    }
 }
