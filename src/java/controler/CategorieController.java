@@ -27,12 +27,35 @@ public class CategorieController implements Serializable {
     private service.CategorieFacade ejbFacade;
     private List<Categorie> items = null;
     private Categorie selected;
+        private Categorie categorie =new Categorie();
+        
+
+    public CategorieFacade getEjbFacade() {
+        return ejbFacade;
+    }
+
+    public void setEjbFacade(CategorieFacade ejbFacade) {
+        this.ejbFacade = ejbFacade;
+    }
+
+    public Categorie getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
+    }
+
 
     public CategorieController() {
     }
 
     public Categorie getSelected() {
-        return selected;
+         if(selected == null){
+        selected = new Categorie();
+    }
+    return selected;
+        
     }
 
     public void setSelected(Categorie selected) {
@@ -66,6 +89,11 @@ public class CategorieController implements Serializable {
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("CategorieUpdated"));
     }
 
+    public void remove(Categorie item) {
+        ejbFacade.remov(item.getId());
+        items.remove(items.indexOf(item));
+
+    }
     public void destroy() {
         persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("CategorieDeleted"));
         if (!JsfUtil.isValidationFailed()) {
@@ -75,6 +103,7 @@ public class CategorieController implements Serializable {
     }
 
     public List<Categorie> getItems() {
+         
         if (items == null) {
             items = getFacade().findAll();
         }

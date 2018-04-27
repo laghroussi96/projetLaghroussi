@@ -19,6 +19,17 @@ public class CategorieFacade extends AbstractFacade<Categorie> {
 
     @PersistenceContext(unitName = "freelancerPU")
     private EntityManager em;
+   
+
+    public EntityManager getEm() {
+        return em;
+    }
+
+    public void setEm(EntityManager em) {
+        this.em = em;
+    }
+
+   
 
     @Override
     protected EntityManager getEntityManager() {
@@ -27,6 +38,9 @@ public class CategorieFacade extends AbstractFacade<Categorie> {
 
     public CategorieFacade() {
         super(Categorie.class);
+    }
+     public void remov(Long c) {
+        super.remove(new Categorie(c));
     }
     
 }

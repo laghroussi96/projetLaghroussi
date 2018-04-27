@@ -32,6 +32,9 @@ public class TechnologieController implements Serializable {
     }
 
     public Technologie getSelected() {
+         if(selected == null){
+        selected = new Technologie();
+    }
         return selected;
     }
 
@@ -66,6 +69,11 @@ public class TechnologieController implements Serializable {
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("TechnologieUpdated"));
     }
 
+     public void remove(Technologie item) {
+        ejbFacade.remov(item.getId());
+        items.remove(items.indexOf(item));
+
+    }
     public void destroy() {
         persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("TechnologieDeleted"));
         if (!JsfUtil.isValidationFailed()) {

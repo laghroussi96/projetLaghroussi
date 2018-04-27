@@ -7,6 +7,7 @@ package bean;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -59,6 +60,7 @@ public class Categorie implements Serializable {
     }
 
     public void setNom(String nom) {
+        
         this.nom = nom;
     }
 

@@ -28,5 +28,7 @@ public class TechnologieFacade extends AbstractFacade<Technologie> {
     public TechnologieFacade() {
         super(Technologie.class);
     }
-    
+     public void remov(Long t) {
+        super.remove(new Technologie(t));
+    }
 }
