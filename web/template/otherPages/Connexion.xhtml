@@ -2,10 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-
         <meta charset="utf-8"/>
         <title>Freelancer</title>
 
@@ -16,7 +15,8 @@
         <link href="../../ressources/css/bootstrap.min.css" rel="stylesheet"/>
         <link href="../../ressources/css/connexion.css" rel="stylesheet"/>
     </h:head>
-    <body>
+    <h:body>
+        
         <div class="container">
   <div class="info">
     <h1>Connexion</h1>
@@ -25,16 +25,21 @@
 <div class="form">
   <div><img src="../../ressources/img/freelancer.png" alt="Freelancer" /></div>
   <br/><br/>
+        
+        <h:form class="login-form">
+        <p:inputText class="inp" type="text" value="#{userController.selected.login}" placeholder="username"/>
+        <p:outputLabel value="Login:" />
+        <p:inputText type="password" class="inp" value="#{userController.selected.passeword}" placeholder="password"/>
+        <p:outputLabel value="Password:" />
+       
+        <p:commandButton class="btn login" action="#{userController.isConnecte()}" value="Confirmer"></p:commandButton>
+             
+        <p class="message">vous-avez déjà un compte? <a href="/projetFreelancer/faces/template/otherPages/Inscription.xhtml">Créer un compte</a></p>
+        
+        </h:form>
   
-  <h:form class="login-form">
-      <p:inputText class="inp" type="text" placeholder="username"/>
-      <p:inputText type="password" class="inp" placeholder="password"/>
-    <p:commandButton class="btn login" value="Se connecter"></p:commandButton>
-    <p class="message">vous-avez déjà un compte? <a href="/projetFreelancer/faces/template/otherPages/Inscription.xhtml">Créer un compte</a></p>
-  </h:form>
-</div>
+  </div>
         <script src="../../ressources/js/bootstrap.min.js" type="text/javascript"></script>      
 
-    </body>
+    </h:body>
 </html>
-

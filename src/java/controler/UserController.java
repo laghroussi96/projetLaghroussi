@@ -18,6 +18,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import util.SessionUtil;
 
 @Named("userController")
 @SessionScoped
@@ -32,6 +33,9 @@ public class UserController implements Serializable {
     }
 
     public User getSelected() {
+        if(selected == null){
+            selected=new User();
+        }
         return selected;
     }
 
@@ -86,6 +90,7 @@ public class UserController implements Serializable {
             setEmbeddableKeys();
             try {
                 if (persistAction != PersistAction.DELETE) {
+                    selected.setPasseword(util.HashageUtil.sha256(selected.getPasseword()));
                     getFacade().edit(selected);
                 } else {
                     getFacade().remove(selected);
@@ -161,5 +166,51 @@ public class UserController implements Serializable {
         }
 
     }
+    
+    /*Connect Methode*/
+    public String isConnecte() {
+        User clone = ejbFacade.clone(selected);
+        int res = ejbFacade.seConnnecter(clone);
+        selected = new User();
+        System.out.println("res"+res);
+        switch (res) {
+            // Seccessful
+            case 1:
+                JsfUtil.addSuccessMessage("Success");
+//                SessionUtil.setAttribute("connectionUser", clone);
+                SessionUtil.registerUser(selected);
+                return "PublierMission";
+            // user blocked
+            case -2:
+                JsfUtil.addErrorMessage("this user is blocked");
+                System.out.println("this user is blocked");
+                return null;
+
+            // Wrong Password
+            case -3:
+                JsfUtil.addErrorMessage("Wrong Password");
+                System.out.println("Wrong Password");
+                return null;
+
+            // User doesn't exist
+            case -4:
+                JsfUtil.addErrorMessage("User does not exist");
+                System.out.println("User does not exist");
+                return null;
+
+            // You have not type any login
+            case -5:
+                JsfUtil.addErrorMessage("Please type login");
+                System.out.println("Please type login");
+                return null;
+
+            default:
+                return null;
+
+        }
+    }
+    /*Connect Methode*/
+
+
 
 }

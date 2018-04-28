@@ -181,8 +181,13 @@ public class FreelanceController implements Serializable {
         initializeEmbeddableKey();
         return selected;
     }
+    
+    public void test(){
+        System.out.println("selected "+selected);
+    }
 
     public void create() {
+        System.out.println("create");
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("FreelanceCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
@@ -227,6 +232,7 @@ public class FreelanceController implements Serializable {
             setEmbeddableKeys();
             try {
                 if (persistAction != PersistAction.DELETE) {
+                    System.out.println("selected "+selected);
                     getFacade().edit(selected);
                 } else {
                     getFacade().remove(selected);
