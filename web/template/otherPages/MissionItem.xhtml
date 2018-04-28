@@ -34,7 +34,7 @@
       <div class="container">
         <ul class="breadcrumb">
             <li><a href="index.html">Acceuil</a></li>
-            <li><a href="javascript:;">Offres De Mission</a></li>
+            <li><a href="OffresMissions.xhtml">Offres De Mission</a></li>
             <li class="active">Mission</li>
         </ul>
         <!-- BEGIN SIDEBAR & CONTENT -->
@@ -71,44 +71,45 @@
                     </div>
                     <!-- END CAROUSEL -->             
                   </div>
-                  <h2><a href="javascript:;"></a></h2>
+                    <h2><a href="javascript:;"></a>#{missionController.voirMission.titre}</h2>
                   <p><!--Description de la Mission--></p>
                   <blockquote>
-                    <p><button class="btn btn-primary" > Budget<br/><!--budget--></button></p>
+                      <p><button class="btn btn-primary" > Budget<br/>#{missionController.voirMission.maxBudget}</button></p>
                     <small> </small>
                   </blockquote>                
                   
                   <ul class="blog-info">
-                    <li><i class="fa fa-user"></i></li>
-                    <li><i class="fa fa-calendar"></i> Publiée le : </li>
-                    <li><i class="fa fa-comments"></i> </li>
-					 <li><i class="fa fa-calendar"></i> Dernier délai le  :</li>
+                      <li><i class="fa fa-user"></i>Publié par: #{missionController.voirMission.recruteur.nom}. #{missionController.voirMission.recruteur.prenom}</li>
+                      <li><i class="fa fa-calendar"></i> Publiée le : <h:outputText value="#{missionController.voirMission.datePublication}"><f:convertDateTime pattern="MM/dd/yyyy"/></h:outputText> </li>
+                      <li><i class="fa fa-comments"></i>#{missionController.listCommetaireForMission().size()}</li>
+                      <li><i class="fa fa-calendar"></i> Dernier délai le  : <h:outputText value="#{missionController.voirMission.dateLimite}"><f:convertDateTime pattern="MM/dd/yyyy"/></h:outputText></li>
                    
                   </ul>
 
                   <h2>Commentaires</h2>
-                  <!--Utiliser for pour afficher les comentaires-->
+                  
                   <div class="comments">
-                    <div class="media">                    
+                      <c:forEach items="#{missionController.listCommetaireForMission()}" var="comment">
+                    <div class="media"> 
                       <a href="javascript:;" class="pull-left">
-                          <p:graphicImage/>
+                          
                        </a>
                       <div class="media-body">
-                        <h4 class="media-heading"><!--Commenter par--><span> <!--date du commentaire-->/ <a href="paiementRecruteur.html">Choisir</a></span></h4>
-                        <p><!--Commentaire--> </p>
+                          <h4 class="media-heading">#{comment.freelance.nom} #{comment.freelance.prenom}<span> <!--date du commentaire-->/ <a href="paiementRecruteur.html">Choisir</a></span></h4>
+                          <p>#{comment.text}</p>
                                            
                       
                       </div>
                     </div>
-                    <!--end media-->
+                      </c:forEach>
                   </div>
-
+                 
                   <div class="post-comment padding-top-40">
                     <h3>Laisser Un Commentaire</h3>
                     <h:form role="form">
                       <div class="form-group">
                         <label>Message</label>
-                        <p:inputTextarea class="form-control" rows="8" value="#{commentaireController.selected.text}"></p:inputTextarea>
+                        <p:inputTextarea class="form-control" rows="8"></p:inputTextarea>
                       </div>
                         <p:commandButton class="btn rev" value="Publier Commentaire" ></p:commandButton>
                     </h:form>
@@ -200,19 +201,7 @@
                 Layout.initTwitter();
             });
         </script>
-        <script type="text/javascript">
-            $(".accordion-head").click(function () {
-                if ($('.accordion-body').is(':visible')) {
-                    $(".accordion-body").slideUp(300);
-                    $(".plus").text('+');
-                } else {
-                    $(".accordion-body").slideDown(300);
-                    $(".plus").text('-');
-                }
-
-            });
-
-        </script>
+        
     </body>
 </html>
 

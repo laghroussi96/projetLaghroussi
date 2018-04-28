@@ -46,7 +46,8 @@
                             <div class="row">
                                 <!-- BEGIN LEFT SIDEBAR -->            
                                 <div class="col-md-9 col-sm-9 blog-posts">
-                                    <p:dataScroller value="" var="" chunkSize="10">
+                                    <h:form id="mission">
+                                        <c:forEach items="#{technologieMissionController.missions}" var="mission" id="missionList">
                                         <div class="row">
                                             <div class="col-md-4 col-sm-4">
                                                 <!-- BEGIN CAROUSEL -->            
@@ -78,19 +79,22 @@
                                                 <!-- END CAROUSEL -->             
                                             </div>
                                             <div class="col-md-8 col-sm-8">
-                                                <h2><p:commandLink value=""/></h2>
+                                           
+                                                <h2><h:commandLink value="#{mission.titre}" action="#{technologieMissionController.voirMission(mission)}"></h:commandLink></h2>
                                                 <ul class="blog-info">
-                                                    <li><i class="fa fa-calendar"></i></li>
-                                                    <li><i class="fa fa-comments"></i> </li>
-                                                    <li><i class="fa fa-user"></i></li>
-                                                    <li ><div class="budget"></div></li>
+                                                    <li><i class="fa fa-calendar"></i><h:outputText value="#{mission.datePublication}"><f:convertDateTime pattern="MM/dd/yyyy"/></h:outputText></li>
+                                                    <li><i class="fa fa-comments"></i>#{technologieMissionController.listCommetaire(mission).size()}</li>
+                                                    <li><i class="fa fa-user"></i>#{mission.recruteur.nom}</li>
+                                                    <li ><i class="fa fa-money"></i>#{mission.maxBudget}</li>
                                                 </ul>
-                                                <p></p>
-                                                <a href="MissionItem.xhtml" class="more">Lire la suite ... <i class="icon-angle-right"></i></a> 
+                                                <p>#{mission.commentaire.substring(6)}</p>
+                                                <a>  <h:link outcome="MissionItem.xhtml" value="Lire la suite..." includeViewParams="true" style="color: #CC3304"><f:param name="mission" value="#{mission.id}"/></h:link> <i class="icon-angle-right"></i></a> 
                                                 <div class="blog-tags margin-bottom-20 myTags">
                                                     <br/>
                                                     <ul>
-                                                        <li><a href="javascript:;"><i class="fa fa-tags"></i></a></li>
+                                                        <c:forEach items="#{technologieMissionController.findByMissions(mission)}" var="technologie" >
+                                                            <li><a href="javascript:;"><i class="fa fa-tags"></i>#{technologie.technologie.nom}</a></li>
+                                                        </c:forEach>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -99,10 +103,11 @@
 
 
                                         <hr class="blog-post-sep"/>   
-                                    </p:dataScroller>
+                                    </c:forEach>
+                                        </h:form>
                                 </div>
                                 <!-- END LEFT SIDEBAR -->
-                                <h:form>
+                               
                                     <!-- BEGIN RIGHT SIDEBAR -->            
                                     <div class="col-md-3 col-sm-3 ">
                                         <!-- CATEGORIES START -->
@@ -111,37 +116,40 @@
                                             <div class="accordion-container">
                                                 <div class="accordion-head">Recherche Avancée <span class="plus">+</span></div>
                                                 <div class="accordion-body" style="display: none;">
+                                                    <h:form>
+                                                        <div class="form-group col-lg-12">
+                                                                <p:outputLabel for="categorie" value="Catégories " style="font-size: 15px"/>
+                                                                <h:selectOneMenu id="categorie" class="form-control" value="#{technologieMissionController.categorie}">
+                                                                    <f:selectItem itemLabel="-Select-" itemValue="#{null}"/>
+                                                                    <f:selectItems value="#{categorieController.itemsAvailableSelectOne}" var="categorieItem" itemValue="#{categorieItem}" itemLabel="#{categorieItem.nom}"/>
+                                                                    <p:ajax  process="categorie" listener="#{technologieMissionController.findByCate()}" update="technologie"></p:ajax>
+                                                                </h:selectOneMenu></div>
+                                                             <div class="form-group col-lg-12">
+                                                                <p:outputLabel for="technologie" value="Téchnologies " style="font-size: 15px"/>
+                                                                <h:selectManyCheckbox id="technologie" class="form-control" value="#{technologieMissionController.selected.technologie}">
+                                                                    <!--f:selectItem itemLabel="-Select-" itemValue="#{null}"/-->
+                                                                    <f:selectItems value="#{technologieMissionController.technologies}" var="technologieItem" itemValue="#{technologieItem}" itemLabel="#{technologieItem.nom}"/>
+                                                                </h:selectManyCheckbox>
+                                                        </div>
+                                                    </h:form>
+                                                    <h:form>
                                                     <div class="form-group col-lg-12">
-                                                        <p:outputLabel for="categories" value="Catégories " style="font-size: 19px"/>
-                                                        <h:selectOneMenu class="form-control" id="categories" required="true" value="#{missionController.selected.categorie}">
-                                                            <f:selectItems value="#{categorieController.itemsAvailableSelectOne}" var="categorieItem" itemLabel="#{categorieItem.nom}" itemValue="#{categorieItem.nom}" />
-                                                        
-                                                    </h:selectOneMenu>
+                                                        <p:outputLabel for="budgetMin" value="Budget Min" style="font-size: 15px"/>
+                                                        <p:inputText id="budgetMin" class="form-control" />
                                                     </div>
                                                     <div class="form-group col-lg-12">
-                                                        <p:outputLabel for="technologies" value="Téchnologies " style="font-size: 19px"/>
-                                                        <h:selectOneMenu class="form-control" id="technologies" required="true" value="#{missionController.selected.technologieMissions}">
-                                                            <f:selectItems value="#{technologieController.itemsAvailableSelectOne}" var="technologieItem" itemLabel="#{technologieItem.nom}" itemValue="#{technologieItem.nom}" />
-                                                        
-                                                    </h:selectOneMenu>
-                                                    </div>
-                                                    <div class="form-group col-lg-12">
-                                                        <p:outputLabel for="budgetMax" value="Budget Max" style="font-size: 19px"/>
-                                                        <p:inputText id="budgetMax" class="form-control" placeholder="Saisir un budget Max"/>
-                                                    </div>
-                                                    <div class="form-group col-lg-12">
-                                                        <p:outputLabel for="budgetMin" value="Budget Min" style="font-size: 19px"/>
-                                                        <p:inputText id="budgetMin" class="form-control" placeholder="Saisir un budget Min"/>
+                                                        <p:outputLabel for="budgetMax" value="Budget Max" style="font-size: 15px"/>
+                                                        <p:inputText id="budgetMax" class="form-control" />
                                                     </div>
                                                     <div class="form-group">
                                                         <p:commandButton class="btn cher col-lg-10" value="#{bundle.Search}"/>
                                                     </div>
+                                                    </h:form>
                                                 </div>
                                             </div>
                                         </div>                  
                                         <!-- CATEGORIES END -->
                                     </div>
-                                </h:form>
                                 <!-- END RIGHT SIDEBAR -->            
                             </div>
                         </div>

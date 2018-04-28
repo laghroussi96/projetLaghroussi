@@ -213,16 +213,19 @@
         <br/><br/>
         <div class="box-header" align="center">
             <h4 class="box-title" ><b>Ajouter Categories</b></h4>
-     <br/>
-        <h:form id="CategorieCreateForm">
-            <h:panelGroup id="display">
-               
-                    <p:outputLabel value="#{bundle.CreateCategorieLabel_nom}" for="nom" />&nbsp;&nbsp;
-                    <p:inputText id="nom" value="#{categorieController.selected.nom}" title="#{bundle.CreateCategorieTitle_nom}" />&nbsp;
-                    <p:commandButton actionListener="#{categorieController.create}" value="ajouter" update=":CategorieCreateListForm:datalist" />
-               
-            </h:panelGroup>
-        </h:form>
+            <br/>
+            <h:form id="CategorieCreateForm">
+                <h:panelGroup id="display">
+                    <div class="row container" align="center">
+                        <div class="col-lg-3"></div>
+                        <div class="col-lg-4">
+                            <p:inputText id="nom" class="form-control" value="#{categorieController.selected.nom}" title="#{bundle.CreateCategorieTitle_nom}" placeholder="#{bundle.CreateCategorieLabel_nom}"/>&nbsp;
+                        </div>
+                        <div class="col-lg-2">
+                            <p:commandButton actionListener="#{categorieController.create}" value="ajouter" update=":CategorieCreateListForm:datalist" />
+                        </div></div>
+                </h:panelGroup>
+            </h:form>
         </div>
         <br></br>
         <div class="container">
@@ -234,13 +237,13 @@
 
                     <p:column headerText="Nom">
                         <div align="center">
-                        <h:outputText value="#{item.nom}" />
+                            <h:outputText value="#{item.nom}" />
                         </div>
                     </p:column>
 
                     <p:column headerText="modifier">
                         <div align="center">
-                        <p:commandButton style="color:red" actionListener="#{categorieController.remove(item)}" value="Supprimer"  update=":CategorieCreateListForm:datalist"/>
+                            <p:commandButton style="color:red" actionListener="#{categorieController.remove(item)}" value="Supprimer"  update=":CategorieCreateListForm:datalist"/>
                         </div>
                     </p:column>
 
@@ -252,16 +255,19 @@
         <br/><br/>
         <div class="box-header"  align="center">
             <h4 class="box-title"  ><b>Ajouter Devise</b></h4>
-        <br/>
-        <h:form id="deviseCreateForm">
-            <h:panelGroup id="display">
-               
-                    <p:outputLabel value="#{bundle.CreateDeviseLabel_nom}" for="nom" />&nbsp;&nbsp;
-                    <p:inputText id="nom" value="#{deviseController.selected.nom}" title="#{bundle.CreateCategorieTitle_nom}" />&nbsp;
-                    <p:commandButton actionListener="#{deviseController.create}" value="ajouter"  update=":DeviseCreateListForm:datalist" />&nbsp;
-              
-            </h:panelGroup>
-        </h:form>
+            <br/>
+            <h:form id="deviseCreateForm">
+                <h:panelGroup id="display">
+                    <div class="row container" align="center">
+                        <div class="col-lg-3"></div>
+                        <div class="col-lg-4">
+                            <p:inputText id="nom" class="form-control" value="#{deviseController.selected.nom}" title="#{bundle.CreateCategorieTitle_nom}" placeholder="#{bundle.CreateDeviseLabel_nom}"/>&nbsp;
+                        </div>
+                        <div class="col-lg-2">
+                            <p:commandButton actionListener="#{deviseController.create}" value="ajouter"  update=":DeviseCreateListForm:datalist" />&nbsp;
+                        </div></div>
+                </h:panelGroup>
+            </h:form>
         </div>
         <br></br>
         <div class="container">
@@ -273,13 +279,13 @@
 
                     <p:column headerText="Nom">
                         <div align="center">
-                        <h:outputText value="#{item.nom}" />
+                            <h:outputText value="#{item.nom}" />
                         </div>
                     </p:column>
 
                     <p:column headerText="modifier">
                         <div align="center">
-                        <p:commandButton style="color:red" actionListener="#{deviseController.remove(item)}" value="Supprimer"  />
+                            <p:commandButton style="color:red" actionListener="#{deviseController.remove(item)}" value="Supprimer"  />
                         </div>
                     </p:column>
 
@@ -291,108 +297,126 @@
         <br/><br/>
         <div class="box-header"  align="center">
             <h4 class="box-title" ><b>Ajouter Pays</b></h4>
-        <br/>
-        <h:form id="paysCreateForm">
-            <h:panelGroup id="display">
-                
-                    <p:outputLabel value="#{bundle.CreatePaysLabel_nom}" for="nom" />&nbsp;&nbsp;
-                    <p:inputText id="nom" value="#{paysController.selected.nom}" title="#{bundle.CreatePaysTitle_nom}" />&nbsp;
-                    <p:commandButton actionListener="#{paysController.create}" value="ajouter" update=":PaysCreateListForm:datalist"  />
-               
-            </h:panelGroup>
-        </h:form>
-        </div>
-        <br></br>
-        <div class="container">
-            <h:form id="PaysCreateListForm">
-                <p:dataTable  id="datalist" var="item" value="#{paysController.items}" rows="10"
-                              paginator="true"
-                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                              rowsPerPageTemplate="5,10,15">
-
-                    <p:column headerText="Nom">
-                        <div align="center">
-                        <h:outputText value="#{item.nom}" />
+            <br/>
+            <h:form id="paysCreateForm">
+                <h:panelGroup id="display">
+                    <div class="row container" align="center">
+                        <div class="col-lg-3"></div>
+                        <div class="col-lg-4">
+                            <p:inputText id="nom" class="form-control" value="#{paysController.selected.nom}" title="#{bundle.CreatePaysTitle_nom}" placeholder="#{bundle.CreatePaysLabel_nom}"/>&nbsp;
                         </div>
-                    </p:column>
-
-                    <p:column headerText="modifier">
-                        <div align="center">
-                        <p:commandButton style="color:red" actionListener="#{paysController.remove(item)}" value="Supprimer"  />
+                        <div class="col-lg-4">
+                            <p:commandButton actionListener="#{paysController.create}" value="ajouter" update=":PaysCreateListForm:datalist"  />
+                    </div></div>
+                            </h:panelGroup>
+                            </h:form>
                         </div>
-                    </p:column>
+                        <br></br>
+                        <div class="container">
+                            <h:form id="PaysCreateListForm">
+                                <p:dataTable  id="datalist" var="item" value="#{paysController.items}" rows="10"
+                                              paginator="true"
+                                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                              rowsPerPageTemplate="5,10,15">
 
-                </p:dataTable>
-                <br></br><br></br>
+                                    <p:column headerText="Nom">
+                                        <div align="center">
+                                            <h:outputText value="#{item.nom}" />
+                                        </div>
+                                    </p:column>
 
-            </h:form>
-        </div>
-        <br/><br/>
-        <div class="box-header"  align="center">
-            <h4 class="box-title" ><b>Ajouter Technologie</b></h4>
-        <br/>
-        <h:form id="technologieCreateForm">
-            <h:panelGroup id="display">
-              
-                    <p:outputLabel value="#{bundle.CreateTechnologieLabel_nom}" for="nom" />&nbsp;&nbsp;
-                    <p:inputText id="nom" value="#{technologieController.selected.nom}" title="#{bundle.CreateTechnologieTitle_nom}" />&nbsp;
-                    <p:commandButton actionListener="#{technologieController.create}" value="ajouter" update=":TechnologieCreateListForm:datalist" />
-              
-            </h:panelGroup>
-        </h:form>
-        </div>
-        <br></br>
-        <div class="container">
-            <h:form id="TechnologieCreateListForm">
-                <p:dataTable  id="datalist" var="item" value="#{technologieController.items}" rows="10"
-                              paginator="true"
-                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                              rowsPerPageTemplate="5,10,15">
+                                    <p:column headerText="modifier">
+                                        <div align="center">
+                                            <p:commandButton style="color:red" actionListener="#{paysController.remove(item)}" value="Supprimer"  />
+                                        </div>
+                                    </p:column>
 
-                    <p:column headerText="Nom">
-                        <div align="center">
-                        <h:outputText value="#{item.nom}" />
+                                </p:dataTable>
+                                <br></br><br></br>
+
+                            </h:form>
                         </div>
-                    </p:column>
+                        <br/><br/>
+                        <div class="box-header"  align="center">
+                            <h4 class="box-title" ><b>Ajouter Technologie</b></h4>
+                            <br/>
+                            <h:form id="technologieCreateForm">
+                                <h:panelGroup id="display">
+                                    <div class="row container " align="center">
+                                        <div class="col-lg-1"></div>
+                                        <div class="col-lg-3">
+                                            <p:inputText id="nom" class="form-control" value="#{technologieController.selected.nom}" title="#{bundle.CreateTechnologieTitle_nom}" placeholder="#{bundle.CreateTechnologieLabel_nom}"/>&nbsp;
+                                        </div>
+                                        <div class="col-lg-3">
 
-                    <p:column headerText="modifier">
-                        <div align="center">
-                        <p:commandButton style="color:red" actionListener="#{technologieController.remove(item)}" value="Supprimer"  />
+                                            <h:selectOneMenu id="categorie"  class="form-control" value="#{technologieController.selected.categorie}" >
+                                                <f:selectItem itemLabel="-Select-" itemValue=""/>
+                                                <f:selectItems var="categorieItem" value="#{categorieController.itemsAvailableSelectOne}" itemValue="#{categorieItem}" itemLabel="#{categorieItem.nom}"/>
+                                            </h:selectOneMenu>
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <p:commandButton actionListener="#{technologieController.create}" value="ajouter" update=":TechnologieCreateListForm:datalist" />
+                                        </div></div>
+                                </h:panelGroup>
+                            </h:form>
                         </div>
-                    </p:column>
+                        <br></br>
+                        <div class="container">
+                            <h:form id="TechnologieCreateListForm">
+                                <p:dataTable  id="datalist" var="item" value="#{technologieController.items}" rows="10"
+                                              paginator="true"
+                                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                              rowsPerPageTemplate="5,10,15">
 
-                </p:dataTable>
-                <br></br><br></br>
+                                    <p:column headerText="Nom">
+                                        <div align="center">
+                                            <h:outputText value="#{item.nom}" />
+                                        </div>
+                                    </p:column>
+                                    <p:column headerText="Catégorie">
+                                        <div align="center">
+                                            <h:outputText value="#{item.categorie.nom}" />
+                                        </div>
+                                    </p:column>
 
-            </h:form>
-        </div>
+                                    <p:column headerText="modifier">
+                                        <div align="center">
+                                            <p:commandButton style="color:red" actionListener="#{technologieController.remove(item)}" value="Supprimer"  />
+                                        </div>
+                                    </p:column>
+
+                                </p:dataTable>
+                                <br></br><br></br>
+
+                            </h:form>
+                        </div>
 
 
-        <br/>
-        <p:dialog id="FreelancerDlg" widgetVar="FreelancerDialog" modal="true" resizable="false" appendTo="@(body)" header="Missions réalisées">
-            <h:form>
-                <p:dataTable var="car" value="#{dtPaginatorView.cars}" rows="10"
-                             paginator="true"
-                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                             rowsPerPageTemplate="5,10,15">
+                        <br/>
+                        <p:dialog id="FreelancerDlg" widgetVar="FreelancerDialog" modal="true" resizable="false" appendTo="@(body)" header="Missions réalisées">
+                            <h:form>
+                                <p:dataTable var="car" value="#{dtPaginatorView.cars}" rows="10"
+                                             paginator="true"
+                                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                             rowsPerPageTemplate="5,10,15">
 
-                </p:dataTable>
-                <p:commandButton value="Fermer" onclick="FreelancerDialog.hide()"/>
-            </h:form>
-        </p:dialog>
+                                </p:dataTable>
+                                <p:commandButton value="Fermer" onclick="FreelancerDialog.hide()"/>
+                            </h:form>
+                        </p:dialog>
 
-        <script src="../../ressources/js/jquery.min.js" type="text/javascript"></script>
-        <script src="../../ressources/js/bootstrap.min.js" type="text/javascript"></script> 
-        <script src="../../ressources/js/jquery-migrate.min.js" type="text/javascript"></script>
-        <script src="../../ressources/admin/js/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
-        <script src="../../ressources/admin/js/layout.js" type="text/javascript"></script>
-        <script>
-                    jQuery(document).ready(function () {
+                        <script src="../../ressources/js/jquery.min.js" type="text/javascript"></script>
+                        <script src="../../ressources/js/bootstrap.min.js" type="text/javascript"></script> 
+                        <script src="../../ressources/js/jquery-migrate.min.js" type="text/javascript"></script>
+                        <script src="../../ressources/admin/js/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+                        <script src="../../ressources/admin/js/layout.js" type="text/javascript"></script>
+                        <script>
+                                    jQuery(document).ready(function () {
 
-                        Layout.init();
-                    });
-        </script>
-    </body>
-</html>
+                                        Layout.init();
+                                    });
+                        </script>
+                        </body>
+                        </html>
 
 

@@ -5,7 +5,9 @@
  */
 package service;
 
+import bean.Categorie;
 import bean.Technologie;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -30,5 +32,8 @@ public class TechnologieFacade extends AbstractFacade<Technologie> {
     }
      public void remov(Long t) {
         super.remove(new Technologie(t));
+    }
+      public List<Technologie> findByCate(Categorie categorie){
+        return em.createQuery("SELECT t FROM Technologie t WHERE t.categorie.id='"+categorie.getId()+"'").getResultList();
     }
 }

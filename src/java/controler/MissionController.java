@@ -8,10 +8,12 @@ import bean.Recruteur;
 import bean.TechnologieMission;
 import controler.util.JsfUtil;
 import controler.util.JsfUtil.PersistAction;
+import controler.util.SessionUtil;
 import java.io.IOException;
 import service.MissionFacade;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -33,7 +35,7 @@ public class MissionController implements Serializable {
 
     @EJB
     private service.MissionFacade ejbFacade;
-    private MissionFacade mf;
+    
     @EJB
     private CommentaireFacade commentaireFacade;
     private List<Mission> items = null;
@@ -46,6 +48,7 @@ public class MissionController implements Serializable {
     private Mission selected;
     private Commentaire selectedCommentaire;
     private List<Commentaire> coms;
+    private List<Commentaire> commentForMission=new ArrayList<>();
     private List<TechnologieMission> listTechnologie;
     // private Mission selected2;
     // private Mission mission = new Mission();
@@ -57,19 +60,50 @@ public class MissionController implements Serializable {
     private Langue langue;
     private Categorie categorie;
     private String etat;
-
+    private Mission voirMission;
+   
+    public List<Commentaire> listCommetaireForMission() {
+       commentForMission=commentaireFacade.findByMission(voirMission.getId());
+        return commentForMission;
+    }
     public MissionController(MissionFacade ejbFacade, Mission selected) {
         this.ejbFacade = ejbFacade;
         this.selected = selected;
     }
 
-    public MissionFacade getMf() {
-        return mf;
+    public List<Commentaire> getCommentForMission() {
+        return commentForMission;
     }
 
-    public void setMf(MissionFacade mf) {
-        this.mf = mf;
+    public void setCommentForMission(List<Commentaire> commentForMission) {
+        this.commentForMission = commentForMission;
     }
+
+    public Mission getVoirMission() {
+          voirMission=(Mission)SessionUtil.getAttribute("thisMission");
+        return voirMission;
+    }
+
+    public void setVoirMission(Mission voirMission) {
+        this.voirMission = voirMission;
+    }
+
+    public List<Mission> getItemsMission1() {
+        return itemsMission1;
+    }
+
+    public void setItemsMission1(List<Mission> itemsMission1) {
+        this.itemsMission1 = itemsMission1;
+    }
+
+    public List<TechnologieMission> getListTechnologie() {
+        return listTechnologie;
+    }
+
+    public void setListTechnologie(List<TechnologieMission> listTechnologie) {
+        this.listTechnologie = listTechnologie;
+    }
+
 
 //    @EJB
 //    MissionFacade missionFacade; 
