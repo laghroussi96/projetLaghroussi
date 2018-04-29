@@ -44,11 +44,12 @@ public class MissionFacade extends AbstractFacade<Mission> {
     public MissionFacade() {
         super(Mission.class);
     }
-     public List<Mission> search(Recruteur recruteur,  Double max, Double min, Langue langue, Categorie categorie, String etat) {
+
+    public List<Mission> search(Recruteur recruteur, Double max, Double min, Langue langue, Categorie categorie, String etat) {
         String requette = "SELECT m FROM Mission m where 1=1";
-       
+
         requette += SearchUtil.addConstraintMinMax("m", "maxBudget", max, min);
-         requette += SearchUtil.addConstraint("m", "avancement", "=", etat);
+        requette += SearchUtil.addConstraint("m", "avancement", "=", etat);
         if (recruteur != null) {
             requette += SearchUtil.addConstraint("m", "recruteur.nom", "=", recruteur.getNom());
         }
@@ -61,8 +62,9 @@ public class MissionFacade extends AbstractFacade<Mission> {
 
         return em.createQuery(requette).getResultList();
     }
-     public List<Mission> searchMiss(Categorie categorie,Double max, Double min) {
-         
+
+    public List<Mission> searchMiss(Categorie categorie, Double max, Double min) {
+
         String requette = "SELECT m FROM Mission m where 1=1";
         requette += SearchUtil.addConstraintMinMax("m", "maxBudget", max, min);
         if (categorie != null) {
@@ -70,39 +72,65 @@ public class MissionFacade extends AbstractFacade<Mission> {
         }
         return em.createQuery(requette).getResultList();
     }
-     
-     public void generatePdf() throws JRException, IOException{
-         Map <String,Object> params = new HashMap();
-        params.put("date","04/04/2018");
-         PdfUtil.generatePdf(findAll(), params,"missions","/jasper/MissionJasper.jasper");
-     }
-     public List<Mission> findByMissionEnCour(){
-        String  req=("select m from Mission m where m.avancement='en cour' and m.isAccepted=true");
-         return em.createQuery(req).getResultList();
-     }
-     public List<Mission> findByMissionAbouti(){
-        String  reqe=("select m from Mission m where m.avancement='aboutis' and m.isAccepted=true");
-         return em.createQuery(reqe).getResultList();
-     }
-     public List<Mission> findByMissionNonAbouti(){
-        String  reqe=("select m from Mission m where m.avancement='non aboutis' and m.isAccepted=true");
-         return em.createQuery(reqe).getResultList();
-     }
-     public List<Mission> findMission(){
-        String  reqe=("select m from Mission m where m.isAccepted=true");
-         return em.createQuery(reqe).getResultList();
-     }
-     
-      public int removeByFreelance(Long r) {
+
+    public void generatePdf() throws JRException, IOException {
+        Map<String, Object> params = new HashMap();
+        params.put("date", "04/04/2018");
+        PdfUtil.generatePdf(findByMissionAbouti(), params,"missions", "/jasper/MissionJasper.jasper");
+    }
+    
+    public void generatePdf11() throws JRException, IOException {
+        Map<String, Object> params = new HashMap();
+        params.put("date", "04/04/2018");
+        PdfUtil.generatePdf(findByMission1(), params,"missions", "/jasper/MissionJasper.jasper");
+    }
+
+    public List<Mission> findByMissionEnCour() {
+        String req = ("select m from Mission m where m.avancement='en cour' and m.isAccepted=true");
+        return em.createQuery(req).getResultList();
+    }
+
+    public List<Mission> findByMissionAbouti() {
+        String reqe = ("select m from Mission m where m.avancement='aboutis' and m.isAccepted=true");
+        return em.createQuery(reqe).getResultList();
+    }
+
+    public List<Mission> findByMissionNonAbouti() {
+        String reqe = ("select m from Mission m where m.avancement='non aboutis' and m.isAccepted=true");
+        return em.createQuery(reqe).getResultList();
+    }
+
+    public List<Mission> findMission() {
+        String reqe = ("select m from Mission m where m.isAccepted=true");
+        return em.createQuery(reqe).getResultList();
+    }
+
+    public int removeByFreelance(Long r) {
         return em.createQuery("DELETE FROM Mission m WHERE m.freelance.id='" + r + "'").executeUpdate();
     }
-      public void remov(Long r) {
+
+    public List<Mission> findByMissionEnCour2() {
+        String req = ("select m from Mission m where m.avancement='en cour'");
+        return em.createQuery(req).getResultList();
+    }
+    public List<Mission> findByMission1() {
+        String req = ("select m from Mission m where m.isAccepted=true ");
+        return em.createQuery(req).getResultList();
+    }
+
+    public void remov(Long r) {
         super.remove(new Mission(r));
     }
-                  
+
+    public void accepte(Mission item) {
+        Mission mission = find(item.getId());
+        item.setIsAccepted(true);
+        edit(mission);
+
+    }
 //      public int findByAvancement(Mission mission) {
 //        String requete = "SELECT m FROM Mission m WHERE m.mission.id='" + mission.getAvancement() + "'";
 //        return em.createQuery(requete).getResultList().size();
 //      }
-     
+
 }

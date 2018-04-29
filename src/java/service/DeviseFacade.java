@@ -28,5 +28,7 @@ public class DeviseFacade extends AbstractFacade<Devise> {
     public DeviseFacade() {
         super(Devise.class);
     }
-    
+      public void remov(Long d) {
+        super.remove(new Devise(d));
+    }
 }

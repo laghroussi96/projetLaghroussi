@@ -32,6 +32,9 @@ public class DeviseController implements Serializable {
     }
 
     public Devise getSelected() {
+         if(selected == null){
+        selected = new Devise();
+    }
         return selected;
     }
 
@@ -65,7 +68,11 @@ public class DeviseController implements Serializable {
     public void update() {
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("DeviseUpdated"));
     }
+ public void remove(Devise item) {
+        ejbFacade.remov(item.getId());
+        items.remove(items.indexOf(item));
 
+    }
     public void destroy() {
         persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("DeviseDeleted"));
         if (!JsfUtil.isValidationFailed()) {

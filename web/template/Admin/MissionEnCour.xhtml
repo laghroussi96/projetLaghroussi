@@ -171,7 +171,7 @@
                                 </ul>
                             </li>
                             <li >
-                                <a href="Paiement.html">
+                                <a href="PaiementList.xhtml">
                                     <i class="app-menu__icon fa fa-euro"></i>Paiement
                                 </a>
 
@@ -192,7 +192,10 @@
                                             <i class="fa fa-key"></i>
                                             Log Out </a>
                                     </li>
-
+ <li>
+                                        <a href="Ajouter.xhtml">
+                                            <i class="fa fa-lock"></i> Ajouter aux tables </a>
+                                    </li>
 
                                 </ul>
                             </li></ul>
@@ -207,7 +210,7 @@
         </div><br/>
   <div class="container">
             <h:form id="MissionListForm">
-                <p:dataTable id="datalist" var="item" value="#{missionController.itemsEnCour}" rows="10"
+                <p:dataTable id="datalist"   var="item" value="#{missionController.itemsEnCour2}" rows="10"
                              paginator="true"
                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                              rowsPerPageTemplate="5,10,15">
@@ -238,6 +241,9 @@
                     <p:column headerText="Budget">
                         <h:outputText value="#{item.maxBudget}" />
                     </p:column>
+                     <p:column headerText="Est acceptee">
+                        <h:outputText value="#{item.isAccepted}" />
+                    </p:column>
 
                   
                    
@@ -246,11 +252,12 @@
                           <h:outputText value="#{item.avancement}"/> </span> 
                     </p:column>
                       <p:column headerText="modifier">
-                        <p:commandButton style="color:green" actionListener="#{missionController.accepter()}" value="accepter" update=":MissionListForm:datalist" oncomplete="handleSubmit(args, 'MissionEditDialog');"/>
+                           <p:commandButton style="color:green" actionListener="#{missionController.accepter(item)}" value="accepter" update=":MissionListForm:datalist" />
                       <p:commandButton style="color:red" actionListener="#{missionController.removee(item)}" value="Supprimer" update=":MissionListForm:datalist"/>
                     </p:column>
 
                 </p:dataTable>
+                
             </h:form>
         </div>
         

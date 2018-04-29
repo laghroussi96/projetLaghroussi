@@ -28,5 +28,7 @@ public class PaysFacade extends AbstractFacade<Pays> {
     public PaysFacade() {
         super(Pays.class);
     }
-    
+     public void remov(Long p) {
+        super.remove(new Pays(p));
+    }
 }

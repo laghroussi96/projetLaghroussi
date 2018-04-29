@@ -32,6 +32,9 @@ public class PaysController implements Serializable {
     }
 
     public Pays getSelected() {
+         if(selected == null){
+        selected = new Pays();
+    }
         return selected;
     }
 
@@ -64,6 +67,12 @@ public class PaysController implements Serializable {
 
     public void update() {
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("PaysUpdated"));
+    }
+
+    public void remove(Pays item) {
+        ejbFacade.remov(item.getId());
+        items.remove(items.indexOf(item));
+
     }
 
     public void destroy() {
