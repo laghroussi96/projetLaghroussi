@@ -139,7 +139,7 @@
                     <div class="hor-menu ">
                         <ul class="nav navbar-nav">
                             <li class="active">
-                                <a href="index.html"><i class="fa fa-home"></i>Acceuil</a>
+                                <a href="Profil.xhtml"><i class="fa fa-home"></i>Acceuil</a>
                             </li>
                             <li >
                                 <a href="FreelancerList.xhtml"><i class="app-menu__icon fa fa-foursquare"></i>Freelancer</a>
@@ -149,7 +149,11 @@
                                     <i class="fa fa-user"></i>Recruteur 
                                 </a>
                             </li>
-
+ <li >
+                                <a href="AdminList.xhtml">
+                                    <i class="fa fa-user"></i>Admin 
+                                </a>
+                            </li>
 
                             <li class="menu-dropdown classic-menu-dropdown ">
                                 <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;">
@@ -188,11 +192,16 @@
                                             Mon Profil </a>
                                     </li>
                                     <li>
-                                        <a href="extra_lock2.html">
+                                        <a href="Acceuil.xhtml">
                                             <i class="fa fa-key"></i>
                                             Log Out </a>
                                     </li>
- <li>
+                                    <li>
+                                        <a href="AJouterAdmin.xhtml">
+                                            <i class="fa fa-key"></i>
+                                            Ajouter Admin </a>
+                                    </li>
+                                    <li>
                                         <a href="Ajouter.xhtml">
                                             <i class="fa fa-lock"></i> Ajouter aux tables </a>
                                     </li>
@@ -206,40 +215,40 @@
 
             <!-- < HEADER MENU -->
             <br></br>
-               <div class="box-header">
-            <h3 class="box-title" align="center"><b>Liste Des Recruteurs</b></h3>
-        </div><br/>
-   <h:form>
-                
-            <h:panelGroup>
-            
-                        <p:panelGrid columns="6" style="width:50%; text-align: center;">
-                            
-                            <p:outputLabel value="#{bundle.CreateRecruteurLabel_user}" for="user" style="font-size: 14px"/>
-                                <h:selectOneMenu class="form-control" id="user" value="#{recruteurController.user}" >
-                                      <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+            <div class="box-header">
+                <h3 class="box-title" align="center"><b>Liste Des Recruteurs</b></h3>
+            </div><br/>
+            <h:form>
+
+                <h:panelGroup>
+
+                    <p:panelGrid columns="6" style="width:50%; text-align: center;">
+
+                        <p:outputLabel value="#{bundle.CreateRecruteurLabel_user}" for="user" style="font-size: 14px"/>
+                        <h:selectOneMenu class="form-control" id="user" value="#{recruteurController.user}" >
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
                                            var="userItem"
                                            itemValue="#{userItem}" itemLabel="#{userItem.login}"/>
-                                        <f:selectItem itemValue="#{null}" itemLabel="Logins"/>
-                                             </h:selectOneMenu>
-    
+                            <f:selectItem itemValue="#{null}" itemLabel="Logins"/>
+                        </h:selectOneMenu>
+
                         <p:outputLabel value="#{bundle.CreateRecruteurLabel_Pays}" for="pays" style="font-size: 14px"/>
-                                <h:selectOneMenu class="form-control" id="pays" value="#{recruteurController.pays}" >
-                                      <f:selectItems value="#{paysController.itemsAvailableSelectOne}"
+                        <h:selectOneMenu class="form-control" id="pays" value="#{recruteurController.pays}" >
+                            <f:selectItems value="#{paysController.itemsAvailableSelectOne}"
                                            var="paysItem"
                                            itemValue="#{paysItem}" itemLabel="#{paysItem.nom}"/>
-                                        <f:selectItem itemValue="#{null}" itemLabel="pays"/>
-                                             </h:selectOneMenu>
-                        
-                        
-                        
-                        
-                       <p:commandButton  class="btn btn-primary monbtn" style="background-color:#009999" actionListener="#{recruteurController.search()}"  value="Search" update=":RecruteurListForm:datalist"/>
-                    
-                   </p:panelGrid>
-            </h:panelGroup>
-                </h:form>
-           
+                            <f:selectItem itemValue="#{null}" itemLabel="pays"/>
+                        </h:selectOneMenu>
+
+
+
+
+                        <p:commandButton  class="btn btn-primary monbtn" style="background-color:#009999" actionListener="#{recruteurController.search()}"  value="Search" update=":RecruteurListForm:datalist"/>
+
+                    </p:panelGrid>
+                </h:panelGroup>
+            </h:form>
+
         </div><br/><br/> <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
         <div class="container">
             <h:form id="RecruteurListForm">
@@ -250,18 +259,18 @@
                     <p:column headerText="Recruteur">
                         <h:outputText value="#{item.user.login}" />
                     </p:column>
-                     <p:column headerText="Nom">
-                         <h:outputText value="#{item.nom}"/>
-                        </p:column>
-                     <p:column headerText="Prenom">
-                         <h:outputText value="#{item.prenom}"/>
-                        </p:column>
-                     <p:column headerText="Tel">
-                         <h:outputText value="#{item.tel}"/>
-                        </p:column>
-                     <p:column headerText="Pays">
-                         <h:outputText value="#{item.pays.nom}"/>
-                        </p:column>
+                    <p:column headerText="Nom">
+                        <h:outputText value="#{item.nom}"/>
+                    </p:column>
+                    <p:column headerText="Prenom">
+                        <h:outputText value="#{item.prenom}"/>
+                    </p:column>
+                    <p:column headerText="Tel">
+                        <h:outputText value="#{item.tel}"/>
+                    </p:column>
+                    <p:column headerText="Pays">
+                        <h:outputText value="#{item.pays.nom}"/>
+                    </p:column>
 
 
                     <p:column headerText="Details" >
@@ -270,26 +279,26 @@
                         </p:commandButton>
                     </p:column>
                     <p:column headerText="modifier">
-                     <p:commandButton style="color:red" actionListener="#{recruteurController.remove(item)}" value="Supprimer"  update=":RecruteurListForm:datalist"/>
+                        <p:commandButton style="color:red" actionListener="#{recruteurController.remove(item)}" value="Supprimer"  update=":RecruteurListForm:datalist"/>
                     </p:column>
 
 
                 </p:dataTable>
-                  <br></br><br></br>
-                 <p:commandButton id="exportButton" style="color:blue"   value="Imprimer" action="#{recruteurController.generatePdf()}" ajax="false"/>
+                <br></br><br></br>
+                <p:commandButton id="exportButton" style="color:blue"   value="Imprimer" action="#{recruteurController.generatePdf()}" ajax="false"/>
             </h:form>
         </div>
         <p:dialog id="RecruteurDlg" widgetVar="RecruteurDialog" modal="true" resizable="false" appendTo="@(body)" header="Missions réalisées">
             <h:form>
-            <p:dataTable var="car" value="#{dtPaginatorView.cars}" rows="10"
-                         paginator="true"
-                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                         rowsPerPageTemplate="5,10,15">
-                <p:column headerText="Freelancer">
-                    <h:outputText value="#{car.id}" />
-                </p:column>
-            </p:dataTable>
-            <p:commandButton value="Fermer" onclick="RecruteurDialog.hide()"/>
+                <p:dataTable var="car" value="#{dtPaginatorView.cars}" rows="10"
+                             paginator="true"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15">
+                    <p:column headerText="Freelancer">
+                        <h:outputText value="#{car.id}" />
+                    </p:column>
+                </p:dataTable>
+                <p:commandButton value="Fermer" onclick="RecruteurDialog.hide()"/>
             </h:form>
         </p:dialog>
 
@@ -299,10 +308,10 @@
         <script src="../../ressources/admin/js/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
         <script src="../../ressources/admin/js/layout.js" type="text/javascript"></script>
         <script>
-            jQuery(document).ready(function () {
+                jQuery(document).ready(function () {
 
-                Layout.init();
-            });
+                    Layout.init();
+                });
         </script>
     </body>
 </html>

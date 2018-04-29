@@ -120,7 +120,7 @@
                                         <a href="extra_lock2.html">
                                             <i class="fa fa-lock"></i> Lock Screen </a>
                                     </li>
-                                   
+
 
                                 </ul>
                             </li>
@@ -140,7 +140,7 @@
                     <div class="hor-menu ">
                         <ul class="nav navbar-nav">
                             <li class="active">
-                                <a href="index.html"><i class="fa fa-home"></i>Acceuil</a>
+                                <a href="Profil.xhtml"><i class="fa fa-home"></i>Acceuil</a>
                             </li>
                             <li >
                                 <a href="FreelancerList.xhtml"><i class="app-menu__icon fa fa-foursquare"></i>Freelancer</a>
@@ -148,6 +148,11 @@
                             <li >
                                 <a href="RecruteurList.xhtml">
                                     <i class="fa fa-user"></i>Recruteur 
+                                </a>
+                            </li>
+                            <li >
+                                <a href="AdminList.xhtml">
+                                    <i class="fa fa-user"></i>Admin 
                                 </a>
                             </li>
 
@@ -189,11 +194,16 @@
                                             Mon Profil </a>
                                     </li>
                                     <li>
-                                        <a href="extra_lock2.html">
+                                        <a href="Acceuil.xhtml">
                                             <i class="fa fa-key"></i>
                                             Log Out </a>
                                     </li>
- <li>
+                                    <li>
+                                        <a href="AJouterAdmin.xhtml">
+                                            <i class="fa fa-key"></i>
+                                            Ajouter Admin </a>
+                                    </li>
+                                    <li>
                                         <a href="Ajouter.xhtml">
                                             <i class="fa fa-lock"></i> Ajouter aux tables </a>
                                     </li>
@@ -284,7 +294,7 @@
 
                 </p:dataTable>
                 <br></br><br></br>
-                 <p:commandButton id="exportButton" style="color:blue"   value="Imprimer" action="#{freelanceController.generatePdf()}" ajax="false"/>
+                <p:commandButton id="exportButton" style="color:blue"   value="Imprimer" action="#{freelanceController.generatePdf()}" ajax="false"/>
             </h:form>
         </div>
         <p:dialog id="FreelancerDlg" widgetVar="FreelancerDialog" modal="true" resizable="false" appendTo="@(body)" header="Missions réalisées">

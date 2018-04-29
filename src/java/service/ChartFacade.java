@@ -48,7 +48,7 @@ public class ChartFacade implements Serializable {
 
     public void createAnimatedModels() {
         animatedModel1 = initLinearModel();
-        animatedModel1.setTitle("Nombre de Mission et freelancer et de recruteur");
+        animatedModel1.setTitle("Nombre de : Missions / Freelancers / Recruteurs ");
         animatedModel1.setAnimate(true);
         animatedModel1.setLegendPosition("se");
         Axis yAxis = animatedModel1.getAxis(AxisType.Y);
@@ -62,7 +62,7 @@ public class ChartFacade implements Serializable {
         xAxis.setLabel("mois");
 
         animatedModel2 = initBarModel();
-        animatedModel2.setTitle("Missions Aboutis Non aboutis et en cour");
+        animatedModel2.setTitle("Missions : Aboutis / Non aboutis / En cour");
         animatedModel2.setAnimate(true);
         animatedModel2.setLegendPosition("ne");
         yAxis = animatedModel2.getAxis(AxisType.Y);

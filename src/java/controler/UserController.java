@@ -1,8 +1,10 @@
 package controler;
 
+import bean.Admin;
 import bean.User;
 import controler.util.JsfUtil;
 import controler.util.JsfUtil.PersistAction;
+import controler.util.SessionUtil;
 import service.UserFacade;
 
 import java.io.Serializable;
@@ -27,12 +29,43 @@ public class UserController implements Serializable {
     private service.UserFacade ejbFacade;
     private List<User> items = null;
     private User selected;
+    private Admin selectedAd;
 
+    public UserFacade getEjbFacade() {
+        return ejbFacade;
+    }
+
+    public void setEjbFacade(UserFacade ejbFacade) {
+        this.ejbFacade = ejbFacade;
+    }
+
+    public Admin getSelectedAd() {
+        if(selectedAd == null){
+        selectedAd = new Admin();
+    }
+    return selectedAd;
+    }
+
+    public void setSelectedAd(Admin selectedAd) {
+        this.selectedAd = selectedAd;
+    }
+
+    public String sesionUser(User user){
+        if(user!=null){
+            SessionUtil.setAttribute("thisUser", ejbFacade.find(user.getLogin()));
+            return "/template/Admin/AjouterAdmin.xhtml";
+        }
+        return null;
+    }
+    
     public UserController() {
     }
 
     public User getSelected() {
-        return selected;
+        if(selected == null){
+        selected = new User();
+    }
+    return selected;
     }
 
     public void setSelected(User selected) {

@@ -31,8 +31,8 @@ public class AdminFacade extends AbstractFacade<Admin> {
     
     }
     
-    public void gthhth(){
-        
+   public void remov(Long a) {
+        super.remove(new Admin(a));
     }
     
 }

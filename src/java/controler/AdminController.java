@@ -1,8 +1,10 @@
 package controler;
 
 import bean.Admin;
+import bean.User;
 import controler.util.JsfUtil;
 import controler.util.JsfUtil.PersistAction;
+import controler.util.SessionUtil;
 import service.AdminFacade;
 
 import java.io.Serializable;
@@ -27,11 +29,44 @@ public class AdminController implements Serializable {
     private service.AdminFacade ejbFacade;
     private List<Admin> items = null;
     private Admin selected;
+    private User user;
+    private User voirUser;
+
+    public User getVoirUser() {
+        voirUser = (User) SessionUtil.getAttribute("thisUser");
+        return voirUser;
+    }
+
+    public void setVoirUser(User voirUser) {
+        this.voirUser = voirUser;
+    }
+
+    public AdminFacade getEjbFacade() {
+        return ejbFacade;
+    }
+
+    public void setEjbFacade(AdminFacade ejbFacade) {
+        this.ejbFacade = ejbFacade;
+    }
+
+    public User getUser() {
+        if (user == null) {
+            user = new User();
+        }
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public AdminController() {
     }
 
     public Admin getSelected() {
+        if (selected == null) {
+            selected = new Admin();
+        }
         return selected;
     }
 
@@ -64,6 +99,12 @@ public class AdminController implements Serializable {
 
     public void update() {
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("AdminUpdated"));
+    }
+
+    public void remove(Admin item) {
+        ejbFacade.remov(item.getId());
+        items.remove(items.indexOf(item));
+
     }
 
     public void destroy() {
