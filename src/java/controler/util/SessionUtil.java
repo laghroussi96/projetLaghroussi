@@ -1,4 +1,7 @@
-package util;
+package controler.util;
+
+//import bean.Departement;
+
 
 import bean.User;
 import java.io.IOException;

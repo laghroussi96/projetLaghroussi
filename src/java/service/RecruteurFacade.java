@@ -11,6 +11,8 @@ import bean.User;
 import controler.util.PdfUtil;
 import controler.util.SearchUtil;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -58,4 +60,18 @@ public class RecruteurFacade extends AbstractFacade<Recruteur> {
  public void remov(Long r) {
         super.remove(new Recruteur(r));
     }    
+ 
+ public Long countRecByMonth(int mois) {
+        String moisFormate = "";
+        if (mois < 10) {
+            moisFormate += "0" + mois;
+        } else {
+            moisFormate = "" + mois;
+        }
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy");
+        String annee = simpleDateFormat.format(new Date());
+        String requete = "SELECT COUNT(r.id) FROM Recruteur r WHERE r.dateInscription LIKE '" + annee + "-" + moisFormate + "-%' ";
+        return (Long) em.createNativeQuery(requete).getSingleResult();
+
+ }
 }

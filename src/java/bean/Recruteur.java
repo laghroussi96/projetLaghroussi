@@ -6,6 +6,7 @@
 package bean;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -41,6 +43,16 @@ public class Recruteur implements Serializable {
     private List<Mission> missions;
     @OneToMany(mappedBy = "recruteur")
     private List<Paiement> paiements;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dateInscription;
+
+    public Date getDateInscription() {
+        return dateInscription;
+    }
+
+    public void setDateInscription(Date dateInscription) {
+        this.dateInscription = dateInscription;
+    }
 
     public List<Paiement> getPaiements() {
         return paiements;
@@ -51,6 +63,17 @@ public class Recruteur implements Serializable {
     }
 
     public Recruteur() {
+    }
+
+    public Recruteur(Long id, String prenom, String nom, double tel, Pays pays, Admin admin, User user, Date dateInscription) {
+        this.id = id;
+        this.prenom = prenom;
+        this.nom = nom;
+        this.tel = tel;
+        this.pays = pays;
+        this.admin = admin;
+        this.user = user;
+        this.dateInscription = dateInscription;
     }
 
     public Recruteur(Long id) {

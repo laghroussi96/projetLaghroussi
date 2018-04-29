@@ -18,7 +18,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
-import util.SessionUtil;
+import controler.util.SessionUtil;
 
 @Named("userController")
 @SessionScoped

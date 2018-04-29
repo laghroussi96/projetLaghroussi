@@ -6,18 +6,14 @@
 package service;
 
 import bean.Categorie;
-import bean.Freelance;
 import bean.Langue;
-import static bean.LangueSkill_.langue;
 import bean.Mission;
-import static bean.NotificationCategorie_.recruteur;
 import bean.Recruteur;
-import bean.TechnologieMission;
 import controler.util.PdfUtil;
 import controler.util.SearchUtil;
 import java.io.IOException;
-import static java.lang.Long.max;
-import static java.lang.Long.min;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -128,9 +124,58 @@ public class MissionFacade extends AbstractFacade<Mission> {
         edit(mission);
 
     }
-//      public int findByAvancement(Mission mission) {
-//        String requete = "SELECT m FROM Mission m WHERE m.mission.id='" + mission.getAvancement() + "'";
-//        return em.createQuery(requete).getResultList().size();
-//      }
+public Long countMissionAboutis(int mois){
+    String moisFormate="";
+    if(mois<10){
+        moisFormate +="0" + mois;
+    }else{
+        moisFormate=""+ mois;
+    }
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy");
+    String annee = simpleDateFormat.format(new Date());
+   String requete = "SELECT COUNT(m.id) FROM Mission m WHERE m.datePublication LIKE '" + annee + "-" + moisFormate + "-%' and m.avancement='aboutis'";
+        return (Long) em.createNativeQuery(requete).getSingleResult();
+    }
+               public Long countMissionEncour(int mois) {
+        String moisFormate = "";
+        if (mois < 10) {
+            moisFormate += "0" + mois;
+        } else {
+            moisFormate = "" + mois;
+        }
+        SimpleDateFormat maDateLongue = new SimpleDateFormat("yyyy");
+        String annee = maDateLongue.format(new Date());
+        String requete = "SELECT COUNT(m.id) FROM Mission m WHERE m.datePublication LIKE '" + annee + "-" + moisFormate + "-%' and m.avancement='en cour' ";
+        return (Long) em.createNativeQuery(requete).getSingleResult();
+    }
+               public Long countMissionNonAboutis(int mois) {
+        String moisFormate = "";
+        if (mois < 10) {
+            moisFormate += "0" + mois;
+        } else {
+            moisFormate = "" + mois;
+        }
+        SimpleDateFormat maDateLongue = new SimpleDateFormat("yyyy");
+        String annee = maDateLongue.format(new Date());
+        String requete = "SELECT COUNT(m.id) FROM Mission m WHERE m.datePublication LIKE '" + annee + "-" + moisFormate + "-%' and m.avancement='non aboutis' ";
+        return (Long) em.createNativeQuery(requete).getSingleResult();
+    }
+               public Long countMissonByMonth(int mois) {
+        String moisFormate = "";
+        if (mois < 10) {
+            moisFormate += "0" + mois;
+        } else {
+            moisFormate = "" + mois;
+        }
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy");
+        String annee = simpleDateFormat.format(new Date());
+        String requete = "SELECT COUNT(m.id) FROM Mission m WHERE m.datePublication LIKE '" + annee + "-" + moisFormate + "-%' ";
+        return (Long) em.createNativeQuery(requete).getSingleResult();
 
-}
+    }
+
+
+}   
+
+
+

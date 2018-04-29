@@ -6,6 +6,7 @@
 package bean;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -40,6 +42,8 @@ public class Freelance implements Serializable {
     private Admin admin;
     @OneToOne
     private User user;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dateInscription;
 
     @OneToMany(mappedBy = "freelance")
     private List<NotificationCategorie> notificationCategories;
@@ -60,7 +64,40 @@ public class Freelance implements Serializable {
     @OneToMany(mappedBy = "freelance")
     private List<Mission> missions;
 
+    public Date getDateInscription() {
+        return dateInscription;
+    }
+
+    public void setDateInscription(Date dateInscription) {
+        this.dateInscription = dateInscription;
+    }
+
+    public List<Paiement> getPaiements() {
+        return paiements;
+    }
+
+    public void setPaiements(List<Paiement> paiements) {
+        this.paiements = paiements;
+    }
+
+    public List<Mission> getMissions() {
+        return missions;
+    }
+
+    public void setMissions(List<Mission> missions) {
+        this.missions = missions;
+    }
+
     public Freelance() {
+    }
+
+    public Freelance(Long id, String nom, String prenom, double tel, double tarif, Date dateInscription) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.tel = tel;
+        this.tarif = tarif;
+        this.dateInscription = dateInscription;
     }
 
     public Freelance(Long id) {

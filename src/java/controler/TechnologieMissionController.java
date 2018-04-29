@@ -1,11 +1,17 @@
 package controler;
 
+import bean.Categorie;
+import bean.Commentaire;
+import bean.Mission;
+import bean.Technologie;
 import bean.TechnologieMission;
 import controler.util.JsfUtil;
 import controler.util.JsfUtil.PersistAction;
+import controler.util.SessionUtil;
 import service.TechnologieMissionFacade;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -18,6 +24,9 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import service.CommentaireFacade;
+import service.MissionFacade;
+import service.TechnologieFacade;
 
 @Named("technologieMissionController")
 @SessionScoped
@@ -25,10 +34,114 @@ public class TechnologieMissionController implements Serializable {
 
     @EJB
     private service.TechnologieMissionFacade ejbFacade;
+    @EJB
+    private service.TechnologieFacade ejbTecFacade;
+    @EJB
+    private service.MissionFacade ejbMesFacade;
+    @EJB
+    private service.CommentaireFacade commentaireFacade;
     private List<TechnologieMission> items = null;
+    private List<TechnologieMission> technologieMissions = new ArrayList<>();
+    private List<Technologie> technologies = new ArrayList<>();
+    private List<Mission> missions = new ArrayList<>();
     private TechnologieMission selected;
+    private Categorie categorie;
+    private List<Commentaire> coms = new ArrayList<>();
 
+     public List<Technologie> findByCate() {
+        technologies = ejbTecFacade.findByCate(categorie);
+        return technologies;
+    }
+   public String voirMission(Mission mission){
+       if(mission!=null){
+           SessionUtil.setAttribute("thisMission", ejbMesFacade.find(mission.getId()));
+           return "/template/otherPages/MissionItem";
+       }
+       return null;
+   }
+    public List<TechnologieMission> findByMissions(Mission mission) {
+        technologieMissions = ejbFacade.findByMission(mission.getId());
+        return technologieMissions;
+    }
+
+    public List<Commentaire> listCommetaire(Mission mission) {
+        coms = commentaireFacade.findByMission(mission.getId());
+        return coms;
+    }
     public TechnologieMissionController() {
+    }
+
+    public TechnologieMissionFacade getEjbFacade() {
+        return ejbFacade;
+    }
+
+    public void setEjbFacade(TechnologieMissionFacade ejbFacade) {
+        this.ejbFacade = ejbFacade;
+    }
+
+    public TechnologieFacade getEjbTecFacade() {
+        return ejbTecFacade;
+    }
+
+    public void setEjbTecFacade(TechnologieFacade ejbTecFacade) {
+        this.ejbTecFacade = ejbTecFacade;
+    }
+
+    public MissionFacade getEjbMesFacade() {
+        return ejbMesFacade;
+    }
+
+    public void setEjbMesFacade(MissionFacade ejbMesFacade) {
+        this.ejbMesFacade = ejbMesFacade;
+    }
+
+    public CommentaireFacade getCommentaireFacade() {
+        return commentaireFacade;
+    }
+
+    public void setCommentaireFacade(CommentaireFacade commentaireFacade) {
+        this.commentaireFacade = commentaireFacade;
+    }
+
+    public List<TechnologieMission> getTechnologieMissions() {
+        return technologieMissions;
+    }
+
+    public void setTechnologieMissions(List<TechnologieMission> technologieMissions) {
+        this.technologieMissions = technologieMissions;
+    }
+
+    public List<Technologie> getTechnologies() {
+        return technologies;
+    }
+
+    public void setTechnologies(List<Technologie> technologies) {
+        this.technologies = technologies;
+    }
+
+    public List<Mission> getMissions() {
+        missions=ejbMesFacade.findAll();
+        return missions;
+    }
+
+    public void setMissions(List<Mission> missions) {
+        this.missions = missions;
+    }
+
+    public Categorie getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
+    }
+
+    public List<Commentaire> getComs() {
+        return coms;
+    }
+
+    public void setComs(List<Commentaire> coms) {
+        this.coms = coms;
     }
 
     public TechnologieMission getSelected() {

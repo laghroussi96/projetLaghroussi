@@ -34,5 +34,7 @@ public class TechnologieMissionFacade extends AbstractFacade<TechnologieMission>
     public TechnologieMissionFacade() {
         super(TechnologieMission.class);
     }
-    
+    public List<TechnologieMission> findByMission(Long id){
+        return em.createQuery("SELECT t FROM TechnologieMission t WHERE t.mission.id='"+id+"'").getResultList();
+    }
 }

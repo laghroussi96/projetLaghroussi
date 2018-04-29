@@ -10,6 +10,8 @@ import bean.Pays;
 import controler.util.PdfUtil;
 import controler.util.SearchUtil;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -95,4 +97,18 @@ public class FreelanceFacade extends AbstractFacade<Freelance> {
         public void remov(Long f) {
         super.remove(new Freelance(f));
     }
+        public Long countFreelancerByMonth(int mois) {
+        String moisFormate = "";
+        if (mois < 10) {
+            moisFormate += "0" + mois;
+        } else {
+            moisFormate = "" + mois;
+        }
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy");
+        String annee = simpleDateFormat.format(new Date());
+        String requete = "SELECT COUNT(f.id) FROM Freelance f WHERE f.dateInscription LIKE '" + annee + "-" + moisFormate + "-%' ";
+        return (Long) em.createNativeQuery(requete).getSingleResult();
+
+    }
+
 }
