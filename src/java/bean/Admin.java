@@ -30,8 +30,10 @@ public class Admin implements Serializable {
     private String prenom;
     @ManyToOne
     private Pays pays;
+    
     @OneToOne
     private User user;
+    
     @OneToMany(mappedBy = "admin")
     private List<NotificationCategorie> notificationCategories;
 

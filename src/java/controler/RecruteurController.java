@@ -1,11 +1,13 @@
 package controler;
 
+import bean.Freelance;
 import bean.Pays;
 import bean.Recruteur;
 
 import bean.User;
 import controler.util.JsfUtil;
 import controler.util.JsfUtil.PersistAction;
+import controler.util.SessionUtil;
 import java.io.IOException;
 import service.RecruteurFacade;
 
@@ -23,6 +25,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import net.sf.jasperreports.engine.JRException;
+import service.FreelanceFacade;
+import service.MissionFacade;
 
 @Named("recruteurController")
 @SessionScoped
@@ -34,8 +38,30 @@ public class RecruteurController implements Serializable {
     private Recruteur selected;
     private User user;
     private Pays pays;
+    private Recruteur voirRecruteur;
+    @EJB
+    private MissionFacade missionFacade;
+    @EJB
+    private FreelanceFacade freelanceFacade;
+
+    public Recruteur getVoirRecruteur() {
+        voirRecruteur=(Recruteur)SessionUtil.getAttribute("thisRecruteur");
+        return voirRecruteur;
+    }
+
+    public void setVoirRecruteur(Recruteur voirRecruteur) {
+        this.voirRecruteur = voirRecruteur;
+    }
     
 
+    
+   public String sesionRecruteur(Recruteur recruteur){
+        if(user!=null){
+            SessionUtil.setAttribute("thisRecruteur", ejbFacade.find(recruteur.getId()));
+            return "/template/recruteur/Historique.xhtml";
+        }
+        return null;
+    }
     public RecruteurFacade getEjbFacade() {
         return ejbFacade;
     }
@@ -65,6 +91,10 @@ public class RecruteurController implements Serializable {
     }
 
     public Recruteur getSelected() {
+       if(selected==null){
+            selected=new Recruteur();
+                    
+        }
         return selected;
     }
 
@@ -101,6 +131,11 @@ public class RecruteurController implements Serializable {
 public void search() {
       items = ejbFacade.search(pays,user);
     }
+
+public void detail(Recruteur item){
+    getSelected().setMissions(missionFacade.findByRecruteur(item.getId()));
+}
+
 public void generatePdf() throws JRException, IOException{
       ejbFacade.generatePdf();
       FacesContext.getCurrentInstance().responseComplete();

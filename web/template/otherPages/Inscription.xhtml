@@ -59,15 +59,15 @@
                     <div class="panel-body">
 
                         <div class="form-group">
-                            <p:inputText maxlength="100" type="text" id="login" value="#{freelanceController.selected.user.login}" required="true" class="form-control text" placeholder="Login"/>
+                            <p:inputText maxlength="100" type="text" required="required" class="form-control text" placeholder="Login"/>
                         </div>
 
                         <div class="form-group">
-                            <p:inputText maxlength="100" type="password" required="true" class="form-control" placeholder="Mot de passe" />
+                            <p:inputText maxlength="100" type="password" required="required" class="form-control" placeholder="Mot de passe" />
                         </div>
 
                         <div class="form-group">
-                            <p:inputText maxlength="100" type="password" required="true" class="form-control" placeholder="Confirmer mot de passe" />
+                            <p:inputText maxlength="100" type="password" required="required" class="form-control" placeholder="Confirmer mot de passe" />
                         </div>
                        
                         <div data-toggle="popover" class="champ">
@@ -107,7 +107,9 @@
                         </div>
 
                         <div class="form-group">
-                                <h:selectOneMenu class="form-control" id="pays" required="required" value="#{freelanceController.selected.pays}">
+                                <h:selectOneMenu class="form-control" id="pays"  required="required" value="#{freelanceController.selected.pays}" >
+                                    <f:selectItem itemValue="#{null}"  itemLabel="--Pays--"/>
+                                                  
                                     <f:selectItems value="#{paysController.itemsAvailableSelectOne}" var="paysItem" itemLabel="#{paysItem.nom}" itemValue="#{paysItem}" />
                                                         
                                                     </h:selectOneMenu>
@@ -121,6 +123,7 @@
 
                             <div class="form-group col-lg-6">
                                 <h:selectOneMenu class="form-control" id="devise" required="true" value="#{freelanceController.selected.devise}">
+                                    <f:selectItem itemValue="#{null}"  itemLabel="--Devise--"/>
                                     <f:selectItems value="#{deviseController.itemsAvailableSelectOne}" var="deviseItem" itemLabel="#{deviseItem.nom}" itemValue="#{deviseItem.nom}" />
                                                         
                                                     </h:selectOneMenu>
@@ -136,6 +139,7 @@
 
                         <div class="form-group ">
                                 <h:selectOneMenu class="form-control" id="diplome" required="true" value="#{freelanceController.selected.diplome}">
+                                   <f:selectItem itemValue="#{null}"  itemLabel="--Diplome--"/>
                                     <f:selectItems value="#{diplomeController.itemsAvailableSelectOne}" var="diplomeItem" itemLabel="#{diplomeItem.nom}" itemValue="#{diplomeItem.nom}" />
                                                         
                                                     </h:selectOneMenu>
@@ -145,6 +149,7 @@
 
                             <div class="form-group col-lg-6">
                                 <h:selectOneMenu class="form-control" id="langue" required="true" value="#{freelanceController.selected.langueSkills}">
+                                    <f:selectItem itemValue="#{null}"  itemLabel="--Langue--"/>
                                     <f:selectItems value="#{langueController.itemsAvailableSelectOne}" var="langueItem" itemLabel="#{langueItem.nom}" itemValue="#{langueItem.nom}" />
                                                         
                                                     </h:selectOneMenu>
@@ -152,6 +157,7 @@
 
                             <div class="form-group col-lg-6">
                                 <h:selectOneMenu class="form-control" id="langue" required="true" value="#{freelanceController.selected.langueSkills}">
+                                   <f:selectItem itemValue="#{null}"  itemLabel="--LangueSkill--"/>
                                     <f:selectItems value="#{langueSkillController.itemsAvailableSelectOne}" var="langueSkillItem" itemLabel="#{langueSkillItem.niveau}" itemValue="#{langueSkillItem.niveau}" />
                                                         
                                                     </h:selectOneMenu>
@@ -194,9 +200,10 @@
                                         <label>HTML</label>
                                         <input type="checkbox" id="checkbox1" />
                                         <label>MySQL</label>
-                                    </div>
+                                <!--    </div>
 
-                                    <div class="checkbox checkbox-inline">
+                                    <div class="checkbox checkbox-inline"> -->
+                                
                                         <input type="checkbox" id="checkbox1" />
                                         <label>Javascript</label>
                                         <input type="checkbox" id="checkbox1" />
@@ -207,7 +214,11 @@
                                         <label>WordPress</label>
                                     </div>
                                 </div>
-
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                
+                       
                                 <div class="accordion-head">Téléphones portables et informatique <span class="plus">+</span></div>
 
                                 <div class="accordion-body" style="display: none;">
@@ -234,6 +245,10 @@
                                         <label>iPad</label>
                                     </div>
                                 </div>
+                                
+                                <br></br>
+                                <br></br>
+                                <br></br>
                             </div>
                         </div>
                         <p:commandButton class="btn btn-success nextBtn pull-right" actionListener="#{freelanceController.create}" value="#{bundle.Save}">Terminer!</p:commandButton>

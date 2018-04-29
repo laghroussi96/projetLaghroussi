@@ -29,8 +29,18 @@ public class User implements Serializable {
     @OneToOne
     private Image image;
     private boolean mdpChanged;
-    @OneToMany(mappedBy = "user")
+    
     protected List<Device> devices;
+    @OneToOne(mappedBy = "user")
+    private Admin admin;
+
+    public Admin getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Admin admin) {
+        this.admin = admin;
+    }
 
     public Image getImage() {
         return image;
@@ -102,6 +112,14 @@ public class User implements Serializable {
         this.mdpChanged = mdpChanged;
     }
 
+    public User(String login, String passeword, int blocked, int nbrCnx, int type) {
+        this.login = login;
+        this.passeword = passeword;
+        this.blocked = blocked;
+        this.nbrCnx = nbrCnx;
+        this.type = type;
+    }
+
     public User(String login) {
         this.login = login;
     }
@@ -143,6 +161,10 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "User{" + "login=" + login + ", passeword=" + passeword + ", blocked=" + blocked + ", nbrCnx=" + nbrCnx + ", type=" + type + ", mdpChanged=" + mdpChanged + '}';
+    }
+
+    public void setUser(User user) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
    

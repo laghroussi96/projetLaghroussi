@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -30,6 +31,8 @@ public class RecruteurFacade extends AbstractFacade<Recruteur> {
 
     @PersistenceContext(unitName = "freelancerPU")
     private EntityManager em;
+    @EJB 
+    private MissionFacade missionFacade;
 
     @Override
     protected EntityManager getEntityManager() {
@@ -74,4 +77,6 @@ public class RecruteurFacade extends AbstractFacade<Recruteur> {
         return (Long) em.createNativeQuery(requete).getSingleResult();
 
  }
+   
+ 
 }

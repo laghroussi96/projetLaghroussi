@@ -66,6 +66,7 @@ public class AdminController implements Serializable {
     public Admin getSelected() {
         if (selected == null) {
             selected = new Admin();
+           selected.setUser(new User());
         }
         return selected;
     }

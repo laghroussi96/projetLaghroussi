@@ -1,12 +1,507 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-        Hello from Facelets
+        <meta charset="utf-8"/>
+        <title>Freelancer</title>
+
+        <meta content="width=device-width, initial-scale=1.0" name="viewport"></meta>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"></meta>
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css"/>
+        <link href="../../ressources/css/font-awesome.min.css" rel="stylesheet"/>
+        <link href="../../ressources/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="../../ressources/admin/css/components-rounded.css" rel="stylesheet"/>
+        <link href="../../ressources/admin/css/layout1.css" rel="stylesheet"/>
+        <link href="../../ressources/admin/css/timeline.css" rel="stylesheet"/>
+        <link href="../../ressources/admin/css/red-intense.css" rel="stylesheet"/>
+        <link href="../../ressources/admin/css/simple-line-icons.min.css" rel="stylesheet"/>
+
+        <meta charset="utf-8" />
+        <title>Metronic | New User Profile</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <meta content="" name="description" />
+        <meta content="" name="author" /><!-- BEGIN GLOBAL MANDATORY STYLES --><link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=all" rel="stylesheet" type="text/css" /><link href="../../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" /><link href="../../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" /><link href="../../assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" /><link href="../../assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" /><!-- END GLOBAL MANDATORY STYLES --><!-- BEGIN PAGE LEVEL STYLES --><link href="../../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" /><link href="../../assets/admin/pages/css/profile.css" rel="stylesheet" type="text/css" /><link href="../../assets/admin/pages/css/tasks.css" rel="stylesheet" type="text/css" /><!-- END PAGE LEVEL STYLES --><!-- BEGIN THEME STYLES --><link href="../../assets/global/css/components-rounded.css" id="style_components" rel="stylesheet" type="text/css" /><link href="../../assets/global/css/plugins.css" rel="stylesheet" type="text/css" /><link href="../../assets/admin/layout3/css/layout1.css" rel="stylesheet" type="text/css" /><link href="../../assets/admin/layout3/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color" /><link href="../../assets/admin/layout3/css/custom.css" rel="stylesheet" type="text/css" /><!-- END THEME STYLES --><link rel="shortcut icon" href="favicon.ico" />
+        <!-- END HEAD --><!-- BEGIN BODY --><!-- DOC: Apply "page-header-menu-fixed" class to set the mega menu fixed  --><!-- DOC: Apply "page-header-top-fixed" class to set the top menu fixed  -->
+    </h:head> 
+    <h:body><!-- BEGIN HEADER -->
+        <div class="page-header">
+            <!-- BEGIN HEADER TOP -->
+            <div class="page-header-top">
+                <div class="container">
+                    <!-- BEGIN LOGO -->
+                    <div class="page-logo">
+                        <a href="index.html"><img src="../../ressources/img/freelancer.png" alt="logo" class="logo-default"/></a>
+                    </div>
+                    <!-- END LOGO -->
+                    <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                    <a href="javascript:;" class="menu-toggler"></a>
+                    <!-- END RESPONSIVE MENU TOGGLER -->
+                    <!-- BEGIN TOP NAVIGATION MENU -->
+                    <div class="top-menu">
+                        <ul class="nav navbar-nav pull-right">
+                            <!-- BEGIN NOTIFICATION DROPDOWN -->
+                            <li class="dropdown dropdown-extended dropdown-dark dropdown-notification" id="header_notification_bar">
+                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                    <i class="fa fa-bell-o"></i>
+                                    <span class="badge badge-default"><!--nombre de notifications--></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="external">
+
+                                        <a href="Notification.xhtml">Voir tout</a>
+                                    </li>
+                                    <li>
+                                        <ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
+                                            <li>
+                                                <a href="javascript:;">
+                                                    <span class="time"><!--time--></span>
+                                                    <span class="details">
+                                                        <span class="label label-sm label-icon label-success">
+                                                            <i class="fa fa-plus"></i>
+                                                        </span>
+                                                        <!--noti--></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+
+
+                            <!-- END TODO DROPDOWN -->
+                            <li class="droddown dropdown-separator">
+                                <span class="separator"></span>
+                            </li>
+                            <!-- BEGIN INBOX DROPDOWN -->
+                            <li class="dropdown dropdown-extended dropdown-dark dropdown-inbox" id="header_inbox_bar">
+                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                    <span class="circle"><!--nbr--></span>
+                                    <span class="corner"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="external">
+                                        <h3>Vous avez <strong> Les profils</strong> des admins </h3>
+                                        <a href="View_admins.xhtml">Voir tout</a>
+                                    </li>
+                                    <li>
+                                        <ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
+                                            <li>
+                                                <a href="inbox.html?a=view">
+                                                    <span class="photo">
+                                                        <img src="../../assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt=""/>
+                                                    </span>
+                                                    <span class="subject">
+                                                        <span class="from">
+                                                            <!--Nom_admin--> </span>
+                                                        <span class="time"><!--time--></span>
+                                                    </span>
+                                                    <span class="message">
+                                                        <!--noti--> </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown dropdown-user dropdown-dark">
+                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                    <img alt="" class="img-circle" src="../../assets/admin/layout3/img/avatar9.jpg"/>
+                                    <span class="username username-hide-mobile"><!--NOm_admin--></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-default">
+                                    <li>
+                                        <a href="extra_profile.html">
+                                            <i class="fa fa-user"></i> My Profile </a>
+                                    </li>
+
+                                    <li class="divider">
+                                    </li>
+                                    <li>
+                                        <a href="extra_lock2.html">
+                                            <i class="fa fa-lock"></i> Lock Screen </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                            <!-- END USER LOGIN DROPDOWN -->
+                        </ul>
+                    </div>
+                    <!-- END TOP NAVIGATION MENU -->
+                </div>
+            </div><div class="page-container">
+                <!-- BEGIN PAGE HEAD -->
+
+                <div class="page-head">
+
+                    <div class="container">
+                        <!-- BEGIN PAGE TITLE -->
+
+
+                        <!-- END PAGE TITLE -->
+                        <!-- BEGIN PAGE TOOLBAR -->
+
+                        <div class="page-toolbar">
+                            <!-- BEGIN THEME PANEL -->
+
+                            <div class="btn-group btn-theme-panel">
+                                <a href="javascript:;" class="btn dropdown-toggle" data-toggle="dropdown">
+                                    <i class="icon-settings" />
+                                </a>
+
+                                <div class="dropdown-menu theme-panel pull-right dropdown-custom hold-on-click">
+
+                                    <div class="row">
+
+
+                                        <div class="col-md-6 col-sm-6 col-xs-12 seperator">
+
+                                            <h3>LAYOUT</h3>
+
+                                            <ul class="theme-settings">
+
+
+                                                <li>
+                                                    Layout
+                                                    <select class="theme-setting theme-setting-layout form-control input-sm input-small input-inline tooltips" data-original-title="Change layout type" data-container="body" data-placement="left">
+
+                                                        <option value="boxed" selected="selected">Boxed</option>
+
+                                                        <option value="fluid">Fluid</option>
+                                                    </select>
+                                                </li>
+
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END THEME PANEL -->
+                        </div>
+                        <!-- END PAGE TOOLBAR -->
+                    </div>
+                </div>
+                <div class="page-header-menu">
+                <div class="container">
+                    <!-- BEGIN MEGA MENU -->
+                    <!-- DOC: Apply "hor-menu-light" class after the "hor-menu" class below to have a horizontal menu with white background -->
+                    <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
+                    <div class="hor-menu ">
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="Profil.xhtml"><i class="fa fa-home"></i>Acceuil</a>
+                            </li>
+                            <li >
+                                <a href="FreelancerList.xhtml"><i class="app-menu__icon fa fa-foursquare"></i>Freelancer</a>
+                            </li>
+                            <li >
+                                <a href="RecruteurList.xhtml">
+                                    <i class="fa fa-user"></i>Recruteur 
+                                </a>
+                            </li>
+                            <li >
+                                <a href="AdminList.xhtml">
+                                    <i class="fa fa-user"></i>Admin 
+                                </a>
+                            </li>
+
+
+                            <li class="menu-dropdown classic-menu-dropdown ">
+                                <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;">
+                                    <i class="app-menu__icon fa fa-th-list"></i>Mission <i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-menu pull-left">
+                                    <li>
+                                        <a href="MissionEnCour.xhtml">
+                                            <i class="fa fa-spinner"></i>
+                                            En cour de réalisation </a>
+                                    </li>
+                                    <li>
+                                        <a href="MissionRealise.xhtml">
+                                            <i class="fa fa-check-square-o"></i>
+                                            Réalisée </a>
+                                    </li>
+
+
+                                </ul>
+                            </li>
+                            <li >
+                                <a href="PaiementList.xhtml">
+                                    <i class="app-menu__icon fa fa-euro"></i>Paiement
+                                </a>
+
+
+                            </li>
+                            <li  class="menu-dropdown classic-menu-dropdown ">
+                                <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;">
+                                    <i class="app-menu__icon fa  fa-cog"></i>Paramètres <i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-menu pull-left">
+                                    <li class="active">
+                                        <a href="Profil.xhtml">
+                                            <i class=" fa fa-user"></i>
+                                            Mon Profil </a>
+                                    </li>
+                                    <li>
+                                        <a href="Acceuil.xhtml">
+                                            <i class="fa fa-key"></i>
+                                            Log Out </a>
+                                    </li>
+                                    <li>
+                                        <a href="AJouterAdmin.xhtml">
+                                            <i class="fa fa-key"></i>
+                                            Ajouter Admin </a>
+                                    </li>
+                                    <li>
+                                        <a href="Ajouter.xhtml">
+                                            <i class="fa fa-lock"></i> Ajouter aux tables </a>
+                                    </li>
+
+                                </ul>
+                            </li></ul>
+                    </div>
+                    <!-- END MEGA MENU -->
+                </div>
+            </div>
+                <div class="page-title" style="position: relative;
+
+                     left:20px;
+                     width: 900px">
+
+                    <h1>Mon Profil </h1>
+                </div>
+                <!-- END PAGE HEAD -->
+                <!-- BEGIN PAGE CONTENT -->
+
+                <div class="page-content">
+
+                    <div class="container">
+                        <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+
+                        <div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+                            <div class="modal-dialog">
+
+                                <div class="modal-content">
+
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" />
+
+                                        <h4 class="modal-title">Modal title</h4>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        Widget settings form goes here
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn blue">Save changes</button>
+                                        <button type="button" class="btn default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+
+
+
+
+
+                        <div style="display:inline-table; float: left">
+                            <div style="position: relative;
+
+                                 left:20px;
+                                 width: 700px; display:table-cell;">
+                                <p:chart type="line" model="#{chartController.animatedModel1}"/><br/><br/>
+                                <p:chart type="bar" model="#{chartController.animatedModel2}"  />
+                            </div>
+
+                            <!-- END PORTLET MAIN -->
+
+
+                            <div class="col-lg-3" >
+                                <!-- BEGIN PROFILE SIDEBAR -->
+
+                                <div class="profile-sidebar" style="width: 300px;" >
+                                    <!-- PORTLET MAIN -->
+
+                                    <div class="portlet light profile-sidebar-portlet" style="position: relative;
+
+                                         left:200px;" >
+                                        <!-- SIDEBAR USERPIC -->
+
+                                        <div class="profile-userpic" >
+                                            <img src="../../ressources/img/50.jpg" class="img-responsive" alt="" />
+                                        </div>
+                                        <!-- END SIDEBAR USERPIC -->
+                                        <!-- SIDEBAR USER TITLE -->
+
+                                        <div class="profile-usertitle">
+
+                                            <div class="profile-usertitle-name" align="center">
+                                                <h4>Salma Bennajim</h4>
+                                            </div>
+
+                                           
+                                        </div>
+                                        <!-- END SIDEBAR USER TITLE -->
+
+                                        <!-- SIDEBAR BUTTONS -->
+                                        <br></br>
+                                        <div class="profile-userbuttons" align="center">
+                                            <button type="button" class="btn btn-circle green-haze btn-sm">Admin</button>
+                                           
+                                        </div>
+                                        <!-- END SIDEBAR BUTTONS -->
+                                        <!-- SIDEBAR MENU -->
+
+                                        <div class="profile-usermenu" style="position: relative;
+
+                                             left:0px;">
+
+                                            <ul class="nav">
+
+                                                <li>
+                                                    <a href="#">
+                                                        <i class=" fa fa-envelope" />
+                                                        bensalma@gmail.com </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="fa  fa-phone-square" />
+                                                        0696230311  </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="fa fa-map-marker" />
+                                                        Maroc </a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                        <!-- END MENU --> 
+                                    </div>
+                                    <!-- END PORTLET MAIN -->
+
+
+                                </div>
+                                <!-- END BEGIN PROFILE SIDEBAR -->
+                                <!-- BEGIN PROFILE CONTENT -->
+
+
+
+
+                                <!-- END PROFILE CONTENT -->
+                            </div>
+
+
+
+                        </div>
+                        <!-- END BEGIN PROFILE SIDEBAR -->
+                        <!-- BEGIN PROFILE CONTENT -->
+
+                    </div>
+
+
+                    <!-- END PROFILE CONTENT -->
+                </div>
+            </div>
+        </div>
+
+        <br></br><br></br> <br></br> <br></br> <br></br> <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br> <br></br> <br></br> <br></br> <br></br><br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br><br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br><br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br><br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br>
+
+        <div class="page-prefooter">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-3 col-sm-6 col-xs-12 footer-block">
+
+                        <h2>About</h2>
+
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam dolore.
+                        </p>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-xs12 footer-block">
+
+                        <h2>Subscribe Email</h2>
+
+                        <div class="subscribe-form">
+                            <form action="javascript:;">
+
+                                <div class="input-group">
+                                    <input type="text" placeholder="mail@email.com" class="form-control" />
+                                    <span class="input-group-btn">
+                                        <button class="btn" type="submit">Submit</button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-xs-12 footer-block">
+
+                        <h2>Follow Us On</h2>
+
+                        <ul class="social-icons">
+
+                            <li>
+                                <a href="javascript:;" data-original-title="rss" class="rss" />
+                            </li>
+
+                            <li>
+                                <a href="javascript:;" data-original-title="facebook" class="facebook" />
+                            </li>
+
+                            <li>
+                                <a href="javascript:;" data-original-title="twitter" class="twitter" />
+                            </li>
+
+                            <li>
+                                <a href="javascript:;" data-original-title="googleplus" class="googleplus" />
+                            </li>
+
+                            <li>
+                                <a href="javascript:;" data-original-title="linkedin" class="linkedin" />
+                            </li>
+
+                            <li>
+                                <a href="javascript:;" data-original-title="youtube" class="youtube" />
+                            </li>
+
+                            <li>
+                                <a href="javascript:;" data-original-title="vimeo" class="vimeo" />
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-xs-12 footer-block">
+
+                        <h2>Contacts</h2>
+                        <address class="margin-bottom-40">
+                            Phone: 800 123 3456<br />
+                            Email: <a href="mailto:info@metronic.com">info@metronic.com</a>
+                        </address>
+                    </div>
+                </div>
+            </div></div><!-- END PRE-FOOTER --><!-- BEGIN FOOTER -->
+        <div class="page-footer">
+
+            <div class="container">
+                2014 © Metronic. All Rights Reserved.
+            </div></div>
+
     </h:body>
 </html>
-

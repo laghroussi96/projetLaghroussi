@@ -72,17 +72,22 @@ public class MissionFacade extends AbstractFacade<Mission> {
     public void generatePdf() throws JRException, IOException {
         Map<String, Object> params = new HashMap();
         params.put("date", "04/04/2018");
-        PdfUtil.generatePdf(findByMissionAbouti(), params,"missions", "/jasper/MissionJasper.jasper");
+        PdfUtil.generatePdf(findByMissionAbouti(), params, "missions", "/jasper/MissionJasper.jasper");
     }
-    
+
     public void generatePdf11() throws JRException, IOException {
         Map<String, Object> params = new HashMap();
         params.put("date", "04/04/2018");
-        PdfUtil.generatePdf(findByMission1(), params,"missions", "/jasper/MissionJasper.jasper");
+        PdfUtil.generatePdf(findByMission1(), params, "missions", "/jasper/MissionJasper.jasper");
     }
 
     public List<Mission> findByMissionEnCour() {
         String req = ("select m from Mission m where m.avancement='en cour' and m.isAccepted=true");
+        return em.createQuery(req).getResultList();
+    }
+
+    public List<Mission> findByRecruteur(Recruteur recruteur) {
+        String req = ("select m from Mission m where m.isAccepted=true and m.recruteur.id='" + recruteur.getId() + "'");
         return em.createQuery(req).getResultList();
     }
 
@@ -109,6 +114,7 @@ public class MissionFacade extends AbstractFacade<Mission> {
         String req = ("select m from Mission m where m.avancement='en cour'");
         return em.createQuery(req).getResultList();
     }
+
     public List<Mission> findByMission1() {
         String req = ("select m from Mission m where m.isAccepted=true ");
         return em.createQuery(req).getResultList();
@@ -124,19 +130,21 @@ public class MissionFacade extends AbstractFacade<Mission> {
         edit(mission);
 
     }
-public Long countMissionAboutis(int mois){
-    String moisFormate="";
-    if(mois<10){
-        moisFormate +="0" + mois;
-    }else{
-        moisFormate=""+ mois;
-    }
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy");
-    String annee = simpleDateFormat.format(new Date());
-   String requete = "SELECT COUNT(m.id) FROM Mission m WHERE m.datePublication LIKE '" + annee + "-" + moisFormate + "-%' and m.avancement='aboutis'";
+
+    public Long countMissionAboutis(int mois) {
+        String moisFormate = "";
+        if (mois < 10) {
+            moisFormate += "0" + mois;
+        } else {
+            moisFormate = "" + mois;
+        }
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy");
+        String annee = simpleDateFormat.format(new Date());
+        String requete = "SELECT COUNT(m.id) FROM Mission m WHERE m.datePublication LIKE '" + annee + "-" + moisFormate + "-%' and m.avancement='aboutis'";
         return (Long) em.createNativeQuery(requete).getSingleResult();
     }
-               public Long countMissionEncour(int mois) {
+
+    public Long countMissionEncour(int mois) {
         String moisFormate = "";
         if (mois < 10) {
             moisFormate += "0" + mois;
@@ -148,7 +156,8 @@ public Long countMissionAboutis(int mois){
         String requete = "SELECT COUNT(m.id) FROM Mission m WHERE m.datePublication LIKE '" + annee + "-" + moisFormate + "-%' and m.avancement='en cour' ";
         return (Long) em.createNativeQuery(requete).getSingleResult();
     }
-               public Long countMissionNonAboutis(int mois) {
+
+    public Long countMissionNonAboutis(int mois) {
         String moisFormate = "";
         if (mois < 10) {
             moisFormate += "0" + mois;
@@ -160,7 +169,8 @@ public Long countMissionAboutis(int mois){
         String requete = "SELECT COUNT(m.id) FROM Mission m WHERE m.datePublication LIKE '" + annee + "-" + moisFormate + "-%' and m.avancement='non aboutis' ";
         return (Long) em.createNativeQuery(requete).getSingleResult();
     }
-               public Long countMissonByMonth(int mois) {
+
+    public Long countMissonByMonth(int mois) {
         String moisFormate = "";
         if (mois < 10) {
             moisFormate += "0" + mois;
@@ -174,8 +184,10 @@ public Long countMissionAboutis(int mois){
 
     }
 
-
-}   
-
-
-
+    public List<Mission> findByRecruteur(Long id) {
+        return em.createQuery("select m from Mission m where m.recruteur.id='" + id + "' and m.isAccepted=true").getResultList();
+    }
+    public List<Mission> findByFreelance(Long id) {
+        return em.createQuery("select m from Mission m where m.freelance.id='" + id + "' and m.isAccepted=true").getResultList();
+    }
+}

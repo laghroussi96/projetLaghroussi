@@ -138,13 +138,13 @@
                     <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
                     <div class="hor-menu ">
                         <ul class="nav navbar-nav">
-                            <li class="active">
+                            <li >
                                 <a href="Profil.xhtml"><i class="fa fa-home"></i>Acceuil</a>
                             </li>
                             <li >
                                 <a href="FreelancerList.xhtml"><i class="app-menu__icon fa fa-foursquare"></i>Freelancer</a>
                             </li>
-                            <li >
+                            <li class="active">
                                 <a href="RecruteurList.xhtml">
                                     <i class="fa fa-user"></i>Recruteur 
                                 </a>
@@ -187,7 +187,7 @@
                                 </a>
                                 <ul class="dropdown-menu pull-left">
                                     <li>
-                                        <a href="extra_profile.html">
+                                        <a href="Profil.xhtml">
                                             <i class=" fa fa-user"></i>
                                             Mon Profil </a>
                                     </li>
@@ -274,7 +274,7 @@
 
 
                     <p:column headerText="Details" >
-                        <p:commandButton  value="Liste Missions" class="btn btn-primary" icon="ui-icon-eye" oncomplete="PF('RecruteurDialog').show()">
+                        <p:commandButton  value="Liste Missions" actionListener="#{recruteurController.detail(item)}" class="btn btn-primary" icon="ui-icon-eye" oncomplete="PF('RecruteurDialog').show()" update=":RecruteurListForm:datalist1">
                           <!--f:setPropertyActionListener value="#{item}" target="#{dtSelectionView.selectedCar}" /-->
                         </p:commandButton>
                     </p:column>
@@ -286,6 +286,56 @@
                 </p:dataTable>
                 <br></br><br></br>
                 <p:commandButton id="exportButton" style="color:blue"   value="Imprimer" action="#{recruteurController.generatePdf()}" ajax="false"/>
+                <br></br> <br></br> <br></br>
+             <div class="box-header">
+                <h3 class="box-title" align="center"><b>Liste Des Missions Pour Chaque Recruteur</b></h3>
+             </div><br></br><br></br>
+                <p:dataTable id="datalist1"   var="item" value="#{recruteurController.selected.missions}" rows="10"
+                             paginator="true"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15">
+                    <p:column headerText="Mission">
+                        <h:outputText value="#{item.titre}"/>
+                    </p:column>
+
+                    <p:column headerText="Date de publication">
+                        <h:outputText value="#{item.datePublication}" >
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </p:column>
+
+                    <p:column headerText="Date limite">
+                        <h:outputText value="#{item.dateLimite}" >
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </p:column>
+
+                    <p:column headerText="Langue">
+                        <h:outputText value="#{item.langue.nom}"/>
+                    </p:column>
+
+                    <p:column headerText="catégorie">
+                        <h:outputText value="#{item.categorie.nom}"/>
+                    </p:column>
+
+                    <p:column headerText="Budget">
+                        <h:outputText value="#{item.maxBudget}" />
+                    </p:column>
+                    <p:column headerText="Est acceptee">
+                        <h:outputText value="#{item.isAccepted}" />
+                    </p:column>
+
+
+
+                    <p:column headerText="Détails">
+                        <span class="label label-sm label-warning label-mini">
+                            <h:outputText value="#{item.avancement}"/> </span> 
+                    </p:column>
+                    
+
+                </p:dataTable>
+            
+            
             </h:form>
         </div>
         <p:dialog id="RecruteurDlg" widgetVar="RecruteurDialog" modal="true" resizable="false" appendTo="@(body)" header="Missions réalisées">

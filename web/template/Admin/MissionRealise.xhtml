@@ -138,7 +138,7 @@
                     <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
                     <div class="hor-menu ">
                         <ul class="nav navbar-nav">
-                            <li class="active">
+                            <li >
                                 <a href="Profil.xhtmll"><i class="fa fa-home"></i>Acceuil</a>
                             </li>
                             <li >
@@ -165,7 +165,7 @@
                                             <i class="fa fa-spinner"></i>
                                             En cour de réalisation </a>
                                     </li>
-                                    <li>
+                                    <li class="active">
                                         <a href="MissionRealise.xhtml">
                                             <i class="fa fa-check-square-o"></i>
                                             Réalisée </a>
@@ -187,7 +187,7 @@
                                 </a>
                                 <ul class="dropdown-menu pull-left">
                                     <li>
-                                        <a href="extra_profile.html">
+                                        <a href="Profil.xhtml">
                                             <i class=" fa fa-user"></i>
                                             Mon Profil </a>
                                     </li>
@@ -268,6 +268,9 @@
                 </p:dataTable><br></br><br></br>
                 <p:commandButton  id="exportButton" style="color:blue;margin-right: 8px"   value="Imprimer" action="#{missionController.generatePdf()}" ajax="false"/>
             </h:form>
+            
+            
+            
         </div>
         <br/>
         <p:dialog id="FreelancerDlg" widgetVar="FreelancerDialog" modal="true" resizable="false" appendTo="@(body)" header="Missions réalisées">

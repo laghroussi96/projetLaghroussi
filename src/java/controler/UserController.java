@@ -1,10 +1,8 @@
 package controler;
 
-import bean.Admin;
 import bean.User;
 import controler.util.JsfUtil;
 import controler.util.JsfUtil.PersistAction;
-import controler.util.SessionUtil;
 import service.UserFacade;
 
 import java.io.Serializable;
@@ -20,6 +18,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import controler.util.SessionUtil;
 
 @Named("userController")
 @SessionScoped
@@ -29,43 +28,17 @@ public class UserController implements Serializable {
     private service.UserFacade ejbFacade;
     private List<User> items = null;
     private User selected;
-    private Admin selectedAd;
-
-    public UserFacade getEjbFacade() {
-        return ejbFacade;
-    }
-
-    public void setEjbFacade(UserFacade ejbFacade) {
-        this.ejbFacade = ejbFacade;
-    }
-
-    public Admin getSelectedAd() {
-        if(selectedAd == null){
-        selectedAd = new Admin();
-    }
-    return selectedAd;
-    }
-
-    public void setSelectedAd(Admin selectedAd) {
-        this.selectedAd = selectedAd;
-    }
-
-    public String sesionUser(User user){
-        if(user!=null){
-            SessionUtil.setAttribute("thisUser", ejbFacade.find(user.getLogin()));
-            return "/template/Admin/AjouterAdmin.xhtml";
-        }
-        return null;
-    }
     
+
     public UserController() {
     }
 
     public User getSelected() {
         if(selected == null){
-        selected = new User();
-    }
-    return selected;
+            selected=new User();
+            selected.setUser(new User());
+        }
+        return selected;
     }
 
     public void setSelected(User selected) {
@@ -119,6 +92,7 @@ public class UserController implements Serializable {
             setEmbeddableKeys();
             try {
                 if (persistAction != PersistAction.DELETE) {
+                    selected.setPasseword(util.HashageUtil.sha256(selected.getPasseword()));
                     getFacade().edit(selected);
                 } else {
                     getFacade().remove(selected);
@@ -194,5 +168,51 @@ public class UserController implements Serializable {
         }
 
     }
+    
+    /*Connect Methode*/
+    public String isConnecte() {
+        User clone = ejbFacade.clone(selected);
+        int res = ejbFacade.seConnnecter(clone);
+        selected = new User();
+        System.out.println("res"+res);
+        switch (res) {
+            // Seccessful
+            case 1:
+                JsfUtil.addSuccessMessage("Success");
+//                SessionUtil.setAttribute("connectionUser", clone);
+                SessionUtil.registerUser(selected);
+                return "PublierMission";
+            // user blocked
+            case -2:
+                JsfUtil.addErrorMessage("this user is blocked");
+                System.out.println("this user is blocked");
+                return null;
+
+            // Wrong Password
+            case -3:
+                JsfUtil.addErrorMessage("Wrong Password");
+                System.out.println("Wrong Password");
+                return null;
+
+            // User doesn't exist
+            case -4:
+                JsfUtil.addErrorMessage("User does not exist");
+                System.out.println("User does not exist");
+                return null;
+
+            // You have not type any login
+            case -5:
+                JsfUtil.addErrorMessage("Please type login");
+                System.out.println("Please type login");
+                return null;
+
+            default:
+                return null;
+
+        }
+    }
+    /*Connect Methode*/
+
+
 
 }

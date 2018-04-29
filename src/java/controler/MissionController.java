@@ -44,7 +44,9 @@ public class MissionController implements Serializable {
     private List<Mission> itemsAboutis = null;
     private List<Mission> itemsNonAboutis = null;
     private List<Mission> itemsMission = null;
+    private List<Mission> listMiss ;
     private List<Mission> itemsMission1 = null;
+    private List<Mission> itemss = null;
     private Mission selected;
     private Commentaire selectedCommentaire;
     private List<Commentaire> coms;
@@ -55,13 +57,25 @@ public class MissionController implements Serializable {
     //private  List<Mission> missionItems = new ArrayList<>();
     //private BarChartModel model;  
     private Recruteur recruteur;
+    private Recruteur voirRecruteur;
     private Double max;
     private Double min;
     private Langue langue;
     private Categorie categorie;
     private String etat;
     private Mission voirMission;
+
+    public Recruteur getVoirRecruteur() {
+        voirRecruteur=(Recruteur)SessionUtil.getAttribute("thisRecruteur");
+        return voirRecruteur;
+    }
+
+
+    public void setVoirRecruteur(Recruteur voirRecruteur) {
+        this.voirRecruteur = voirRecruteur;
+    }
    
+    
     public List<Commentaire> listCommetaireForMission() {
        commentForMission=commentaireFacade.findByMission(voirMission.getId());
         return commentForMission;
@@ -71,6 +85,16 @@ public class MissionController implements Serializable {
         this.selected = selected;
     }
 
+    public List<Mission> getListMiss() {
+        listMiss=ejbFacade.findByRecruteur(getVoirRecruteur());
+        return listMiss;
+    }
+
+    public void setListMiss(List<Mission> listMiss) {
+        this.listMiss = listMiss;
+    }
+
+    
     public List<Commentaire> getCommentForMission() {
         return commentForMission;
     }
@@ -409,6 +433,7 @@ public class MissionController implements Serializable {
         itemsEnCour2.remove(itemsEnCour2.indexOf(item));
 
     }
+   
 
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {

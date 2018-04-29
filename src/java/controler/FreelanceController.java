@@ -22,6 +22,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import net.sf.jasperreports.engine.JRException;
+import service.MissionFacade;
 import service.ReviewFacade;
 
 @Named("freelanceController")
@@ -40,6 +41,8 @@ public class FreelanceController implements Serializable {
     private Double vote;
      @EJB
     private FreelanceFacade ejbFacadee;
+     @EJB
+    private MissionFacade missionFacade;
    
  private Pays pays;
     private Double max; 
@@ -181,8 +184,13 @@ public class FreelanceController implements Serializable {
         initializeEmbeddableKey();
         return selected;
     }
+    
+    public void test(){
+        System.out.println("selected "+selected);
+    }
 
     public void create() {
+        System.out.println("create");
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("FreelanceCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
@@ -195,7 +203,9 @@ public class FreelanceController implements Serializable {
  public void search() {
       items = ejbFacade.search(pays, max, min, name);
     }
- 
+ public void detail(Freelance item){
+    getSelected().setMissions(missionFacade.findByFreelance(item.getId()));
+}
  public void generatePdf() throws JRException, IOException{
       ejbFacade.generatePdf();
       FacesContext.getCurrentInstance().responseComplete();
@@ -227,6 +237,7 @@ public class FreelanceController implements Serializable {
             setEmbeddableKeys();
             try {
                 if (persistAction != PersistAction.DELETE) {
+                    System.out.println("selected "+selected);
                     getFacade().edit(selected);
                 } else {
                     getFacade().remove(selected);
