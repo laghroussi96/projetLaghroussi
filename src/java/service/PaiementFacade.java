@@ -45,16 +45,15 @@ public class PaiementFacade extends AbstractFacade<Paiement> {
     private CompteFacade compteFacade;
 
     public int distMonatant(Paiement paiement) {
-        Freelance freelance = ejbfaFacade.find(paiement.getFreelance().getId());
+        Freelance freelance = ejbfaFacade.findByCompte(paiement.getCompte());
         Double nvSolde = 0.0;
         Double pourcentage = 0.02;
-        if (paiement.getCompte().getUser().equals(freelance.getUser())) {
+        if (paiement.getCompte().equals(freelance.getCompte())) {
             pourcentage = 0.08;
         }
-        Compte compte = compteFacade.find(paiement.getCompte().getId());
         nvSolde = paiement.getMontant() - paiement.getMontant() * pourcentage;
-        compte.setSolde(compte.getSolde() + nvSolde);
-        compteFacade.edit(compte);
+        paiement.getCompte().setSolde(nvSolde);
+        edit(paiement);
         return 1;
     }
 

@@ -5,6 +5,7 @@
  */
 package service;
 
+import bean.Compte;
 import bean.Freelance;
 import bean.Pays;
 import controler.util.PdfUtil;
@@ -75,6 +76,10 @@ public class FreelanceFacade extends AbstractFacade<Freelance> {
 
     public FreelanceFacade() {
         super(Freelance.class);
+    }
+    
+    public Freelance findByCompte(Compte compte){
+        return(Freelance) em.createQuery("select fe FROM Freelance fre WHERE fre.compte.id='"+compte.getId()+"'").getSingleResult();
     }
     
       public List<Freelance> search(Pays pays,  Double max, Double min, String name) {

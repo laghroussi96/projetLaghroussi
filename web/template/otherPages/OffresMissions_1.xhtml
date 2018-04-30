@@ -21,13 +21,13 @@
         <link href="../../ressources/css/custom.css" rel="stylesheet"/>
     </h:head>
     <body class="corporate">
-        <ui:include src="../header/Header2.xhtml"></ui:include>
+        <ui:include src="../header/Header3.xhtml"></ui:include>
         <div class="header-top1">
             <div class="content1">
                 <h1><strong>C'est facile. Publiez vos projets et<br/> recevez des offres des freelances <br/>en quelques minutes</strong></h1>
                 <h3>Peu importe vos besoins, il y aura un freelance pour y <br/>répondre.</h3>
                 <br/>
-                <a href="PublierMission.html"  align="center" class="btn btn-primary pub"><strong><i class="fa fa-pencil"></i>  Publier une mission</strong></a>
+                <a href="PublierMission.xhtml"  align="center" class="btn btn-primary pub"><strong><i class="fa fa-pencil"></i>  Publier une mission</strong></a>
             </div>
         </div>
         <div class="main">
@@ -117,21 +117,30 @@
                                                     <h:form>
                                                         <div class="form-group col-lg-12">
                                                                 <p:outputLabel for="categorie" value="Catégories " style="font-size: 15px"/>
-                                                                <h:selectOneMenu id="categorie" class="form-control" value="#{missionController.categorie}">
+                                                                <h:selectOneMenu id="categorie" class="form-control" value="#{technologieMissionController.categorie}">
                                                                     <f:selectItem itemLabel="-Select-" itemValue="#{null}"/>
                                                                     <f:selectItems value="#{categorieController.itemsAvailableSelectOne}" var="categorieItem" itemValue="#{categorieItem}" itemLabel="#{categorieItem.nom}"/>
+                                                                    <p:ajax  process="categorie" listener="#{technologieMissionController.findByCate()}" update="technologie"></p:ajax>
                                                                 </h:selectOneMenu></div>
-                                                            
+                                                             <div class="form-group col-lg-12">
+                                                                <p:outputLabel for="technologie" value="Téchnologies " style="font-size: 15px"/>
+                                                                <h:selectManyCheckbox id="technologie" class="form-control" value="#{technologieMissionController.selected.technologie}">
+                                                                    <!--f:selectItem itemLabel="-Select-" itemValue="#{null}"/-->
+                                                                    <f:selectItems value="#{technologieMissionController.technologies}" var="technologieItem" itemValue="#{technologieItem}" itemLabel="#{technologieItem.nom}"/>
+                                                                </h:selectManyCheckbox>
+                                                        </div>
+                                                    </h:form>
+                                                    <h:form>
                                                     <div class="form-group col-lg-12">
                                                         <p:outputLabel for="budgetMin" value="Budget Min" style="font-size: 15px"/>
-                                                        <p:inputText id="budgetMin" class="form-control" value="#{missionController.min}" />
+                                                        <p:inputText id="budgetMin" class="form-control" />
                                                     </div>
                                                     <div class="form-group col-lg-12">
                                                         <p:outputLabel for="budgetMax" value="Budget Max" style="font-size: 15px"/>
-                                                        <p:inputText id="budgetMax" class="form-control" value="#{missionController.max}"/>
+                                                        <p:inputText id="budgetMax" class="form-control" />
                                                     </div>
                                                     <div class="form-group">
-                                                        <p:commandButton class="btn cher col-lg-10" value="Search" actionListener="#{missionController.searchMiss}" update=":mission"/>
+                                                        <p:commandButton class="btn cher col-lg-10" value="#{bundle.Search}"/>
                                                     </div>
                                                     </h:form>
                                                 </div>

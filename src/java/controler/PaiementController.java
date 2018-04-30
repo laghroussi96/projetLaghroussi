@@ -38,7 +38,12 @@ public class PaiementController implements Serializable {
     private Compte compte;
 
    
-
+ public void distMontant(){
+     System.out.println("effectuer");
+     ejbFacade.distMonatant(selected);
+     JsfUtil.addSuccessMessage("paiement effectuer");
+     
+ }
     public PaiementFacade getEjbFacade() {
         return ejbFacade;
     }
@@ -84,6 +89,10 @@ public class PaiementController implements Serializable {
     }
 
     public Paiement getSelected() {
+        System.out.println("selected");
+        if(selected==null){
+            selected=new Paiement();
+        }
         return selected;
     }
 
@@ -108,6 +117,7 @@ public class PaiementController implements Serializable {
     }
 
     public void create() {
+        System.out.println("create");
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("PaiementCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
