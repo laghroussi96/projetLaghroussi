@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 30 Avril 2018 à 00:45
+-- Généré le :  Lun 30 Avril 2018 à 10:14
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -32,9 +32,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `PRENOM` varchar(255) DEFAULT NULL,
   `PAYS_ID` bigint(20) DEFAULT NULL,
   `USER_LOGIN` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `FK_ADMIN_PAYS_ID` (`PAYS_ID`),
-  KEY `FK_ADMIN_USER_LOGIN` (`USER_LOGIN`)
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -190,8 +188,8 @@ CREATE TABLE IF NOT EXISTS `freelance` (
 --
 
 INSERT INTO `freelance` (`ID`, `DATEINSCRIPTION`, `NOM`, `PRENOM`, `TARIF`, `TEL`, `ADMIN_ID`, `DEVISE_ID`, `DIPLOME_ID`, `PAYS_ID`, `USER_LOGIN`) VALUES
-(101, '2018-01-16', 'laghrousi', 'fatima', 200, 0.666754378, 1, 12, 17, 4, NULL),
-(102, '2018-04-16', 'aderrab', 'samira', 30, 0.643546756, 1, 14, 15, 5, NULL);
+(101, '2018-04-01', 'laghroussi', 'fatima', 200, 0.654348765, 1, 12, 16, 4, NULL),
+(102, '2018-03-01', 'aderab', 'samira', 30, 0.643250098, 1, 12, 16, 4, NULL);
 
 -- --------------------------------------------------------
 
@@ -225,7 +223,7 @@ CREATE TABLE IF NOT EXISTS `langue` (
 --
 
 INSERT INTO `langue` (`ID`, `NOM`) VALUES
-(18, 'Français'),
+(18, 'Francais'),
 (19, 'Anglais');
 
 -- --------------------------------------------------------
@@ -397,7 +395,7 @@ CREATE TABLE IF NOT EXISTS `pays` (
 INSERT INTO `pays` (`ID`, `NOM`) VALUES
 (1, 'Maroc'),
 (2, 'France'),
-(3, 'Algérie'),
+(3, 'AlgÃ©rie'),
 (4, 'Espagne'),
 (5, 'Belgique'),
 (6, 'Suisse');
@@ -428,9 +426,9 @@ CREATE TABLE IF NOT EXISTS `recruteur` (
 --
 
 INSERT INTO `recruteur` (`ID`, `DATEINSCRIPTION`, `NOM`, `PRENOM`, `TEL`, `ADMIN_ID`, `PAYS_ID`, `USER_LOGIN`) VALUES
-(1, '2018-07-12', 'hafid', 'fatima', 0.0627224777, 1, 2, NULL),
-(2, '2018-02-21', 'bennajim', 'salma ', 0.645675432, 1, 1, NULL),
-(7798, '2018-04-10', 'hanani', 'mehdi', 0.654348765, 1, 3, NULL);
+(1, '2018-04-10', 'hafid', 'fatima', 0.627224777, 151, 2, NULL),
+(2, '2018-05-09', 'bennajim', 'salma', 0.643546578, 51, 2, NULL),
+(7798, '2018-01-17', 'hanani', 'elmehdi', 0.675657689, 153, 6, NULL);
 
 -- --------------------------------------------------------
 
@@ -466,7 +464,7 @@ CREATE TABLE IF NOT EXISTS `sequence` (
 --
 
 INSERT INTO `sequence` (`SEQ_NAME`, `SEQ_COUNT`) VALUES
-('SEQ_GEN', '250');
+('SEQ_GEN', '0');
 
 -- --------------------------------------------------------
 
@@ -553,14 +551,6 @@ CREATE TABLE IF NOT EXISTS `user` (
   KEY `FK_USER_IMAGE_ID` (`IMAGE_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Contenu de la table `user`
---
-
-INSERT INTO `user` (`LOGIN`, `BLOCKED`, `MDPCHANGED`, `NBRCNX`, `PASSEWORD`, `TYPE`, `IMAGE_ID`) VALUES
-('qq', 0, 0, 0, 'qq', 0, NULL),
-('ww', 0, 0, 0, 'ww', 0, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -577,13 +567,6 @@ CREATE TABLE IF NOT EXISTS `user_device` (
 --
 -- Contraintes pour les tables exportées
 --
-
---
--- Contraintes pour la table `admin`
---
-ALTER TABLE `admin`
-  ADD CONSTRAINT `FK_ADMIN_USER_LOGIN` FOREIGN KEY (`USER_LOGIN`) REFERENCES `user` (`LOGIN`),
-  ADD CONSTRAINT `FK_ADMIN_PAYS_ID` FOREIGN KEY (`PAYS_ID`) REFERENCES `pays` (`ID`);
 
 --
 -- Contraintes pour la table `commentaire`
