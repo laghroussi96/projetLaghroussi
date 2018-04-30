@@ -33,6 +33,26 @@ public class User implements Serializable {
     protected List<Device> devices;
     @OneToOne(mappedBy = "user")
     private Admin admin;
+    @OneToOne(mappedBy = "user")
+    private Freelance freelance;
+    @OneToOne(mappedBy = "user")
+    private Recruteur recruteur;
+
+    public Freelance getFreelance() {
+        return freelance;
+    }
+
+    public void setFreelance(Freelance freelance) {
+        this.freelance = freelance;
+    }
+
+    public Recruteur getRecruteur() {
+        return recruteur;
+    }
+
+    public void setRecruteur(Recruteur recruteur) {
+        this.recruteur = recruteur;
+    }
 
     public Admin getAdmin() {
         return admin;

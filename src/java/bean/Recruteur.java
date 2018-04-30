@@ -35,6 +35,7 @@ public class Recruteur implements Serializable {
     private Pays pays;
     @ManyToOne
     private Admin admin;
+   
     @OneToOne
     private User user;
     @OneToMany(mappedBy = "recruteur")
