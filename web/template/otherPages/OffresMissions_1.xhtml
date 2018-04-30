@@ -21,13 +21,13 @@
         <link href="../../ressources/css/custom.css" rel="stylesheet"/>
     </h:head>
     <body class="corporate">
-        <ui:include src="../header/Header2.xhtml"></ui:include>
+        <ui:include src="../header/Header3.xhtml"></ui:include>
         <div class="header-top1">
             <div class="content1">
                 <h1><strong>C'est facile. Publiez vos projets et<br/> recevez des offres des freelances <br/>en quelques minutes</strong></h1>
                 <h3>Peu importe vos besoins, il y aura un freelance pour y <br/>répondre.</h3>
                 <br/>
-                <a href="PublierMission.html"  align="center" class="btn btn-primary pub"><strong><i class="fa fa-pencil"></i>  Publier une mission</strong></a>
+                <a href="PublierMission.xhtml"  align="center" class="btn btn-primary pub"><strong><i class="fa fa-pencil"></i>  Publier une mission</strong></a>
             </div>
         </div>
         <div class="main">
@@ -47,7 +47,7 @@
                                 <!-- BEGIN LEFT SIDEBAR -->            
                                 <div class="col-md-9 col-sm-9 blog-posts">
                                     <h:form id="mission">
-                                        <c:forEach items="#{technologieMissionController.missions}" var="mission" id="missionList">
+                                        <c:forEach items="#{missionController.items}" var="item" id="listmission">
                                         <div class="row">
                                             <div class="col-md-4 col-sm-4">
                                                 <!-- BEGIN CAROUSEL -->            
@@ -80,21 +80,19 @@
                                             </div>
                                             <div class="col-md-8 col-sm-8">
                                            
-                                                <h2><h:commandLink value="#{mission.titre}" action="#{technologieMissionController.voirMission(mission)}"></h:commandLink></h2>
+                                                <h2><h:commandLink value="#{item.titre}" action="#{missionController.sesMission(item)}" ></h:commandLink></h2>
                                                 <ul class="blog-info">
-                                                    <li><i class="fa fa-calendar"></i><h:outputText value="#{mission.datePublication}"><f:convertDateTime pattern="MM/dd/yyyy"/></h:outputText></li>
-                                                    <li><i class="fa fa-comments"></i>#{technologieMissionController.listCommetaire(mission).size()}</li>
-                                                    <li><i class="fa fa-user"></i>#{mission.recruteur.nom}</li>
-                                                    <li ><i class="fa fa-money"></i>#{mission.maxBudget}</li>
+                                                    <li><i class="fa fa-calendar"></i><h:outputText value="#{item.datePublication}"><f:convertDateTime pattern="MM/dd/yyyy"/></h:outputText></li>
+                                                    <li><i class="fa fa-comments"></i>#{missionController.listCommetaire(item).size()}</li>
+                                                    <li><i class="fa fa-user"></i>#{item.recruteur.prenom}</li>
+                                                    <li ><i class="fa fa-money"></i>#{item.maxBudget}</li>
                                                 </ul>
-                                                <p>#{mission.commentaire.substring(6)}</p>
-                                                <a>  <h:link outcome="MissionItem.xhtml" value="Lire la suite..." includeViewParams="true" style="color: #CC3304"><f:param name="mission" value="#{mission.id}"/></h:link> <i class="icon-angle-right"></i></a> 
+                                                <p>   </p>
+                                                <a>  <h:link outcome="MissionItem_1.xhtml" value="Lire la suite..." includeViewParams="true" style="color: #CC3304"><f:param name="mission" value=""/></h:link> <i class="icon-angle-right"></i></a> 
                                                 <div class="blog-tags margin-bottom-20 myTags">
                                                     <br/>
                                                     <ul>
-                                                        <c:forEach items="#{technologieMissionController.findByMissions(mission)}" var="technologie" >
-                                                            <li><a href="javascript:;"><i class="fa fa-tags"></i>#{technologie.technologie.nom}</a></li>
-                                                        </c:forEach>
+                                                            <li><a href="javascript:;"><i class="fa fa-tags"></i></a></li>
                                                     </ul>
                                                 </div>
                                             </div>

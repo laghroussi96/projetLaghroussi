@@ -40,25 +40,27 @@
                     </div>
                 </div>
                 <!-- END BLOCKQUOTE BLOCK -->
-                
-                    <div class="panel-group col-lg-12">
-                      
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                
-                                <div id="tf-pb" class="container">
-                                    <div><h3>Dites nous ce que vous devez faire réaliser</h3></div><br/>
-                                    <h:form>
+
+                <div class="panel-group col-lg-12">
+
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+
+                            <div id="tf-pb" class="container">
+                                <div><h3>Dites nous ce que vous devez faire réaliser</h3></div><br/>
+                                <h:form>
+
                                     <div class="form-group">
                                         <label>Choisir un nom pour votre projet</label>
-                                        <p:inputText type="text" class="form-control" placeholder="ex: Développer mon site internet" value="#{missionController.selected.titre}" id="titre"/>
+                                        <p:inputText id="titre" class="form-control" placeholder="ex: Développer mon site internet" value="#{missionController.selected.titre}"  />
                                     </div>
                                     <div class="form-group">
                                         <label>Dites-nous en plus concernant votre projet</label>
-                                        <p:inputTextarea class="form-control" rows="4" placeholder="D'écrivez votre projet" value="#{missionController.selected.commentaire}"/>
+                                        <p:inputText class="form-control" id="commentaire"  placeholder="D'écrivez votre projet" value="#{missionController.selected.commentaire}"  />
+
                                     </div>
                                     <div class="form-group">
-                                        <p:fileUpload uploadLabel="Importer" label="Parcorir" cancelLabel="Annuler"/>
+                                        <p:fileUpload uploadLabel="Importer" label="Parcorir" cancelLabel="Annuler" id="image" value="#{missionController.selected.image}"/>
                                         <!--table border="2">
                                             <tr>
                                                 <td><input type="file"/></td>
@@ -66,106 +68,105 @@
                                             </tr>
                                         </table-->
                                     </div>
-                                    </h:form>
-                                    <h:form>
+
                                     <div class="form-group">
                                         <div class="col-lg-6">
-                                            <p:outputLabel for="categorie" value="Catégories " style="font-size: 15px"/>
-                                            <h:selectOneMenu id="categorie" class="form-control" value="#{technologieMissionController.categorie}">
-                                                <f:selectItem itemLabel="-Select-" itemValue="#{null}"/>
-                                                <f:selectItems value="#{categorieController.itemsAvailableSelectOne}" var="categorieItem" itemValue="#{categorieItem}" itemLabel="#{categorieItem.nom}"/>
-                                                <p:ajax  process="categorie" listener="#{technologieMissionController.findByCate()}" update="technologie"></p:ajax>
+
+                                            <h:selectOneMenu id="categorie" class="form-control" value="#{missionController.selected.categorie}">
+                                                <f:selectItem itemLabel="Catégories" itemValue="#{null}"/>
+                                                <f:selectItems value="#{categorieController.itemsAvailableSelectOne}"
+                                                               var="categorieItem"
+                                                               itemValue="#{categorieItem}" itemLabel="#{categorieItem.nom}"/>
+
                                             </h:selectOneMenu></div>
                                         <div class="col-lg-6">
-                                            <p:outputLabel for="technologie" value="Téchnologies " style="font-size: 15px"/>
-                                            <h:selectManyCheckbox id="technologie" class="form-control" value="#{technologieMissionController.selected.technologie}">
-                                                <!--f:selectItem itemLabel="-Select-" itemValue="#{null}"/-->
-                                                <f:selectItems value="#{technologieMissionController.technologies}" var="technologieItem" itemValue="#{technologieItem}" itemLabel="#{technologieItem.nom}"/>
-                                            </h:selectManyCheckbox></div>
+                                            <h:selectOneMenu id="technologies"  class="form-control" value="#{missionController.selected.technologieMissions}" >
+                                                <f:selectItem itemLabel="-Technologie-" itemValue=""/>
+                                                <f:selectItems var="technologieItem" value="#{technologieController.itemsAvailableSelectOne}" itemValue="#{technologieItem}" itemLabel="#{technologieItem.nom}"/>
+                                            </h:selectOneMenu>
+                                        </div>
                                     </div>
-                                     </h:form>
-                                    <h:form>
+                                    <br></br><br></br><br></br><br></br>
                                     <div class="form-group">
-                                        <p:outputLabel for="diplome" value="Diplome " style="font-size: 15px"/>
+
 
                                         <h:selectOneMenu id="diplome" class="form-control" value="#{missionController.selected.diplome}" >
-                                            <f:selectItem itemLabel="-Select-" itemValue=""/>
+                                            <f:selectItem itemLabel="-Diplome-" itemValue=""/>
                                             <f:selectItems value="#{diplomeController.itemsAvailableSelectOne}" var="diplomeItem" itemLabel="#{diplomeItem.nom}" itemValue="#{diplomeItem}"/>
                                         </h:selectOneMenu>
                                     </div>
-                                    </h:form>
-                                    <h:form>
+
                                     <div class="form-group">
                                         <label>Quel est budget estimé?</label><br/>
                                         <div class="col-lg-4">
                                             <h:selectOneMenu id="devise" class="form-control" value="#{missionController.selected.devise}" >
-                                                <f:selectItem itemLabel="-Select Devise-" itemValue="#{null}"/>
+                                                <f:selectItem itemLabel="-Devise-" itemValue="#{null}"/>
                                                 <f:selectItems value="#{deviseController.itemsAvailableSelectOne}" var="deviseItem" itemLabel="#{deviseItem.nom}" itemValue="#{deviseItem}"/>
                                             </h:selectOneMenu>
                                         </div>
+
                                         <div class="col-lg-4">
-                                            <p:inputText class="form-control" value="#{missionController.selected.minBudget}" placeholder="Budget Min"/>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <p:inputText class="form-control" value="#{missionController.selected.maxBudget}" placeholder="Budget Max"/>
+                                            <p:inputText class="form-control" value="#{missionController.selected.maxBudget}" placeholder="Budget" id="budgetMax"/>
                                         </div>
                                     </div>
-                                    </h:form>
-                                    <br/><br/>
-                                    <div class="form-group">
-                                        <a href="#info1" class="pull-right btn btn-primary dark" style="background-color: #E84D1C" data-toggle="modal" data-target="#info1">Publier mon projet </a>
+
+                                    <p:commandLink action="#{missionController.create}" value="publier mission"   class="btn btn-primary pub"/>
+
+
+                                </h:form>
+                                <br/><br/>
+
+                            </div>
+
+                            <!--div id="info1" class="modal fade" role="dialog"  tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"></button>
+                                            <h4 class="modal-title" style="text-align: center">Connexion</h4>
+                                        </div>
+                                        <div class="modal-body form">
+                                            <form action="javascript:;" class="form-horizontal form-row-seperated">
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Adresse e-mail</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="fa fa-envelope"></i>
+                                                            </span>
+                                                            <p:inputText type="text" id="typeahead_example_modal_2" class="form-control"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group last">
+                                                    <label class="col-sm-4 control-label">Mot de passe</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">
+                                                                <i class="fa fa-lock"></i>
+                                                            </span>
+                                                            <p:inputText type="password" id="typeahead_example_modal_4"  class="form-control"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default retour" data-dismiss="modal">Retour</button>
+                                            <h:commandButton  class="btn monbtn" value="Envoyer" ></h:commandButton>
+                                            <a class="pull-left" id="bt"> vous-avez déja un compte? connectez-vous</a>
+                                        </div>
                                     </div>
                                 </div>
+                            </div-->
 
-                                <!--div id="info1" class="modal fade" role="dialog"  tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal"></button>
-                                                <h4 class="modal-title" style="text-align: center">Connexion</h4>
-                                            </div>
-                                            <div class="modal-body form">
-                                                <form action="javascript:;" class="form-horizontal form-row-seperated">
-
-                                                    <div class="form-group">
-                                                        <label class="col-sm-4 control-label">Adresse e-mail</label>
-                                                        <div class="col-sm-8">
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon">
-                                                                    <i class="fa fa-envelope"></i>
-                                                                </span>
-                                                                <p:inputText type="text" id="typeahead_example_modal_2" class="form-control"/>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group last">
-                                                        <label class="col-sm-4 control-label">Mot de passe</label>
-                                                        <div class="col-sm-8">
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon">
-                                                                    <i class="fa fa-lock"></i>
-                                                                </span>
-                                                                <p:inputText type="password" id="typeahead_example_modal_4"  class="form-control"/>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default retour" data-dismiss="modal">Retour</button>
-                                                <h:commandButton  class="btn monbtn" value="Envoyer" ></h:commandButton>
-                                                <a class="pull-left" id="bt"> vous-avez déja un compte? connectez-vous</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div-->
- 
-                            </div>
                         </div>
-                      
                     </div>
-                    
-               
+
+                </div>
+
+
             </div>
         </div>
 

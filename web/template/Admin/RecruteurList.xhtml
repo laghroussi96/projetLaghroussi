@@ -224,13 +224,7 @@
 
                     <p:panelGrid columns="6" style="width:50%; text-align: center;">
 
-                        <p:outputLabel value="#{bundle.CreateRecruteurLabel_user}" for="user" style="font-size: 14px"/>
-                        <h:selectOneMenu class="form-control" id="user" value="#{recruteurController.user}" >
-                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
-                                           var="userItem"
-                                           itemValue="#{userItem}" itemLabel="#{userItem.login}"/>
-                            <f:selectItem itemValue="#{null}" itemLabel="Logins"/>
-                        </h:selectOneMenu>
+
 
                         <p:outputLabel value="#{bundle.CreateRecruteurLabel_Pays}" for="pays" style="font-size: 14px"/>
                         <h:selectOneMenu class="form-control" id="pays" value="#{recruteurController.pays}" >

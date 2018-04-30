@@ -31,100 +31,100 @@
             </div>
         </div>
         <div class="main">
-      <div class="container">
-        <ul class="breadcrumb">
-            <li><a href="index.html">Acceuil</a></li>
-            <li><a href="OffresMissions.xhtml">Offres De Mission</a></li>
-            <li class="active">Mission</li>
-        </ul>
-        <!-- BEGIN SIDEBAR & CONTENT -->
-        <div class="row margin-bottom-40">
-          <!-- BEGIN CONTENT -->
-          <div class="col-md-12 col-sm-12">
-            <h1>Mission</h1>
-            <div class="content-page">
-              <div class="row">
-                <!-- BEGIN LEFT SIDEBAR -->            
-                <div class="col-md-9 col-sm-9 blog-item">
-                  <div class="blog-item-img">
-                    <!-- BEGIN CAROUSEL -->            
-                    <div class="front-carousel">
-                      <div id="myCarousel" class="carousel slide">
-                        <!-- Carousel items -->
-                        <div class="carousel-inner">
-                          <div class="item">
-                              <p:graphicImage/>
-                          </div>
-                         
-                          <div class="item active">
-                              <p:graphicImage/>
-                          </div>
-                        </div>
-                        <!-- Carousel nav -->
-                        <a class="carousel-control left" href="#myCarousel" data-slide="prev">
-                          <i class="fa fa-angle-left"></i>
-                        </a>
-                        <a class="carousel-control right" href="#myCarousel" data-slide="next">
-                          <i class="fa fa-angle-right"></i>
-                        </a>
-                      </div>                
-                    </div>
-                    <!-- END CAROUSEL -->             
-                  </div>
-                    <h2><a href="javascript:;"></a>#{missionController.voirMission.titre}</h2>
-                  <p><!--Description de la Mission--></p>
-                  <blockquote>
-                      <p><button class="btn btn-primary" > Budget<br/>#{missionController.voirMission.maxBudget}</button></p>
-                    <small> </small>
-                  </blockquote>                
-                  
-                  <ul class="blog-info">
-                      <li><i class="fa fa-user"></i>Publié par: #{missionController.voirMission.recruteur.nom}. #{missionController.voirMission.recruteur.prenom}</li>
-                      <li><i class="fa fa-calendar"></i> Publiée le : <h:outputText value="#{missionController.voirMission.datePublication}"><f:convertDateTime pattern="MM/dd/yyyy"/></h:outputText> </li>
-                      <li><i class="fa fa-comments"></i>#{missionController.listCommetaireForMission().size()}</li>
-                      <li><i class="fa fa-calendar"></i> Dernier délai le  : <h:outputText value="#{missionController.voirMission.dateLimite}"><f:convertDateTime pattern="MM/dd/yyyy"/></h:outputText></li>
-                   
-                  </ul>
+            <div class="container">
+                <ul class="breadcrumb">
+                    <li><a href="index.html">Acceuil</a></li>
+                    <li><a href="OffresMissions.xhtml">Offres De Mission</a></li>
+                    <li class="active">Mission</li>
+                </ul>
+                <!-- BEGIN SIDEBAR & CONTENT -->
+                <div class="row margin-bottom-40">
+                    <!-- BEGIN CONTENT -->
 
-                  <h2>Commentaires</h2>
-                  
-                  <div class="comments">
-                      <c:forEach items="#{missionController.listCommetaireForMission()}" var="comment">
-                    <div class="media"> 
-                      <a href="javascript:;" class="pull-left">
-                          
-                       </a>
-                      <div class="media-body">
-                          <h4 class="media-heading">#{comment.freelance.nom} #{comment.freelance.prenom}<span> <!--date du commentaire-->/ <a href="paiementRecruteur.html">Choisir</a></span></h4>
-                          <p>#{comment.text}</p>
-                                           
-                      
-                      </div>
+                    <div class="col-md-12 col-sm-12">
+                        <h1>Mission</h1>
+                        <div class="content-page">
+                            <div class="row">
+                                <!-- BEGIN LEFT SIDEBAR -->            
+                                <div class="col-md-9 col-sm-9 blog-item">
+                                    <div class="blog-item-img">
+                                        <!-- BEGIN CAROUSEL -->            
+                                        <div class="front-carousel">
+                                            <div id="myCarousel" class="carousel slide">
+                                                <!-- Carousel items -->
+                                                <div class="carousel-inner">
+                                                    <div class="item">
+                                                        <p:graphicImage/>
+                                                    </div>
+
+                                                    <div class="item active">
+                                                        <p:graphicImage/>
+                                                    </div>
+                                                </div>
+                                                <!-- Carousel nav -->
+                                                <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+                                                    <i class="fa fa-angle-left"></i>
+                                                </a>
+                                                <a class="carousel-control right" href="#myCarousel" data-slide="next">
+                                                    <i class="fa fa-angle-right"></i>
+                                                </a>
+                                            </div>                
+                                        </div>
+                                        <!-- END CAROUSEL -->             
+                                    </div>
+                                    <h2><a href="javascript:;"></a></h2>
+                                    <p><!--Description de la Mission--> #{missionController.voirMission.titre}</p>
+                                    <blockquote>
+                                        <p><button class="btn btn-primary" > Budget<br/>#{missionController.voirMission.maxBudget}</button></p>
+                                        <small> </small>
+                                    </blockquote>                
+
+                                    <ul class="blog-info">
+                                        <li><i class="fa fa-user"></i>Publié par:#{missionController.voirMission.recruteur.prenom}</li>
+                                        <li><i class="fa fa-calendar"></i> Publiée le : <h:outputText value="#{missionController.voirMission.datePublication}"><f:convertDateTime pattern="MM/dd/yyyy"/></h:outputText> </li>
+                                        <li><i class="fa fa-comments"></i>#{missionController.comments().size()}</li>
+                                        <li><i class="fa fa-calendar"></i> Dernier délai le  : <h:outputText value="#{missionController.voirMission.dateLimite}"><f:convertDateTime pattern="MM/dd/yyyy"/></h:outputText></li>
+
+                                    </ul>
+                                    <h:form id="dataCommentaire">
+                                    <h2>Commentaires</h2>
+
+                                    <div class="commes">
+
+                                        <c:forEach   items="#{missionController.comments()}" var="com" >
+                                            <div class="media"> 
+                                                <a href="javascript:;" class="pull-left">
+
+                                                </a>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading">#{com.freelance.nom} <span>  <p:commandLink value="choisir" action="/template/freelancer/Paiement"></p:commandLink></span></h4>
+                                                    <p id="nvcom">#{com.text}</p>
+                                                </div>
+                                            </div>
+                                        </c:forEach>
+
+                                    </div>
+                                    </h:form>
+                                    <div class="post-comment padding-top-40">
+                                        <h3>Laisser Un Commentaire</h3>
+                                        <h:form id="fo" role="form">
+                                            <div class="form-group">
+                                                <label>Message</label>
+                                                <p:inputTextarea value="#{commentaireController.selected.text}" class="form-control" rows="8"></p:inputTextarea>
+                                            </div>
+                                            <p:commandButton class="btn rev"  value="Publier Commentaire"  action="#{commentaireController.createCommentaire()}" update="dataCommentaire"/>
+                                        </h:form>
+                                    </div>                      
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                      </c:forEach>
-                  </div>
-                 
-                  <div class="post-comment padding-top-40">
-                    <h3>Laisser Un Commentaire</h3>
-                    <h:form role="form">
-                      <div class="form-group">
-                        <label>Message</label>
-                        <p:inputTextarea class="form-control" rows="8"></p:inputTextarea>
-                      </div>
-                        <p:commandButton class="btn rev" value="Publier Commentaire" ></p:commandButton>
-                    </h:form>
-                  </div>                      
+                    <!-- END CONTENT -->
                 </div>
-                     
-              </div>
+                <!-- END SIDEBAR & CONTENT -->
             </div>
-          </div>
-          <!-- END CONTENT -->
         </div>
-        <!-- END SIDEBAR & CONTENT -->
-      </div>
-    </div>
- <!-- BEGIN PRE-FOOTER -->
+        <!-- BEGIN PRE-FOOTER -->
         <div class="pre-footer">
             <div class="container">
                 <div class="row">
@@ -201,7 +201,7 @@
                 Layout.initTwitter();
             });
         </script>
-        
+
     </body>
 </html>
 
