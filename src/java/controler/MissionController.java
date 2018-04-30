@@ -202,6 +202,7 @@ public class MissionController implements Serializable {
     }
 
     public Commentaire getSelectedCommentaire() {
+        System.out.println("selected");
         if (selectedCommentaire == null) {
             selectedCommentaire = new Commentaire();
         }
@@ -307,6 +308,7 @@ public class MissionController implements Serializable {
     }
 
     public void create() {
+        System.out.println("create");
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("MissionCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
