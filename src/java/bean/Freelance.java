@@ -42,7 +42,6 @@ public class Freelance implements Serializable {
     private Admin admin;
     @OneToOne
     private User user;
-    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateInscription;
 
     @OneToMany(mappedBy = "freelance")

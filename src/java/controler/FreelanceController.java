@@ -3,6 +3,7 @@ package controler;
 import bean.Freelance;
 import bean.Pays;
 import bean.Review;
+import bean.User;
 import controler.util.JsfUtil;
 import controler.util.JsfUtil.PersistAction;
 import java.io.IOException;
@@ -160,6 +161,7 @@ public class FreelanceController implements Serializable {
     public Freelance getSelected() {
         if(selected==null){
             selected=new Freelance();
+            selected.setUser(new User());
                     
         }
         return selected;
