@@ -91,8 +91,10 @@ public class RecruteurController implements Serializable {
     }
 
     public Recruteur getSelected() {
+        System.out.println("selected");
        if(selected==null){
             selected=new Recruteur();
+            selected.setUser(new User());
                     
         }
         return selected;
@@ -119,6 +121,7 @@ public class RecruteurController implements Serializable {
     }
 
     public void create() {
+        System.out.println("create");
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("RecruteurCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
