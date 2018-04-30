@@ -89,6 +89,7 @@
                                                 </ul>
                                                 <p>#{mission.commentaire.substring(6)}</p>
                                                 <a>  <h:link outcome="MissionItem.xhtml" value="Lire la suite..." includeViewParams="true" style="color: #CC3304"><f:param name="mission" value="#{mission.id}"/></h:link> <i class="icon-angle-right"></i></a> 
+                                                
                                                 <div class="blog-tags margin-bottom-20 myTags">
                                                     <br/>
                                                     <ul>
@@ -99,9 +100,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
-
                                         <hr class="blog-post-sep"/>   
                                     </c:forEach>
                                         </h:form>

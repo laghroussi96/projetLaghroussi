@@ -171,7 +171,7 @@
         </p:column>
          
         <p:column headerText="Détails">
-            <p:commandButton  value="Consulter" class="btn btn-primary" icon="ui-icon-eye" ></p:commandButton>
+           <h:commandLink value="Consulter" action="#{missionController.sesMission(item)}" ></h:commandLink>
         </p:column>
     </p:dataTable>
 </h:form>
