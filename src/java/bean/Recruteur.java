@@ -35,7 +35,8 @@ public class Recruteur implements Serializable {
     private Pays pays;
     @ManyToOne
     private Admin admin;
-   
+    @OneToOne
+   private Compte compte;
     @OneToOne
     private User user;
     @OneToMany(mappedBy = "recruteur")
@@ -46,6 +47,14 @@ public class Recruteur implements Serializable {
     private List<Paiement> paiements;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateInscription;
+
+    public Compte getCompte() {
+        return compte;
+    }
+
+    public void setCompte(Compte compte) {
+        this.compte = compte;
+    }
 
     public Date getDateInscription() {
         return dateInscription;

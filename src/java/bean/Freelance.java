@@ -42,6 +42,8 @@ public class Freelance implements Serializable {
     private Admin admin;
     
     @OneToOne
+    private Compte compte;
+    @OneToOne
     private User user;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateInscription;
@@ -64,6 +66,14 @@ public class Freelance implements Serializable {
     private List<Paiement> paiements;
     @OneToMany(mappedBy = "freelance")
     private List<Mission> missions;
+
+    public Compte getCompte() {
+        return compte;
+    }
+
+    public void setCompte(Compte compte) {
+        this.compte = compte;
+    }
 
     public Date getDateInscription() {
         return dateInscription;
