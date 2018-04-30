@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 30 Avril 2018 à 10:14
+-- Généré le :  Lun 30 Avril 2018 à 10:43
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -31,21 +31,25 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `NOM` varchar(255) DEFAULT NULL,
   `PRENOM` varchar(255) DEFAULT NULL,
   `PAYS_ID` bigint(20) DEFAULT NULL,
+  `COMPTE_ID` bigint(20) DEFAULT NULL,
   `USER_LOGIN` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`ID`)
+  PRIMARY KEY (`ID`),
+  KEY `FK_ADMIN_COMPTE_ID` (`COMPTE_ID`),
+  KEY `FK_ADMIN_PAYS_ID` (`PAYS_ID`),
+  KEY `FK_ADMIN_USER_LOGIN` (`USER_LOGIN`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `admin`
 --
 
-INSERT INTO `admin` (`ID`, `NOM`, `PRENOM`, `PAYS_ID`, `USER_LOGIN`) VALUES
-(1, 'aa', 'aa', 1, NULL),
-(51, 'cc', 'cc', 4, NULL),
-(151, 'qq', 'qq', 3, 'qq'),
-(152, 'rr', 'rr', 3, 'qq'),
-(153, 'ss', 'ss', 2, 'qq'),
-(201, 'ww', 'ww', 4, 'ww');
+INSERT INTO `admin` (`ID`, `NOM`, `PRENOM`, `PAYS_ID`, `COMPTE_ID`, `USER_LOGIN`) VALUES
+(1, 'aa', 'aa', NULL, NULL, NULL),
+(51, 'bb', 'bb', NULL, NULL, NULL),
+(101, 'laghroussi', 'fatima', NULL, NULL, NULL),
+(102, 'aderab', 'samira', NULL, NULL, NULL),
+(151, 'cc', 'cc', NULL, NULL, NULL),
+(152, 'bb', 'cc', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -174,11 +178,13 @@ CREATE TABLE IF NOT EXISTS `freelance` (
   `DEVISE_ID` bigint(20) DEFAULT NULL,
   `DIPLOME_ID` bigint(20) DEFAULT NULL,
   `PAYS_ID` bigint(20) DEFAULT NULL,
+  `COMPTE_ID` bigint(20) DEFAULT NULL,
   `USER_LOGIN` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   KEY `FK_FREELANCE_DEVISE_ID` (`DEVISE_ID`),
   KEY `FK_FREELANCE_DIPLOME_ID` (`DIPLOME_ID`),
   KEY `FK_FREELANCE_ADMIN_ID` (`ADMIN_ID`),
+  KEY `FK_FREELANCE_COMPTE_ID` (`COMPTE_ID`),
   KEY `FK_FREELANCE_USER_LOGIN` (`USER_LOGIN`),
   KEY `FK_FREELANCE_PAYS_ID` (`PAYS_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -187,9 +193,9 @@ CREATE TABLE IF NOT EXISTS `freelance` (
 -- Contenu de la table `freelance`
 --
 
-INSERT INTO `freelance` (`ID`, `DATEINSCRIPTION`, `NOM`, `PRENOM`, `TARIF`, `TEL`, `ADMIN_ID`, `DEVISE_ID`, `DIPLOME_ID`, `PAYS_ID`, `USER_LOGIN`) VALUES
-(101, '2018-04-01', 'laghroussi', 'fatima', 200, 0.654348765, 1, 12, 16, 4, NULL),
-(102, '2018-03-01', 'aderab', 'samira', 30, 0.643250098, 1, 12, 16, 4, NULL);
+INSERT INTO `freelance` (`ID`, `DATEINSCRIPTION`, `NOM`, `PRENOM`, `TARIF`, `TEL`, `ADMIN_ID`, `DEVISE_ID`, `DIPLOME_ID`, `PAYS_ID`, `COMPTE_ID`, `USER_LOGIN`) VALUES
+(101, '2018-04-09', 'laghroussi', 'fatima', 300, 654348765, 1, 13, 15, 5, NULL, NULL),
+(102, '2018-04-09', 'aderab', 'samira', 500, 654348765, 1, 13, 15, 5, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -314,8 +320,8 @@ INSERT INTO `mission` (`ID`, `AVANCEMENT`, `COMMENTAIRE`, `DATEACCEPTATION`, `DA
 CREATE TABLE IF NOT EXISTS `notification` (
   `ID` bigint(20) NOT NULL,
   `DATENOTIFICATION` date DEFAULT NULL,
-  `DATEVUE` date DEFAULT NULL,
   `TEXT` varchar(255) DEFAULT NULL,
+  `VUE` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -395,7 +401,7 @@ CREATE TABLE IF NOT EXISTS `pays` (
 INSERT INTO `pays` (`ID`, `NOM`) VALUES
 (1, 'Maroc'),
 (2, 'France'),
-(3, 'AlgÃ©rie'),
+(3, 'AlgÃƒÂ©rie'),
 (4, 'Espagne'),
 (5, 'Belgique'),
 (6, 'Suisse');
@@ -414,21 +420,22 @@ CREATE TABLE IF NOT EXISTS `recruteur` (
   `TEL` double DEFAULT NULL,
   `ADMIN_ID` bigint(20) DEFAULT NULL,
   `PAYS_ID` bigint(20) DEFAULT NULL,
+  `COMPTE_ID` bigint(20) DEFAULT NULL,
   `USER_LOGIN` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   KEY `FK_RECRUTEUR_PAYS_ID` (`PAYS_ID`),
   KEY `FK_RECRUTEUR_ADMIN_ID` (`ADMIN_ID`),
-  KEY `FK_RECRUTEUR_USER_LOGIN` (`USER_LOGIN`)
+  KEY `FK_RECRUTEUR_USER_LOGIN` (`USER_LOGIN`),
+  KEY `FK_RECRUTEUR_COMPTE_ID` (`COMPTE_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `recruteur`
 --
 
-INSERT INTO `recruteur` (`ID`, `DATEINSCRIPTION`, `NOM`, `PRENOM`, `TEL`, `ADMIN_ID`, `PAYS_ID`, `USER_LOGIN`) VALUES
-(1, '2018-04-10', 'hafid', 'fatima', 0.627224777, 151, 2, NULL),
-(2, '2018-05-09', 'bennajim', 'salma', 0.643546578, 51, 2, NULL),
-(7798, '2018-01-17', 'hanani', 'elmehdi', 0.675657689, 153, 6, NULL);
+INSERT INTO `recruteur` (`ID`, `DATEINSCRIPTION`, `NOM`, `PRENOM`, `TEL`, `ADMIN_ID`, `PAYS_ID`, `COMPTE_ID`, `USER_LOGIN`) VALUES
+(1, '2018-04-03', 'hafid', 'fatima', 0.654348765, 51, 2, NULL, NULL),
+(2, '2018-02-03', 'bennajim', 'salma', 0.654348765, 51, 2, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -569,6 +576,14 @@ CREATE TABLE IF NOT EXISTS `user_device` (
 --
 
 --
+-- Contraintes pour la table `admin`
+--
+ALTER TABLE `admin`
+  ADD CONSTRAINT `FK_ADMIN_USER_LOGIN` FOREIGN KEY (`USER_LOGIN`) REFERENCES `user` (`LOGIN`),
+  ADD CONSTRAINT `FK_ADMIN_COMPTE_ID` FOREIGN KEY (`COMPTE_ID`) REFERENCES `compte` (`ID`),
+  ADD CONSTRAINT `FK_ADMIN_PAYS_ID` FOREIGN KEY (`PAYS_ID`) REFERENCES `pays` (`ID`);
+
+--
 -- Contraintes pour la table `commentaire`
 --
 ALTER TABLE `commentaire`
@@ -593,6 +608,7 @@ ALTER TABLE `device`
 ALTER TABLE `freelance`
   ADD CONSTRAINT `FK_FREELANCE_PAYS_ID` FOREIGN KEY (`PAYS_ID`) REFERENCES `pays` (`ID`),
   ADD CONSTRAINT `FK_FREELANCE_ADMIN_ID` FOREIGN KEY (`ADMIN_ID`) REFERENCES `admin` (`ID`),
+  ADD CONSTRAINT `FK_FREELANCE_COMPTE_ID` FOREIGN KEY (`COMPTE_ID`) REFERENCES `compte` (`ID`),
   ADD CONSTRAINT `FK_FREELANCE_DEVISE_ID` FOREIGN KEY (`DEVISE_ID`) REFERENCES `devise` (`ID`),
   ADD CONSTRAINT `FK_FREELANCE_DIPLOME_ID` FOREIGN KEY (`DIPLOME_ID`) REFERENCES `diplome` (`ID`),
   ADD CONSTRAINT `FK_FREELANCE_USER_LOGIN` FOREIGN KEY (`USER_LOGIN`) REFERENCES `user` (`LOGIN`);
@@ -646,9 +662,10 @@ ALTER TABLE `paiement`
 -- Contraintes pour la table `recruteur`
 --
 ALTER TABLE `recruteur`
-  ADD CONSTRAINT `FK_RECRUTEUR_USER_LOGIN` FOREIGN KEY (`USER_LOGIN`) REFERENCES `user` (`LOGIN`),
+  ADD CONSTRAINT `FK_RECRUTEUR_COMPTE_ID` FOREIGN KEY (`COMPTE_ID`) REFERENCES `compte` (`ID`),
   ADD CONSTRAINT `FK_RECRUTEUR_ADMIN_ID` FOREIGN KEY (`ADMIN_ID`) REFERENCES `admin` (`ID`),
-  ADD CONSTRAINT `FK_RECRUTEUR_PAYS_ID` FOREIGN KEY (`PAYS_ID`) REFERENCES `pays` (`ID`);
+  ADD CONSTRAINT `FK_RECRUTEUR_PAYS_ID` FOREIGN KEY (`PAYS_ID`) REFERENCES `pays` (`ID`),
+  ADD CONSTRAINT `FK_RECRUTEUR_USER_LOGIN` FOREIGN KEY (`USER_LOGIN`) REFERENCES `user` (`LOGIN`);
 
 --
 -- Contraintes pour la table `review`
