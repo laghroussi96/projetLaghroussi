@@ -50,6 +50,7 @@ public class MissionController implements Serializable {
     private Mission selected;
     private Commentaire selectedCommentaire;
     private List<Commentaire> coms;
+    private List<Commentaire> commentaires;
     private List<Commentaire> commentForMission=new ArrayList<>();
     private List<TechnologieMission> listTechnologie;
     // private Mission selected2;
@@ -65,6 +66,34 @@ public class MissionController implements Serializable {
     private String etat;
     private Mission voirMission;
 
+     public String sesMission(Mission mission){
+       if(mission!=null){
+           SessionUtil.setAttribute("thisMission", ejbFacade.find(mission.getId()));
+           return "/template/otherPages/MissionItem_1";
+       }
+       return null;
+   }
+     public List<Commentaire> comments(){
+        commentaires=commentaireFacade.findByMission(voirMission.getId());
+        return commentaires;
+    }
+    public List<Mission> getItemss() {
+        return itemss;
+    }
+
+    public void setItemss(List<Mission> itemss) {
+        this.itemss = itemss;
+    }
+
+    public List<Commentaire> getCommentaires() {
+        return commentaires;
+    }
+
+    public void setCommentaires(List<Commentaire> commentaires) {
+        this.commentaires = commentaires;
+    }
+
+    
     public Recruteur getVoirRecruteur() {
         voirRecruteur=(Recruteur)SessionUtil.getAttribute("thisRecruteur");
         return voirRecruteur;
@@ -202,6 +231,7 @@ public class MissionController implements Serializable {
     }
 
     public Commentaire getSelectedCommentaire() {
+        System.out.println("selected");
         if (selectedCommentaire == null) {
             selectedCommentaire = new Commentaire();
         }
@@ -307,6 +337,7 @@ public class MissionController implements Serializable {
     }
 
     public void create() {
+        System.out.println("create");
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("MissionCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.

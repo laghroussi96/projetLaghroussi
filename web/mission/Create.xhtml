@@ -61,6 +61,7 @@
                         </p:selectOneMenu>
                        
                     </p:panelGrid>
+                    
                     <p:commandButton actionListener="#{missionController.create}" value="#{bundle.Save}" update="display,:MissionListForm:datalist,:growl" oncomplete="handleSubmit(args,'MissionCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="MissionCreateDialog.hide()"/>
                 </h:panelGroup>
