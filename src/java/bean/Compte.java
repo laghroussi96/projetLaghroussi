@@ -33,6 +33,36 @@ public class Compte implements Serializable {
 
     @OneToMany(mappedBy = "compte")
     private List<Operation> operations;
+    @OneToOne(mappedBy = "compte")
+    private Freelance freelance;
+    @OneToOne(mappedBy = "compte")
+    private Recruteur recruteur;
+    @OneToOne(mappedBy = "compte")
+    private Admin admin;
+
+    public Freelance getFreelance() {
+        return freelance;
+    }
+
+    public void setFreelance(Freelance freelance) {
+        this.freelance = freelance;
+    }
+
+    public Recruteur getRecruteur() {
+        return recruteur;
+    }
+
+    public void setRecruteur(Recruteur recruteur) {
+        this.recruteur = recruteur;
+    }
+
+    public Admin getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Admin admin) {
+        this.admin = admin;
+    }
 
     public Compte() {
     }

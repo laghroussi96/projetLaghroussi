@@ -40,6 +40,9 @@ public class Freelance implements Serializable {
     private Pays pays;
     @ManyToOne
     private Admin admin;
+    
+    @OneToOne
+    private Compte compte;
     @OneToOne
     private User user;
     private Date dateInscription;
@@ -62,6 +65,14 @@ public class Freelance implements Serializable {
     private List<Paiement> paiements;
     @OneToMany(mappedBy = "freelance")
     private List<Mission> missions;
+
+    public Compte getCompte() {
+        return compte;
+    }
+
+    public void setCompte(Compte compte) {
+        this.compte = compte;
+    }
 
     public Date getDateInscription() {
         return dateInscription;

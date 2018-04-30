@@ -34,6 +34,9 @@ public class Admin implements Serializable {
     @OneToOne
     private User user;
     
+    @OneToOne
+    private Compte compte;
+    
     @OneToMany(mappedBy = "admin")
     private List<NotificationCategorie> notificationCategories;
 
@@ -51,6 +54,14 @@ public class Admin implements Serializable {
 
     @OneToMany(mappedBy = "admin")
     private List<Freelance> freelances;
+
+    public Compte getCompte() {
+        return compte;
+    }
+
+    public void setCompte(Compte compte) {
+        this.compte = compte;
+    }
 
     public Admin() {
     }

@@ -30,8 +30,8 @@ public class Notification implements Serializable {
      private String text;
     @Temporal(javax.persistence.TemporalType.DATE)
      private Date dateNotification;
-    @Temporal(javax.persistence.TemporalType.DATE)
-     private Date dateVue;
+   
+     private boolean vue;
      @OneToMany(mappedBy = "notification")
     private List<NotificationCategorie> notificationCategories;
 
@@ -42,11 +42,11 @@ public class Notification implements Serializable {
         this.id = id;
     }
 
-    public Notification(Long id, String text, Date dateNotification, Date dateVue) {
+    public Notification(Long id, String text, Date dateNotification,boolean vue) {
         this.id = id;
         this.text = text;
         this.dateNotification = dateNotification;
-        this.dateVue = dateVue;
+        this.vue = vue;
     }
 
      
@@ -66,12 +66,12 @@ public class Notification implements Serializable {
         this.dateNotification = dateNotification;
     }
 
-    public Date getDateVue() {
-        return dateVue;
+    public boolean getVue() {
+        return vue;
     }
 
-    public void setDateVue(Date dateVue) {
-        this.dateVue = dateVue;
+    public void setVue(boolean vue) {
+        this.vue = vue;
     }
 
     public List<NotificationCategorie> getNotificationCategories() {
@@ -114,7 +114,7 @@ public class Notification implements Serializable {
 
     @Override
     public String toString() {
-        return "Notification{" + "id=" + id + ", text=" + text + ", dateNotification=" + dateNotification + ", dateVue=" + dateVue + '}';
+        return "Notification{" + "id=" + id + ", text=" + text + ", dateNotification=" + dateNotification + ", vue=" + vue + '}';
     }
 
     
