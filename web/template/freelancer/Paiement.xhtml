@@ -116,24 +116,22 @@
                 </ul>
                 <div class="row margin-bottom-40">
                     <!-- BEGIN CONTENT -->
-                    <div class="col-md-6 col-sm-12">
-                        <h1>Paiement</h1>
-                        <div class="form-group">
-                            <label for="usr">Nom de freelancer :</label>
-                            <input type="text" class="form-control" id="usr"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="pwd">Rib:</label>
-                            <input type="number" class="form-control" id="pwd"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="comment">Comment:</label>
-                            <textarea class="form-control" rows="5" id="comment"></textarea>
-                        </div>
-                        <div>
-                            <button type="button" class="btn btn-primary btn-lg">Confirmer</button>
-                        </div>
-                    </div>
+                     <h:form >
+         <h:panelGroup  >
+              
+                        <p:panelGrid columns="1" >
+                        
+                            <p:outputLabel value="Compte" for="compte"  style="font-size: 19px" />
+                            <p:inputText id="compte" value="#{paiementController.selected.compte}" title="#{bundle.CreatePaiementTitle_compte}" style="font-size: 24px" />
+                        <p:outputLabel value="Montant" for="montant" style="font-size: 19px"/>
+                        <p:inputText id="montant" value="#{paiementController.selected.montant}" title="#{bundle.CreatePaiementTitle_montant}" style="font-size: 19px" />
+                        <p:commandButton  class="btn btn-primary monbtn" style="background-color:#009999" value="Confirmer"  actionListener="#{paiementController.create()}"  />
+                                
+                        </p:panelGrid>
+             
+             
+            </h:panelGroup>
+                </h:form>
                 </div>
             </div>
         </div>

@@ -37,10 +37,7 @@ public class PaiementController implements Serializable {
     private Double montant;
     private Compte compte;
 
-    public void createPaiement() {
-        ejbFacade.createPaiement(recruteur, admin, montant, compte);
-        
-    }
+   
 
     public PaiementFacade getEjbFacade() {
         return ejbFacade;

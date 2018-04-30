@@ -46,12 +46,25 @@ public class TechnologieMissionController implements Serializable {
     private List<Mission> missions = new ArrayList<>();
     private TechnologieMission selected;
     private Categorie categorie;
+    private Mission selectedMission;
     private List<Commentaire> coms = new ArrayList<>();
 
      public List<Technologie> findByCate() {
         technologies = ejbTecFacade.findByCate(categorie);
         return technologies;
     }
+
+    public Mission getSelectedMission() {
+        if(selectedMission==null){
+            selectedMission=new Mission();
+        }
+        return selectedMission;
+    }
+
+    public void setSelectedMission(Mission selectedMission) {
+        this.selectedMission = selectedMission;
+    }
+     
    public String voirMission(Mission mission){
        if(mission!=null){
            SessionUtil.setAttribute("thisMission", ejbMesFacade.find(mission.getId()));

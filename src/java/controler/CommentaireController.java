@@ -1,8 +1,10 @@
 package controler;
 
 import bean.Commentaire;
+import bean.Mission;
 import controler.util.JsfUtil;
 import controler.util.JsfUtil.PersistAction;
+import controler.util.SessionUtil;
 import service.CommentaireFacade;
 
 import java.io.Serializable;
@@ -27,11 +29,40 @@ public class CommentaireController implements Serializable {
     private service.CommentaireFacade ejbFacade;
     private List<Commentaire> items = null;
     private Commentaire selected;
+    private Mission voirMission;
 
+     public  void createCommentaire(){
+        System.out.println("create com controller");
+        System.out.println("vm="+getVoirMission());
+        System.out.println("text="+selected.getText());
+        ejbFacade.createCom(voirMission, selected.getText(), null);
+    }
     public CommentaireController() {
     }
 
+    public CommentaireFacade getEjbFacade() {
+        return ejbFacade;
+    }
+
+    public void setEjbFacade(CommentaireFacade ejbFacade) {
+        this.ejbFacade = ejbFacade;
+    }
+
+    public Mission getVoirMission() {
+        voirMission=(Mission)SessionUtil.getAttribute("thisMission");
+        return voirMission;
+    }
+
+    public void setVoirMission(Mission voirMission) {
+        this.voirMission = voirMission;
+    }
+
+    
     public Commentaire getSelected() {
+        if(selected==null){
+            selected=new Commentaire();
+        }
+            
         return selected;
     }
 

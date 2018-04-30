@@ -44,23 +44,6 @@ public class PaiementFacade extends AbstractFacade<Paiement> {
     @EJB
     private CompteFacade compteFacade;
 
-    public int createPaiement(Recruteur recruteur, Admin admin, Double montant, Compte compte) {
-        Paiement paiement = new Paiement();
-        Double nvSoldeRec = 0.0;
-        Double nvSoldeAdmin = 0.0;
-//        if(compte.getUser().equals(recruteur.getUser())){
-//            nvSoldeRec=compte.getSolde()-montant;
-//            compte.setSolde(nvSoldeRec);
-//        }
-        if (compte.getUser().equals(admin.getUser())) {
-            nvSoldeAdmin = compte.getSolde() + montant;
-            compte.setSolde(nvSoldeAdmin);
-            compteFacade.edit(compte);
-        }
-        create(paiement);
-        return 1;
-    }
-
     public int distMonatant(Paiement paiement) {
         Freelance freelance = ejbfaFacade.find(paiement.getFreelance().getId());
         Double nvSolde = 0.0;
